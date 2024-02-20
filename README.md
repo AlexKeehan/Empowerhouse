@@ -1,4 +1,5 @@
 # Empowerhouse Volunteer Management System (VMS)
+# Emily Lambert branch
 ## Purpose
 This project is forked from [Gwyneth's Gift Volunteer Management System](https://github.com/lk-umw-cpsc/gwyneth) (VMS).
 
