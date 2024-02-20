@@ -13,6 +13,7 @@ A major overhaul to the existing system took place during the Spring 2023 semest
 
 The Fall 2023 Semester and changes made for [Empowerhouse](https://www.empowerhouseva.org/) were developed by Nahom Tilahun, Ashley Quijada, Richard Volynski, Ted Stanton, Wade Nelson, and Justin Raze.
 
+Diana Guzman
 
 ## User Types
 There are three types of users (also called 'roles') within the VMS.
@@ -159,3 +160,4 @@ The project remains under the [GNU General Public License v3.0](https://www.gnu.
 Thank you to Dr. Polack and Tammy for the chance to work on this exciting project. A lot of love went into making it!
 
 Testing the push.
+Testing the push 2.0
