@@ -1,12 +1,6 @@
 # Empowerhouse Volunteer Management System (VMS)
-<<<<<<< Updated upstream
-## Purpose Keehan, Chris Cronin
-=======
 
 ## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert
-# test
->>>>>>> Stashed changes
-
 This project is forked from [Gwyneth's Gift Volunteer Management System](https://github.com/lk-umw-cpsc/gwyneth) (VMS).
 
 Our group has been working during the Fall 2023 Semester at The University of Mary Washington on a non-profit website used for Empowerhouse. The goal of our web application is to develop a volunteer training portal to help users register for events and maintain their records of completed and assigned training materials.
