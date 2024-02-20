@@ -1,6 +1,6 @@
 # Empowerhouse Volunteer Management System (VMS)
 
-## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert, Diana Guzman
+## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert, Matthew Rose, Diana Guzman, Tubba Noor
 
 
 This project is forked from [Gwyneth's Gift Volunteer Management System](https://github.com/lk-umw-cpsc/gwyneth) (VMS).
