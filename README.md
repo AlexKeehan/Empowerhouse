@@ -1,5 +1,11 @@
 # Empowerhouse Volunteer Management System (VMS)
+<<<<<<< Updated upstream
 ## Purpose Keehan, Chris Cronin
+=======
+
+## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert
+# test
+>>>>>>> Stashed changes
 
 This project is forked from [Gwyneth's Gift Volunteer Management System](https://github.com/lk-umw-cpsc/gwyneth) (VMS).
 
