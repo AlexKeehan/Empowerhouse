@@ -1,6 +1,6 @@
 # Empowerhouse Volunteer Management System (VMS)
 
-## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert
+## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert, Diana Guzman
 
 
 This project is forked from [Gwyneth's Gift Volunteer Management System](https://github.com/lk-umw-cpsc/gwyneth) (VMS).
@@ -16,7 +16,7 @@ A major overhaul to the existing system took place during the Spring 2023 semest
 
 The Fall 2023 Semester and changes made for [Empowerhouse](https://www.empowerhouseva.org/) were developed by Nahom Tilahun, Ashley Quijada, Richard Volynski, Ted Stanton, Wade Nelson, and Justin Raze.
 
-Diana Guzman
+
 
 ## User Types
 There are three types of users (also called 'roles') within the VMS.
