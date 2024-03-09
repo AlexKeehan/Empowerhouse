@@ -72,6 +72,8 @@
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
         $permission_array['addevent.php'] = 2;
+        $permission_array['addTrainingPeriod.php'] = 2;     //Added permissions for new file addTrainingPeriod.php
+        $permission_array['selectTrainingPeriod.php'] = 2;     //Added permissions for new file selectTrainingPeriod.php
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
@@ -124,7 +126,7 @@
 	            //echo('<br>master schedules: <a href="' . $path . 'viewSchedule.php?venue=portland'."".'">Portland, </a>');
 	            //echo('<a href="' . $path . 'viewSchedule.php?venue=bangor'."".'">Bangor</a>');
 		    echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'verify.php">Verify</a></li>');
-	            echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'addTrainingPeriod.php">Add Training Period</a></li>');
+	            echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'selectTrainingPeriod.php">Add Training Period</a></li>');
 	            echo('<span class="nav-divider">|</span>');
 	            echo('<span class="navbar-brand">Volunteers</span>');
                 echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'personSearch.php">Search</a></li>
