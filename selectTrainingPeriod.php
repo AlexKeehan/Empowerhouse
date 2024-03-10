@@ -23,7 +23,6 @@
         echo 'bad access level';
         die();
     }
-    $done = False;
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,20 +36,14 @@
         <h1>Select Training Period</h1>
         <main>
             <h2>Available Training Periods</h2>
-            <form id="training-periods" method="post" action="addTrainingPeriod.php">
-                <select name="Select Training Period">
+            <form method="post" action="addTrainingPeriod.php">
+                <select name="training-periods">
                 <option value="first">Jan 1 - Feb 28</option>
                 <option value="second">May 1 - Jun 30</option>
                 <option value="third">Sep 1 - Oct 31</option>
                 </select>
             <input type="submit" name="Submit">
             </form>
-
-            <?php
-            if (isset($_POST['training_periods'])) {
-                    echo "Selected training period is " .htmlspecialchars[$_POST['training_periods']];
-            }
-            ?>
         </main>
     </body>
 </html>
