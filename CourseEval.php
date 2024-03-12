@@ -21,7 +21,7 @@
     }
     $notRoot = $person->get_id() != 'vmsroot';
 ?>
-// start the html to display the input area
+// start the html to display the input area 
 <!DOCTYPE html>
 <html>
     <head>
