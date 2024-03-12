@@ -21,8 +21,8 @@
     }
     $notRoot = $person->get_id() != 'vmsroot';
 ?>
-// start the html to display the input area
 <!DOCTYPE html>
+<!-- start the html to display the input area -->
 <html>
     <head>
 	<?php require_once('universal.inc') ?>
@@ -30,7 +30,7 @@
     </head>
     <body>
         <?php require_once('header.php') ?>
-	// Start the Post so it can update the database
+	<!-- Start the Post so it can update the database -->
 	<form method="post">
 	    <label for="username">Enter Feedback</label>
                 <input type="text" name="name" placeholder="Enter your name" required>
