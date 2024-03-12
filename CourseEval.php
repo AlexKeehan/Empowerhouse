@@ -37,6 +37,13 @@
 		<input type="text" name="course" placeholder="Enter the course ID" required>
 		<input type="text" name="feedback" placeholder="Enter your feedback" required>
 	    <input type="submit" name="add_feedback" value="Add Feedback">
+        <label for="username">How would you rate Empowerhouse volunteer training?</label>
+        <select>  
+        <option value="Omveer">Excellent</option>   
+        <option value="Dorilal">Good</option>  
+        <option value="Sumit">Fair</option>  
+        <option value="Vineet">Poor</option>  
+</select>
 	</form>
     </body>
 </html>
