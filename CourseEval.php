@@ -32,9 +32,10 @@
         <?php require_once('header.php') ?>
 	<!-- Start the Post so it can update the database -->
 	<form method="post">
-	    <label for="username">Enter Feedback</label>
-                <input type="text" name="name" placeholder="Instructors Name" required>
-		<input type="text" name="course" placeholder="Topic" required>
+	    <label for="username">Instructors Name</label>
+                <input type="text" name="name" placeholder="Enter" required>
+        <label for="username">Topic</label>
+		<input type="text" name="course" placeholder="Enter" required>
 
         <label for="username">Overall how would you rate this presentation?</label>
         <select>  
@@ -46,7 +47,7 @@
         </select>
 
         <!-- code for check boxes (check all) -->
-        <label for="username">In your opinion, the presentor... (check all that apply)</label><br><br>
+        <label for="username">In your opinion, the presentor... (check all that apply)</label><br>
         <input type="checkbox" id="respected" name="opinions[]" value="Respected the participants">
         <label for="respected">Respected the participants</label><br>
         <input type="checkbox" id="not_respected" name="opinions[]" value="Did not respect the participants">
@@ -65,14 +66,21 @@
         <label for="enthusiasm">Exhibited enthusiasm for the topic</label><br><br>
 
         <!-- code for check boxes (only one) -->
-        <label for="username">After taking this training I feel like I have an increased understanding of domestic violence.</label><br><br>
+        <label for="username">After taking this training I feel like I have an increased understanding of domestic violence.</label><br>
         <input type="radio" id="true" name="understanding" value="True">
         <label for="true">True</label><br>
         <input type="radio" id="false" name="understanding" value="False">
         <label for="false">False</label><br>
         <input type="radio" id="significant" name="understanding" value="Came to this training with significant DV knowledge">
-        <label for="significant">I came to this training with significant DV knowledge</label><br>
+        <label for="significant">I came to this training with significant DV knowledge</label><br><br>
 
+        <label for="username">Through this training I have learned new information or asquired a new skill and/or resource that I can apply in my work to improve my response to domestic violence.</label><br>
+        <input type="radio" id="true" name="understanding" value="True">
+        <label for="true">True</label><br>
+        <input type="radio" id="false" name="understanding" value="False">
+        <label for="false">False</label><br>
+        <input type="radio" id="significant" name="understanding" value="Came to this training with significant DV knowledge">
+        <label for="significant">I came to this training with significant DV knowledge</label><br><br>
 	    <input type="submit" name="add_feedback" value="Add Feedback">
 	</form>
     </body>
