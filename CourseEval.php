@@ -33,17 +33,47 @@
 	<!-- Start the Post so it can update the database -->
 	<form method="post">
 	    <label for="username">Enter Feedback</label>
-                <input type="text" name="name" placeholder="Enter your name" required>
-		<input type="text" name="course" placeholder="Enter the course ID" required>
-		<input type="text" name="feedback" placeholder="Enter your feedback" required>
-	    <input type="submit" name="add_feedback" value="Add Feedback">
-        <label for="username">How would you rate Empowerhouse volunteer training?</label>
+                <input type="text" name="name" placeholder="Instructors Name" required>
+		<input type="text" name="course" placeholder="Topic" required>
+
+        <label for="username">Overall how would you rate this presentation?</label>
         <select>  
-            <option value="Omveer">Excellent</option>   
-            <option value="Dorilal">Good</option>  
-            <option value="Sumit">Fair</option>  
-            <option value="Vineet">Poor</option>  
+            <option value="Select">Select</option>  
+            <option value="Excellent">Excellent</option>   
+            <option value="Good">Good</option>  
+            <option value="Fair">Fair</option>  
+            <option value="Poor">Poor</option>  
         </select>
+
+        <!-- code for check boxes (check all) -->
+        <label for="username">In your opinion, the presentor... (check all that apply)</label><br><br>
+        <input type="checkbox" id="respected" name="opinions[]" value="Respected the participants">
+        <label for="respected">Respected the participants</label><br>
+        <input type="checkbox" id="not_respected" name="opinions[]" value="Did not respect the participants">
+        <label for="not_respected">Did not respect the participants</label><br>
+        <input type="checkbox" id="managed_well" name="opinions[]" value="Managed the group well">
+        <label for="managed_well">Managed the group well</label><br>
+        <input type="checkbox" id="managed_poorly" name="opinions[]" value="Managed the group poorly">
+        <label for="managed_poorly">Managed the group poorly</label><br>
+        <input type="checkbox" id="explained_clearly" name="opinions[]" value="Explained things clearly">
+        <label for="explained_clearly">Explained things clearly</label><br>
+        <input type="checkbox" id="made_confusing" name="opinions[]" value="Made things confusing">
+        <label for="made_confusing">Made things confusing</label><br>
+        <input type="checkbox" id="responsive" name="opinions[]" value="Was responsive to questions">
+        <label for="responsive">Was responsive to questions</label><br>
+        <input type="checkbox" id="enthusiasm" name="opinions[]" value="Exhibited enthusiasm for the topic">
+        <label for="enthusiasm">Exhibited enthusiasm for the topic</label><br><br>
+
+        <!-- code for check boxes (only one) -->
+        <label for="username">After taking this training I feel like I have an increased understanding of domestic violence.</label><br><br>
+        <input type="radio" id="true" name="understanding" value="True">
+        <label for="true">True</label><br>
+        <input type="radio" id="false" name="understanding" value="False">
+        <label for="false">False</label><br>
+        <input type="radio" id="significant" name="understanding" value="Came to this training with significant DV knowledge">
+        <label for="significant">I came to this training with significant DV knowledge</label><br>
+
+	    <input type="submit" name="add_feedback" value="Add Feedback">
 	</form>
     </body>
 </html>
