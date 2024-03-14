@@ -47,15 +47,15 @@
 
         <!-- code for check boxes (check all) -->
         <label for="username">In your opinion, the presentor... (check all that apply)</label><br>
-        <input type="checkbox" id="respected" name="opinions[]" value="yes">
+        <input type="checkbox" id="respected" name="opinions[]" value="Respected the participants">
         <label for="respected">Respected the participants</label><br>
-        <input type="checkbox" id="managed_well" name="opinions[]" value="yes">
+        <input type="checkbox" id="managed_well" name="opinions[]" value="Managed the group well">
         <label for="managed_well">Managed the group well</label><br>
-        <input type="checkbox" id="explained_clearly" name="opinions[]" value="yes">
+        <input type="checkbox" id="explained_clearly" name="opinions[]" value="Explained things clearly">
         <label for="explained_clearly">Explained things clearly</label><br>
-        <input type="checkbox" id="responsive" name="opinions[]" value="yes">
+        <input type="checkbox" id="responsive" name="opinions[]" value="Was responsive to questions">
         <label for="responsive">Was responsive to questions</label><br>
-        <input type="checkbox" id="enthusiasm" name="opinions[]" value="yes">
+        <input type="checkbox" id="enthusiasm" name="opinions[]" value="Exhibited enthusiasm for the topic">
         <label for="enthusiasm">Exhibited enthusiasm for the topic</label><br><br>
 
         <!-- code for check boxes (only one) -->
@@ -105,8 +105,10 @@
         // Check if opinions array exists in form data
         if(isset($_POST['opinions'])) {
             $opinions = $_POST['opinions'];
+            echo $opinions[0];
             // Set checkbox values if they exist in the form data
             $respectsParticipants = in_array('Respected the participants', $opinions) ? "yes" : "no";
+            echo $respectsParticipants;
             $manageGroup = in_array('Managed the group well', $opinions) ? "yes" : "no";
             $clarityExplanation = in_array('Explained things clearly', $opinions) ? "yes" : "no";
             $responsiveToQuestions = in_array('Was responsive to questions', $opinions) ? "yes" : "no";
@@ -141,7 +143,7 @@
         echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        // Close statement and connection
+        //Close statement and connection
         $stmt->close();
         $conn->close();
     }
