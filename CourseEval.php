@@ -62,6 +62,8 @@
         <label for="increasednderstanding">After taking this training I feel like I have an increased understanding of domestic violence.</label><br>
         <input type="radio" id="true" name="increasednderstanding" value="True">
         <label for="increasednderstanding">True</label><br>
+        <input type="radio" id="false" name="increasednderstanding" value="False">
+        <label for="increasednderstanding">False</label><br>
         <input type="radio" id="Significant Knowledge" name="increasednderstanding" value="True">
         <label for="SignificantKnowledge1">Came to training with significant DV knowledge</label><br><br>
 
@@ -73,6 +75,12 @@
         <input type="radio" id="Significant Knowledge" name="learnedNewInfo" value="True">
         <label for="learnedNewInfo">Came to training with significant DV knowledge</label><br><br>
         
+        <label for="improved">How could this training be improved?</label>
+        <input type="text" name="improved" placeholder="Enter">
+
+        <label for="interesting">What information did you find most helpful or interesting?</label>
+		<input type="text" name="interesting" placeholder="Enter">
+
 	    <input type="submit" name="add_feedback" value="Add Feedback">
 	</form>
     </body>
@@ -95,6 +103,8 @@
         $enthusiasmForTopic = $opinions[4];
         $increasedUnderstanding = $_POST['increasednderstanding'];
         $learnedNewInfo = $_POST['learnedNewInfo'];
+        $improved = $_POST['improved'];
+        $interesting = $_POST['interesting'];
 
         // Create database connection
         $conn = connect();
@@ -105,25 +115,22 @@
         }
 
         // Prepare SQL statement
-        $sql = "INSERT INTO dbEvaluations (InstructorName, Topic, CourseID, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO dbevaluations (InstructorName, Topic, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo, Improvements, HelpfullInformation)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         // Prepare and bind parameters
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ssssiiiiiss", $instructorName, $topic, $courseID, $overallRating, $respectsParticipants, $manageGroup, $clarityExplanation, $responsiveToQuestions, $enthusiasmForTopic, $increasedUnderstanding, $learnedNewInfo);
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssssssss", $instructorName, $topic, $OverallRating, $respectsParticipants, $manageGroup, $clarityExplanation, $responsiveToQuestions, $enthusiasmForTopic, $increasedUnderstanding, $learnedNewInfo, $improved, $interesting);
 
-        // Execute SQL statement
-        if (mysqli_stmt_execute($stmt)) {
-            echo "New record inserted successfully";
+        // Execute the statement
+        if ($stmt->execute()) {
+        echo "New record inserted successfully.";
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
         // Close statement and connection
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn);
-    } else {
-        // Redirect back to the form if accessed directly
-        header("Location: evaluation_form.php");
-        exit();
+        $stmt->close();
+        $conn->close();
     }
 ?>
