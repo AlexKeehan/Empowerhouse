@@ -47,15 +47,15 @@
 
         <!-- code for check boxes (check all) -->
         <label for="username">In your opinion, the presentor... (check all that apply)</label><br>
-        <input type="checkbox" id="respected" name="opinions[]" value="Respected the participants">
+        <input type="checkbox" id="respected" name="opinions[]" value="yes">
         <label for="respected">Respected the participants</label><br>
-        <input type="checkbox" id="managed_well" name="opinions[]" value="Managed the group well">
+        <input type="checkbox" id="managed_well" name="opinions[]" value="yes">
         <label for="managed_well">Managed the group well</label><br>
-        <input type="checkbox" id="explained_clearly" name="opinions[]" value="Explained things clearly">
+        <input type="checkbox" id="explained_clearly" name="opinions[]" value="yes">
         <label for="explained_clearly">Explained things clearly</label><br>
-        <input type="checkbox" id="responsive" name="opinions[]" value="Was responsive to questions">
+        <input type="checkbox" id="responsive" name="opinions[]" value="yes">
         <label for="responsive">Was responsive to questions</label><br>
-        <input type="checkbox" id="enthusiasm" name="opinions[]" value="Exhibited enthusiasm for the topic">
+        <input type="checkbox" id="enthusiasm" name="opinions[]" value="yes">
         <label for="enthusiasm">Exhibited enthusiasm for the topic</label><br><br>
 
         <!-- code for check boxes (only one) -->
@@ -95,12 +95,24 @@
         $instructorName = $_POST['instructorname'];
         $topic = $_POST['topic'];
         $OverallRating = $_POST['overallrating'];
-        $opinions = $_POST['opinions'];
-        $respectsParticipants = $opinions[0];
-        $manageGroup = $opinions[1];
-        $clarityExplanation = $opinions[2];
-        $responsiveToQuestions = $opinions[3];
-        $enthusiasmForTopic = $opinions[4];
+
+        $respectsParticipants = '';
+        $manageGroup = '';
+        $clarityExplanation = '';
+        $responsiveToQuestions = '';
+        $enthusiasmForTopic = '';
+
+        // Check if opinions array exists in form data
+        if(isset($_POST['opinions'])) {
+            $opinions = $_POST['opinions'];
+            // Set checkbox values if they exist in the form data
+            $respectsParticipants = in_array('Respected the participants', $opinions) ? "yes" : "no";
+            $manageGroup = in_array('Managed the group well', $opinions) ? "yes" : "no";
+            $clarityExplanation = in_array('Explained things clearly', $opinions) ? "yes" : "no";
+            $responsiveToQuestions = in_array('Was responsive to questions', $opinions) ? "yes" : "no";
+            $enthusiasmForTopic = in_array('Exhibited enthusiasm for the topic', $opinions) ? "yes" : "no";
+        }
+
         $increasedUnderstanding = $_POST['increasednderstanding'];
         $learnedNewInfo = $_POST['learnedNewInfo'];
         $improved = $_POST['improved'];
