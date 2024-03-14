@@ -64,7 +64,7 @@
         <label for="increasednderstanding">True</label><br>
         <input type="radio" id="false" name="increasednderstanding" value="False">
         <label for="increasednderstanding">False</label><br>
-        <input type="radio" id="Significant Knowledge" name="increasednderstanding" value="True">
+        <input type="radio" id="Significant Knowledge" name="increasednderstanding" value="Significant Knowledge">
         <label for="SignificantKnowledge1">Came to training with significant DV knowledge</label><br><br>
 
         <label for="learnedNewInfo">Through this training I have learned new information or aquired a new skill and/or resource that I can apply in my work to improve my response to domestic violence.</label><br>
@@ -72,7 +72,7 @@
         <label for="learnedNewInfo">True</label><br>
         <input type="radio" id="false" name="learnedNewInfo" value="False">
         <label for="learnedNewInfo">False</label><br>
-        <input type="radio" id="Significant Knowledge" name="learnedNewInfo" value="True">
+        <input type="radio" id="Significant Knowledge" name="learnedNewInfo" value="Significant Knowledge">
         <label for="learnedNewInfo">Came to training with significant DV knowledge</label><br><br>
         
         <label for="improved">How could this training be improved?</label>
