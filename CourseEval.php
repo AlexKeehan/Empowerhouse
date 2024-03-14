@@ -33,12 +33,12 @@
 	<!-- Start the Post so it can update the database -->
 	<form method="post">
 	    <label for="instructorName">Instructors Name</label>
-        <input type="text" id="instructorName" name="instructorName" placeholder="Enter" required>
+        <input type="text" name="instructorname" placeholder="Enter" required>
         <label for="topic">Topic</label>
 		<input type="text" name="topic" placeholder="Enter" required>
 
-        <label for="username">Overall how would you rate this presentation?</label>
-        <select>
+        <label for="overallrating">Overall how would you rate this presentation?</label>
+        <select name = "overallrating">
             <option value="excellent">Excellent</option>
             <option value="good">Good</option>  
             <option value="fair">Fair</option>
@@ -59,19 +59,19 @@
         <label for="enthusiasm">Exhibited enthusiasm for the topic</label><br><br>
 
         <!-- code for check boxes (only one) -->
-        <label for="understanding">After taking this training I feel like I have an increased understanding of domestic violence.</label><br>
-        <input type="radio" id="true" name="understanding" value="True">
-        <label for="true1">True</label><br>
-        <input type="radio" id="Significant Knowledge" name="newinfo" value="True">
+        <label for="increasednderstanding">After taking this training I feel like I have an increased understanding of domestic violence.</label><br>
+        <input type="radio" id="true" name="increasednderstanding" value="True">
+        <label for="increasednderstanding">True</label><br>
+        <input type="radio" id="Significant Knowledge" name="increasednderstanding" value="True">
         <label for="SignificantKnowledge1">Came to training with significant DV knowledge</label><br><br>
 
-        <label for="newinfo">Through this training I have learned new information or aquired a new skill and/or resource that I can apply in my work to improve my response to domestic violence.</label><br>
-        <input type="radio" id="true" name="newinfo" value="True">
-        <label for="true2">True</label><br>
-        <input type="radio" id="false" name="newinfo" value="False">
-        <label for="false2">False</label><br>
-        <input type="radio" id="Significant Knowledge" name="newinfo" value="True">
-        <label for="SignificantKnowledge2">Came to training with significant DV knowledge</label><br><br>
+        <label for="learnedNewInfo">Through this training I have learned new information or aquired a new skill and/or resource that I can apply in my work to improve my response to domestic violence.</label><br>
+        <input type="radio" id="true" name="learnedNewInfo" value="True">
+        <label for="learnedNewInfo">True</label><br>
+        <input type="radio" id="false" name="learnedNewInfo" value="False">
+        <label for="learnedNewInfo">False</label><br>
+        <input type="radio" id="Significant Knowledge" name="learnedNewInfo" value="True">
+        <label for="learnedNewInfo">Came to training with significant DV knowledge</label><br><br>
         
 	    <input type="submit" name="add_feedback" value="Add Feedback">
 	</form>
@@ -84,16 +84,16 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get form data
-        $instructorName = $_POST['instructorName'];
+        $instructorName = $_POST['instructorname'];
         $topic = $_POST['topic'];
-        $courseID = $_POST['courseID'];
-        $overallRating = $_POST['overallRating'];
-        $respectsParticipants = $_POST['respectsParticipants'] == 'True' ? 1 : 0;
-        $manageGroup = $_POST['manageGroup'] == 'True' ? 1 : 0;
-        $clarityExplanation = $_POST['clarityExplanation'] == 'True' ? 1 : 0;
-        $responsiveToQuestions = $_POST['responsiveToQuestions'] == 'True' ? 1 : 0;
-        $enthusiasmForTopic = $_POST['enthusiasmForTopic'] == 'True' ? 1 : 0;
-        $increasedUnderstanding = $_POST['increasedUnderstanding'];
+        $OverallRating = $_POST['overallrating'];
+        $opinions = $_POST['opinions'];
+        $respectsParticipants = $opinions[0];
+        $manageGroup = $opinions[1];
+        $clarityExplanation = $opinions[2];
+        $responsiveToQuestions = $opinions[3];
+        $enthusiasmForTopic = $opinions[4];
+        $increasedUnderstanding = $_POST['increasednderstanding'];
         $learnedNewInfo = $_POST['learnedNewInfo'];
 
         // Create database connection
@@ -105,7 +105,7 @@
         }
 
         // Prepare SQL statement
-        $sql = "INSERT INTO dbevaluations (InstructorName, Topic, CourseID, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO dbEvaluations (InstructorName, Topic, CourseID, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         // Prepare and bind parameters
         $stmt = mysqli_prepare($conn, $sql);
@@ -127,4 +127,3 @@
         exit();
     }
 ?>
-
