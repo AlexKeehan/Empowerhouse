@@ -1,8 +1,5 @@
 <?php
-    // Template for new VMS pages. Base your new page on this one
-
-    // Make session information accessible, allowing us to associate
-    // data with the logged-in user.
+    // Page for an Admin to add a new Training Period and add Courses to it.
     session_cache_expire(30);
     session_start();
     ini_set("display_errors",1);
@@ -52,7 +49,7 @@
         <?php require_once('header.php') ?>
         <h1>Create Training Period</h1>
         <main>
-            <h2>Choose Number Of Courses & Events To Be Added</h2>
+            <h2>Choose Number Of Courses To Be Added</h2>
             <form id="num-courses" method="post" action="addTrainingPeriod.php">
                 <input type="text" id="numcourses" name="numcourses" required placeholder="Enter Number Of Courses" <?php if($selected_num_courses) {?> style="display: none;" <?php } ?>>
                 <input type="submit" value="Submit">
@@ -61,8 +58,6 @@
                 $selected_num_courses = True;
                 $numcourses = isset($_POST['numcourses']) ? $_POST['numcourses'] : false;
                 echo $numcourses;
-                $numevents = isset($_POST['numevents']) ? $_POST['numevents'] : false;
-                echo $numevents;
                 $i = 0;
                 foreach ($courses as $course) { 
                     if ($i >= $numcourses) {
@@ -77,6 +72,8 @@
                       echo 'value="' . $date . '"';
                     }
                     echo 'min="' .  date('Y-m-d') . '" required>
+                    <label for="name">Course Name </label>                    
+                    <input type="text" id="course-name" name="' . $course . 'course-name" required placeholder="Enter Course Name>
                     <label for="name">Start Time </label>                    
                     <input type="text" id="start-time" name="' . $course . 'start-time" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
                     <label for="name">End Time </label>
@@ -95,7 +92,6 @@
                 ?>
                 <?php echo $numcourses ?>
                 <input type="submit" <?php if($numcourses == 0) {?> style="display: none;" <?php } ?> value="Create Course(s)">
-                <input type="submit" <?php if($numevents == 0) {?> style="display: none;" <?php } ?> value="Create Event(s)">
             </form>
         </main>
     </body>
