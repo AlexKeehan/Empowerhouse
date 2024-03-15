@@ -21,19 +21,27 @@
         die();
     }
 
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $added_year = isset($_POST['year']) ? $_POST['year'] : false;
         $year = date("Y");
 
+        $difference = (int)$added_year - (int)$year;
+
         if (!preg_match("/^(\d{4})$/", $added_year, $year)) {
-            echo 'Incorrectly Formatted Year';
-            //header("Location: selectTrainingPeriod.php");
-            die();
+             $_SESSION['error'] = 'Incorrectly Formatted Year';
         }
-        else if ((int)$year > (int)$added_year) {
-            echo 'Cannot Add Training Periods To Past Years';
-            die();
+        else if ($difference < 0) {
+            $_SESSION['error'] = 'Cannot Add Training Periods To Past Years';
         }
+        else {
+            header("Location: addTrainingPeriod.php");
+        }
+    }
+
+    if ($_SESSION['error'] != "") {
+        echo $_SESSION['error'];
+        $_SESSION['error'] = "";
     }
 ?>
 <!DOCTYPE html>
