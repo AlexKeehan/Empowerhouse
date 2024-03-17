@@ -88,6 +88,10 @@
 
 <?php
     require_once('database/dbinfo.php');
+    include_once('domain/Person.php');
+    include_once('database/dbPersons.php');
+
+
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -127,24 +131,34 @@
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-
-        // Prepare SQL statement
-        $sql = "INSERT INTO dbevaluations (InstructorName, Topic, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo, Improvements, HelpfullInformation)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        // Prepare and bind parameters
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssssssssss", $instructorName, $topic, $OverallRating, $respectsParticipants, $manageGroup, $clarityExplanation, $responsiveToQuestions, $enthusiasmForTopic, $increasedUnderstanding, $learnedNewInfo, $improved, $interesting);
-
-        // Execute the statement
-        if ($stmt->execute()) {
-        echo "New record inserted successfully.";
+        
+        // Check if the user is a volunteer
+        $isVolunteer = false;
+        if ($person && $person->get_type() === 'volunteer') {
+            $isVolunteer = true;
+        }
+        // If not a volunteer, display error message and stop further execution
+        if (!$isVolunteer) {
+            echo "Error: You do not have the proper permission to submit.";
         } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+            // Prepare SQL statement
+            $sql = "INSERT INTO dbevaluations (InstructorName, Topic, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo, Improvements, HelpfullInformation)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            // Prepare and bind parameters
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssssssssss", $instructorName, $topic, $OverallRating, $respectsParticipants, $manageGroup, $clarityExplanation, $responsiveToQuestions, $enthusiasmForTopic, $increasedUnderstanding, $learnedNewInfo, $improved, $interesting);
+        
+            // Execute the statement
+            if ($stmt->execute()) {
+                echo "New record inserted successfully.";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+            // Close statement
+            $stmt->close();
         }
 
-        //Close statement and connection
-        $stmt->close();
+        //Close connection
         $conn->close();
     }
 ?>
