@@ -9,8 +9,8 @@ include_once('dbinfo.php');
 /**
  * returns an array of  associative arrays of course evaluations based on the instructors name
  * How to use data when called:
- * index each evaluation by evaluations[x] ex: evaluations[1] will return the second evaluation
- * index each data field by evaluations["key"] ex: evaluations["Topic"] will return the Topic of the evaluations
+* index each evaluation by evaluations[x] ex: $eval = evaluations[1] will return the second evaluation
+ * index each data field by eval["key"] ex: eval["Topic"] will return the Topic of the evaluation
  */
 function get_evalutaion_by_Instructor($InstructorName) {
     $con=connect();
@@ -32,8 +32,8 @@ function get_evalutaion_by_Instructor($InstructorName) {
 /**
  * returns an array of  associative arrays of course evaluations based on the instructors name
  *  How to use data when called:
- * index each evaluation by evaluations[x] ex: evaluations[1] will return the second evaluation
- * index each data field by evaluations["key"] ex: evaluations["Topic"] will return the Topic of the evaluations
+ * index each evaluation by evaluations[x] ex: $eval = evaluations[1] will return the second evaluation
+ * index each data field by eval["key"] ex: eval["Topic"] will return the Topic of the evaluation
  */
 function get_evalutaion_by_Topic($Topic) {
     $con=connect();
