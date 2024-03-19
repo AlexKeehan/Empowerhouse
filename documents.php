@@ -50,7 +50,7 @@ if (isset($_SESSION['_id'])) {
                                     <div class="column">
                                         <li id="VolunteerRecords"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Codebase/documentRecords.php">Volunteer Records</a>
+                                            <a href="http://localhost/Empowerhouse/documentRecords.php">Volunteer Records</a>
                                         </li>
                                     </div>
                                 </ul>
