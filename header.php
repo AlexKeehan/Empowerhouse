@@ -61,6 +61,7 @@
         $permission_array['documents.php'] = 1;
         $permission_array['documentRecords.php'] = 1;
         $permission_array['documentrecords.php'] = 1;
+        $permission_array['courseeval.php'] = 1;
         //pages only managers can view
         $permission_array['verify.php'] = 2;
         $permission_array['personsearch.php'] = 2;
@@ -72,6 +73,9 @@
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
         $permission_array['addevent.php'] = 2;
+        $permission_array['addcourse.php'] = 2;  //Added permissions for new file addCourse.php
+        $permission_array['addtrainingperiod.php'] = 2;     //Added permissions for new file addTrainingPeriod.php
+        $permission_array['selecttrainingperiod.php'] = 2;     //Added permissions for new file selectTrainingPeriod.php
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
@@ -124,11 +128,11 @@
 	            //echo('<br>master schedules: <a href="' . $path . 'viewSchedule.php?venue=portland'."".'">Portland, </a>');
 	            //echo('<a href="' . $path . 'viewSchedule.php?venue=bangor'."".'">Bangor</a>');
 		    echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'verify.php">Verify</a></li>');
-	            echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'addEvent.php">Add</a></li>');
+	            echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'selectTrainingPeriod.php">Add Training Period</a></li>');
 	            echo('<span class="nav-divider">|</span>');
 	            echo('<span class="navbar-brand">Volunteers</span>');
                 echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'personSearch.php">Search</a></li>
-			        <li class="sub-item"><a class="nav-link active" aria-current="page" href="register.php">Add</a></li>'); 
+			        <li class="sub-item"><a class="nav-link active" aria-current="page" href="register.php">Add Volunteer</a></li>'); 
 	            echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'report.php">Reports</a></li>');
 	        }
 	        echo('<li><a class="nav-link active" aria-current="page" href="' . $path . 'logout.php">Log out</a></li>');

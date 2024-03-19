@@ -61,9 +61,13 @@
                     <span>View Calendar</span>
                 </div>
                 <?php if ($_SESSION['access_level'] >= 2): ?>
-                    <div class="dashboard-item" data-link="addEvent.php">
+                    <div class="dashboard-item" data-link="selectTrainingPeriod.php">
                         <img src="images/new-event.svg">
                         <span>Create Event</span>
+                    </div>
+                    <div class="dashboard-item" data-link="addCourse.php">
+                        <img src="images/new-event.svg">
+                        <span>Add Course</span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="eventSearch.php">
