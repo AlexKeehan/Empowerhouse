@@ -22,6 +22,11 @@
 <head>
     <?php require_once('universal.inc') ?>
     <title>Empowerhouse VMS | Documents</title>
+
+    <!-- Adding code to line below for adding jquery library for better event handling like submit action -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 </head>
 
 <body>
@@ -37,10 +42,24 @@
                             <div class="row">
                                 <ul id="DocumentsListTabsList"
                                     style="margin: 0 0 20px;padding: 0;float: left;border-bottom: 1px solid #e5e5e5;width: 100%;">
+                                    
+                                                                        
+                                    <!-- document links added below -->
+                                    <li class="column">
+                                    <a href="#" class="document-link" data-document-id="1" data-document-name="Criminal Background Check">Criminal Background Check</a>
+                                    </li>
+
+                                    <li class="column">
+                                    <a href="#" class="document-link" data-document-id="2" data-document-name="Acknowledgement of Receipt">Acknowledgement of Receipt</a>
+                                    </li>
+
+                                    <!-- my edits done -->
+
+
                                     <div>
                                         <li id="DocumentsListFilesTab"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Codebase/documents.php">
+                                            <a href="http://localhost/Empowerhouse/documents.php">
                                                 <span>Paperwork &amp; Forms</span>
                                             </a>
                                         </li>
@@ -48,7 +67,7 @@
                                     <div>
                                         <li id="VolunteerRecords"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Codebase/documentRecords.php">Volunteer
+                                            <a href="http://localhost/Empowerhouse/documentRecords.php">Volunteer
                                                 Records</a>
                                             <div id="UnderlineBox"
                                                 style="height:2px;width: 100%;position: relative;border-radius: 1px;bottom: 3px;background-color: #396A92;">
@@ -82,7 +101,7 @@
                                         <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
                                         <a href="Documents/Acknowledgement of Receipt--Personnel Policies.docx" download>Acknowledgement of Receipt<target="_self"/a>                                           
                                         </div>
-                                        </div>
+                                        </div> 
                                     </div>
                                     <div>
                                         <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
@@ -99,6 +118,38 @@
         </div>
         </div>
     </main>
+
+</body>
+
+<!-- JavaScript to handle signature submission -->
+<script>
+        $(document).ready(function () {
+            // Add signature forms dynamically based on document links
+            $('.document-link').click(function (e) {
+                e.preventDefault(); // Prevent default link behavior
+                var documentId = $(this).data('document-id');
+                var documentName = $(this).data('document-name');
+                var formHtml = '<form class="document-sign-form" data-document-id="' + documentId + '">';
+                formHtml += '<label for="signature-' + documentId + '">Your E-Signature for ' + documentName + ':</label>';
+                formHtml += '<input type="text" id="signature-' + documentId + '" name="signature" required>';
+                formHtml += '<button type="button" class="sign-button">Sign</button>';
+                formHtml += '</form>';
+                $('#signature-forms-container').html(formHtml); // Replace exsting form with new form
+            });
+
+            // Handles signature submission
+            $(document).on('click', '.sign-button', function () {
+                var form = $(this).closest('.document-sign-form');
+                var documentId = form.data('document-id');
+                var documentName = $('.document-link[data-document-id="' + documentId + '"]').data('document-name');
+                var signature = form.find('input[name="signature"]').val();
+                // Here you can handle the signature data, such as sending it to the server
+                alert('Document ID: ' + documentId + '\nDocument Name: ' + documentName + '\nSignature: ' + signature);
+                // Clear the signature input after submission (optional)
+                form.find('input[name="signature"]').val('');
+            });
+        });
+    </script>
 </body>
 
 </html>
