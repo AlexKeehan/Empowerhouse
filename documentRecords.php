@@ -26,6 +26,9 @@
     <!-- Adding code to line below for adding jquery library for better event handling like submit action -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <!-- Inclusion of DocuSign JavaScript library below -->
+    <script src="https://js-d.docusign.com/bundle.js"></script>
+
 
 </head>
 
@@ -52,6 +55,9 @@
                                     <li class="column">
                                     <a href="#" class="document-link" data-document-id="2" data-document-name="Acknowledgement of Receipt">Acknowledgement of Receipt</a>
                                     </li>
+
+                                    <!-- Container for signature forms -->
+                                    <div id="signature-forms-container"></div> 
 
                                     <!-- my edits done -->
 
@@ -121,12 +127,12 @@
 
 </body>
 
-<!-- JavaScript to handle signature submission -->
+<!-- JavaScript to handle the signature submission aspect-->
 <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Add signature forms dynamically based on document links
             $('.document-link').click(function (e) {
-                e.preventDefault(); // Prevent default link behavior
+                e.preventDefault(); // Prevents default link behavior
                 var documentId = $(this).data('document-id');
                 var documentName = $(this).data('document-name');
                 var formHtml = '<form class="document-sign-form" data-document-id="' + documentId + '">';
@@ -134,8 +140,9 @@
                 formHtml += '<input type="text" id="signature-' + documentId + '" name="signature" required>';
                 formHtml += '<button type="button" class="sign-button">Sign</button>';
                 formHtml += '</form>';
-                $('#signature-forms-container').html(formHtml); // Replace exsting form with new form
+                $('#signature-forms-container').html(formHtml); // Replace existing form with new form
             });
+
 
             // Handles signature submission
             $(document).on('click', '.sign-button', function () {
@@ -143,12 +150,27 @@
                 var documentId = form.data('document-id');
                 var documentName = $('.document-link[data-document-id="' + documentId + '"]').data('document-name');
                 var signature = form.find('input[name="signature"]').val();
-                // Here you can handle the signature data, such as sending it to the server
-                alert('Document ID: ' + documentId + '\nDocument Name: ' + documentName + '\nSignature: ' + signature);
-                // Clear the signature input after submission (optional)
-                form.find('input[name="signature"]').val('');
-            });
-        });
+                // Send signature data to DocuSign
+                DocuSign.signDocument({
+                    apiKey: 'e0edfd40-a150-431d-9784-fc37e913314f',
+                    accountId: '25683992',
+                    username: 'tnoor049@gmail.com',
+                    password: '*VdH,2!@ct.sgAt',
+                    documentId: documentId,
+                    documentName: documentName,
+                    signature: signature,
+                    callback: function (response) {
+                        // Handle DocuSign response here (shows success message)
+                        alert('Document signed successfully!');
+                        // Clear the signature input after submission (optional)
+                        form.find('input[name="signature"]').val('');
+                    }
+                }
+                );
+            }
+            );
+        }
+        );
     </script>
 </body>
 
