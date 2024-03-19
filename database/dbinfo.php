@@ -16,7 +16,11 @@
  */
 
 function connect() {
-    $host = "localhost"; 
+    $host = "localhost";
+    $database = "housedb";
+    $user = "housedb";
+    $pass = "housedb";
+
     if ($_SERVER['SERVER_NAME'] == 'jenniferp119.sg-host.com') {
         $user = 'uwpcgsjb3tzec';
         $database = 'dbyrqpvdjpzamq';
