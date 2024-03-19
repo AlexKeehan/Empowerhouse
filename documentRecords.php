@@ -129,23 +129,23 @@
 
 <!-- JavaScript to handle the signature submission aspect-->
 <script>
-        $(document).ready(function() {
-            // Add signature forms dynamically based on document links
-            $('.document-link').click(function (e) {
-                e.preventDefault(); // Prevents default link behavior
-                var documentId = $(this).data('document-id');
-                var documentName = $(this).data('document-name');
-                var formHtml = '<form class="document-sign-form" data-document-id="' + documentId + '">';
-                formHtml += '<label for="signature-' + documentId + '">Your E-Signature for ' + documentName + ':</label>';
-                formHtml += '<input type="text" id="signature-' + documentId + '" name="signature" required>';
-                formHtml += '<button type="button" class="sign-button">Sign</button>';
-                formHtml += '</form>';
-                $('#signature-forms-container').html(formHtml); // Replace existing form with new form
-            });
+    $(document).ready(function() {
+        // Add signature forms dynamically based on document links
+        $('.document-link').click(function (e) {
+            e.preventDefault(); // Prevents default link behavior
+            var documentId = $(this).data('document-id');
+            var documentName = $(this).data('document-name');
+            var formHtml = '<form class="document-sign-form" data-document-id="' + documentId + '">';
+            formHtml += '<label for="signature-' + documentId + '">Your E-Signature for ' + documentName + ':</label>';
+            formHtml += '<input type="text" id="signature-' + documentId + '" name="signature" required>';
+            formHtml += '<button type="button" class="sign-button">Sign</button>';
+            formHtml += '</form>';
+            $('#signature-forms-container').html(formHtml); // Replace existing form with new form
+        });
 
 
-            // Handles signature submission
-            $(document).on('click', '.sign-button', function () {
+        //Handles the signature submission
+        $(document).on('click', '.sign-button', function () {
                 var form = $(this).closest('.document-sign-form');
                 var documentId = form.data('document-id');
                 var documentName = $('.document-link[data-document-id="' + documentId + '"]').data('document-name');
@@ -153,28 +153,24 @@
 
                 console.log('Signing document:', documentName);
 
-
                 // Send signature data to DocuSign
                 DocuSign.signDocument({
                     apiKey: 'e0edfd40-a150-431d-9784-fc37e913314f',
-                    accountId: '4d012b83-b8d9-4f4d-905f-c9c59721aa50',
+                    accountId: '25683992',
                     username: 'tnoor049@gmail.com',
                     password: '*VdH,2!@ct.sgAt',
                     documentId: documentId,
                     documentName: documentName,
                     signature: signature,
                     callback: function (response) {
-                        // Handle DocuSign response here (shows success message)
+                        // Handle DocuSign response here (shows the success message)
                         alert('Document signed successfully!');
-                        // Clear the signature input after submission (optional)
+                        // Clear the signature input after submission
                         form.find('input[name="signature"]').val('');
                     }
-                }
-                );
-            }
-            );
-        }
-        );
+                });
+            });
+        });
     </script>
 </body>
 
