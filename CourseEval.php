@@ -92,8 +92,6 @@
     include_once('database/dbPersons.php');
 
 
-
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get form data
         $instructorName = $_POST['instructorname'];
@@ -109,10 +107,8 @@
         // Check if opinions array exists in form data
         if(isset($_POST['opinions'])) {
             $opinions = $_POST['opinions'];
-            echo $opinions[0];
             // Set checkbox values if they exist in the form data
             $respectsParticipants = in_array('Respected the participants', $opinions) ? "yes" : "no";
-            echo $respectsParticipants;
             $manageGroup = in_array('Managed the group well', $opinions) ? "yes" : "no";
             $clarityExplanation = in_array('Explained things clearly', $opinions) ? "yes" : "no";
             $responsiveToQuestions = in_array('Was responsive to questions', $opinions) ? "yes" : "no";
@@ -156,6 +152,7 @@
             }
             // Close statement
             $stmt->close();
+            
         }
 
         //Close connection
