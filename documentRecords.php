@@ -150,11 +150,15 @@
                 var documentId = form.data('document-id');
                 var documentName = $('.document-link[data-document-id="' + documentId + '"]').data('document-name');
                 var signature = form.find('input[name="signature"]').val();
+
+                console.log('Signing document:', documentName);
+
+
                 // Send signature data to DocuSign
                 DocuSign.signDocument({
                     apiKey: 'e0edfd40-a150-431d-9784-fc37e913314f',
                     accountId: '4d012b83-b8d9-4f4d-905f-c9c59721aa50',
-                    username: 't n',
+                    username: 'tnoor049@gmail.com',
                     password: '*VdH,2!@ct.sgAt',
                     documentId: documentId,
                     documentName: documentName,
