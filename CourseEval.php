@@ -33,12 +33,37 @@
 	<!-- Start the Post so it can update the database -->
 	<form method="post">
 	    <label for="instructorName">Instructors Name</label>
-        <input type="text" name="instructorname" placeholder="Enter" required>
+        <select name="instructorname" placeholder="Enter" required>
+            <option value="" disabled selected>Enter</option>
+            <?php
+                include_once('database/dbinfo.php');
+                include_once('domain/Person.php');
+                include_once('database/dbPersons.php');
+                $conn = connect();
+
+                // Query to fetch active trainers' names
+                $sql = "SELECT first_name, last_name FROM dbpersons WHERE type = 'trainer' AND status = 'Active'";
+                $result = $conn->query($sql);
+
+                // If trainers found, populate dropdown menu
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row["first_name"] . " " . $row["last_name"] . "'>" . $row["first_name"] . " " . $row["last_name"] . "</option>";
+                    }
+                } else {
+                    echo "<option value=''>No active trainers found</option>";
+                }
+
+                // Close connection
+                $conn->close();
+            ?>
+        </select><br>
         <label for="topic">Topic</label>
 		<input type="text" name="topic" placeholder="Enter" required>
 
         <label for="overallrating">Overall how would you rate this presentation?</label>
         <select name = "overallrating">
+            <option value="" disabled selected>Enter</option>
             <option value="excellent">Excellent</option>
             <option value="good">Good</option>  
             <option value="fair">Fair</option>
@@ -87,7 +112,7 @@
 </html>
 
 <?php
-    require_once('database/dbinfo.php');
+    include_once('database/dbinfo.php');
     include_once('domain/Person.php');
     include_once('database/dbPersons.php');
 
