@@ -85,7 +85,7 @@
                 echo "<form method = \"post\">";
                 echo "<select name = \"eval\">";
                 foreach ($evals as &$eval){
-                    echo "<option value=". $i +1 . "> ". ($i + 1) . ") " .$eval["InstructorName"] . "| Topic: ".$eval["Topic"] . "</option>";
+                    echo "<option value=". $i +1 . "> ". ($i + 1) . ") " .$eval["InstructorName"] . "| Topic: ".$eval["Topic"] . "| Overall Rating: ". $eval["OverallRating"]. "</option>";
                     $i++;
                 }
                 echo "</select>";
