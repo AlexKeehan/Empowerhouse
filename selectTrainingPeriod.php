@@ -1,6 +1,10 @@
 <?php
+/**
+ * @version March 24, 2024
+ * @authors Chris Cronin & Alex Keehan
+ */
 //require_once 'database\dbinfo.php'; //need to get this to point to dbinfo in the correct folder
-$con = mysqli_connect("localhost","duplicate","duplicate","duplicate");
+$con = mysqli_connect("localhost","housedb","housedb","housedb");
 //having problems including dbinfo.php, so for the demo I hardcoded the connection here
 //make sure the values are replaced with the correct info, it should match dbinfo.php
 //include_once('database/dbinfo.php');
@@ -28,6 +32,7 @@ $con = mysqli_connect("localhost","duplicate","duplicate","duplicate");
         die();
     }
 
+    require_once('database/dbTrainingPeriods.php');
     //my code, comment out if not ready in time
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //echo "hello world"; //okay this works for debugging
@@ -60,14 +65,11 @@ $con = mysqli_connect("localhost","duplicate","duplicate","duplicate");
                 //echo "default";
                 break;
             }
+        $period = [$semester, $year, $startDate, $endDate];
+        insert_training_period($period);
 
-        $query = "INSERT INTO `dbtrainingperiods` (`id`, `name`, `startdate`, `enddate`) VALUES (NULL, '$semester $year', '$startDate', '$endDate')";
-        try{
-            //echo "checkpoint";
-            $result= mysqli_query($con, $query);
-        } catch (Exception $e) {
-            echo "training-period already present in database";
-        }
+        //Not necessary to do it this way now that dbTrainingPeriods.php exists
+        //$query = "INSERT INTO `dbtrainingperiods` (`id`, `name`, `startdate`, `enddate`) VALUES (NULL, '$semester $year', '$startDate', '$endDate')";
         //echo "hello world";
         //header("Location: addTrainingPeriod.php");
     }
@@ -101,10 +103,10 @@ $con = mysqli_connect("localhost","duplicate","duplicate","duplicate");
         <title>Empowerhouse VMS | Create Event</title>
     </head>
     <body>
-        <?php require_once('header.php')?>
+        <?php require_once('header.php') ?>
         
 
-        <h1>Select Training Period</h1>
+        <h1>Add Training Period</h1>
         <main>
             <h2>Available Training Periods</h2>
             <form method="post">

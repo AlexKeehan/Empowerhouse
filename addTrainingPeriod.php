@@ -1,10 +1,10 @@
 <?php
     // Page for an Admin to add a new Training Period and add Courses to it.
+    // Author Alex Keehan
     session_cache_expire(30);
     session_start();
     ini_set("display_errors",1);
     error_reporting(E_ALL);
-    $selected_num_courses = False;
 
     $loggedIn = false;
     $accessLevel = 0;
@@ -61,55 +61,115 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <?php require_once('universal.inc') ?>
-        <title>Empowerhouse VMS | Create Event</title>
-    </head>
-    <body>
-        <?php require_once('header.php') ?>
-        <h1>Create Training Period</h1>
-        <main>
-            <h2>Choose Number Of Courses To Be Added</h2>
-            <form id="num-courses" method="post">
-                <input type="text" id="numcourses" name="numcourses" required placeholder="Enter Number Of Courses">
-                <input type="submit" value="Submit">
-            </form>
-            <form id="add-course" method="post">
-                <?php
-                $selected_num_courses = True;
-                $numcourses = isset($_POST['numcourses']) ? $_POST['numcourses'] : false;
-                $i = 0;
-                foreach ($courses as $course) { 
-                    if ($i >= $numcourses) {
-                        break;
-                    }
-                    $i++;
-                    echo '<fieldset>
-                    <label for="name">Course Name </label>                    
-                    <input type="text" id="course-name" name="coursename" required placeholder="Enter Course Name">
-                    <label for="name">Date </label>
-                    <input type="date" id="date" name="date"'; 
-                    if ($date){
-                      echo 'value="' . $date . '"';
-                    }
-                    echo 'min="' .  date('Y-m-d') . '" required>                    
-                    <input type="text" id="start-time" name="starttime" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter start time. Ex. 12:00 PM">
-                    <label for="name">End Time </label>
-                    <input type="text" id="end-time" name="endtime" pattern="([1-9]|10|11|12):[0-5][0-9] ?([aApP][mM])" required placeholder="Enter end time. Ex. 4:00 PM">
-                    <p id="date-range-error" class="error hidden">Start time must come before end time</p>
-                    <label for="name">Taught By </label>
-                    <input type="text" id="trainer" name="trainer" required placeholder="Enter trainer name"> 
-                    <label for="name">Description </label>
-                    <input type="text" id="description" name="description" required placeholder="Enter description">
-                    <label for="name">Location </label>
-                    <input type="text" id="location" name="location" required placeholder="Enter location">
-                    <label for="name">Volunteer Slots</label>
-                    <input type="text" id="capacity" name="capacity" pattern="([1-9])|([01][0-9])|(20)" required placeholder="Enter a number">
-                    </fieldset>';
-                }
-                ?>
-                <input type="submit" name="create-courses"<?php if($numcourses == 0) {?> style="display: none;" <?php } ?> value="Create Course(s)">
-            </form>
-        </main>
-    </body>
+<head>
+    <?php require_once('universal.inc'); ?>
+    <title>Empowerhouse VMS | Add Course</title>
+</head>
+<body>
+    <?php require_once('header.php'); ?>
+    <h1>Add Course</h1>
+    <main class="date">
+        <h2>New Course Form</h2>
+        <?php
+        // Display error message if provided in URL
+        if (isset($_GET['error'])) {
+            $error = $_GET['error'];
+            if ($error === "missing_fields") {
+                echo "<p class='error'>Please fill in all required fields for each course.</p>";
+            } elseif ($error === "bad_time_range") {
+                echo "<p class='error'>Invalid time range. Please ensure the start time comes before the end time for each course.</p>";
+            } elseif ($error === "create_failed") {
+                echo "<p class='error'>Failed to create one or more courses. Please try again later.</p>";
+            }
+        }
+        ?>
+        <form id="new-course-form" method="post">
+            <fieldset>
+                <legend>New Course</legend>
+                <div id="courses-container">
+                    <div class="course">
+                        <label for="new_course_name">Course Name</label>
+                        <input type="text" name="courses[0][new_course_name]" required placeholder="Enter course name">
+
+                        <label for="new_course_abbrev_name">Abbreviated Name</label>
+                        <input type="text" name="courses[0][new_course_abbrev_name]" placeholder="Enter abbreviated name">
+
+                        <label for="new_course_date">Date</label>
+                        <input type="date" name="courses[0][new_course_date]" min="<?php echo date('Y-m-d'); ?>" required>
+
+                        <label for="new_course_start_time">Start Time</label>                    
+                        <input type="time" name="courses[0][new_course_start_time]" required placeholder="Enter start time. Ex. 12:00 PM">
+
+                        <label for="new_course_end_time">End Time</label>
+                        <input type="time" name="courses[0][new_course_end_time]" required placeholder="Enter end time. Ex. 4:00 PM">
+
+                        <label for="new_course_trainer">Taught By</label>
+                        <input type="text" name="courses[0][new_course_trainer]" required placeholder="Enter trainer name"> 
+
+                        <label for="new_course_description">Description</label>
+                        <input type="text" name="courses[0][new_course_description]" required placeholder="Enter description">
+
+                        <label for="new_course_location">Location</label>
+                        <input type="text" name="courses[0][new_course_location]" required placeholder="Enter location">
+
+                        <label for="new_course_capacity">Volunteer Slots</label>
+                        <input type="text" name="courses[0][new_course_capacity]" pattern="([1-9])|([01][0-9])|(20)" required placeholder="Enter a number">
+
+                        </select>
+                    </div>
+                </div>
+                <button type="button" id="add-course-btn">Add Another Course</button>
+            </fieldset>
+            <button type="submit">Create Courses</button>
+        </form>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const addCourseBtn = document.getElementById('add-course-btn');
+            const coursesContainer = document.getElementById('courses-container');
+            let courseIndex = 1; 
+
+            addCourseBtn.addEventListener('click', function () {
+                const newCourseHtml = `
+                    <div class="course">
+                        <label for="new_course_name">Course Name</label>
+                        <input type="text" name="courses[${courseIndex}][new_course_name]" required placeholder="Enter course name">
+
+                        <label for="new_course_abbrev_name">Abbreviated Name</label>
+                        <input type="text" name="courses[${courseIndex}][new_course_abbrev_name]" placeholder="Enter abbreviated name">
+
+                        <label for="new_course_date">Date</label>
+                        <input type="date" name="courses[${courseIndex}][new_course_date]" min="<?php echo date('Y-m-d'); ?>" required>
+
+                        <label for="new_course_start_time">Start Time</label>                    
+                        <input type="time" name="courses[${courseIndex}][new_course_start_time]" required placeholder="Enter start time. Ex. 12:00 PM">
+
+                        <label for="new_course_end_time">End Time</label>
+                        <input type="time" name="courses[${courseIndex}][new_course_end_time]" required placeholder="Enter end time. Ex. 4:00 PM">
+
+                        <label for="new_course_trainer">Taught By</label>
+                        <input type="text" name="courses[${courseIndex}][new_course_trainer]" required placeholder="Enter trainer name"> 
+
+                        <label for="new_course_description">Description</label>
+                        <input type="text" name="courses[${courseIndex}][new_course_description]" required placeholder="Enter description">
+
+                        <label for="new_course_location">Location</label>
+                        <input type="text" name="courses[${courseIndex}][new_course_location]" required placeholder="Enter location">
+
+                        <label for="new_course_capacity">Volunteer Slots</label>
+                        <input type="text" name="courses[${courseIndex}][new_course_capacity]" pattern="([1-9])|([01][0-9])|(20)" required placeholder="Enter a number">
+                        </select>
+                    </div>
+                `;
+
+                const courseDiv = document.createElement('div');
+                courseDiv.classList.add('course');
+                courseDiv.innerHTML = newCourseHtml;
+                coursesContainer.appendChild(courseDiv);
+
+                courseIndex++; // increment index for the next course fields
+            });
+        });
+    </script>
+</body>
 </html>
