@@ -1,9 +1,10 @@
 <?php
-//require_once 'database\dbinfo.php'; //need to get this to point to dbinfo in the correct folder
+//require_once ('database\dbinfo.php'); //need to get this to point to dbinfo in the correct folder
+//require_once('database/dbinfo.php');
 $con = mysqli_connect("localhost","duplicate","duplicate","duplicate");
 //having problems including dbinfo.php, so for the demo I hardcoded the connection here
 //make sure the values are replaced with the correct info, it should match dbinfo.php
-//include_once('database/dbinfo.php');
+//require_once('database/dbinfo.php');
 //include_once(dirname(__FILE__).'/database/dbinfo.php');
 
 // Page for an Admin to select a Training Period.
@@ -119,7 +120,7 @@ $con = mysqli_connect("localhost","duplicate","duplicate","duplicate");
                 <script>
                 let dateDropdown = document.getElementById('yeardropdown'); 
                 let currentYear = new Date().getFullYear();    
-                let furthestYear = currentYear+50; //50 years into the future
+                let furthestYear = currentYear+10; //10 years into the future
                 while (currentYear <= furthestYear) {      
                     let dateOption = document.createElement('option');          
                     dateOption.text = currentYear;      
