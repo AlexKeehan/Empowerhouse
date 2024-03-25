@@ -17,16 +17,16 @@
 
 function connect() {
     $host = "localhost";
-    $database = "housedb";
-    $user = "housedb";
-    $pass = "housedb";
+    $database = "duplicate";
+    $user = "duplicate";
+    $pass = "duplicate";
 
     if ($_SERVER['SERVER_NAME'] == 'jenniferp119.sg-host.com') {
         $user = 'uwpcgsjb3tzec';
         $database = 'dbyrqpvdjpzamq';
     }
     $con = mysqli_connect($host,$user,$pass,$database);
-    //if ($con) { echo "connected to server";} //this is for troubleshooting
+    if ($con) { echo "connected to server";} //this is for troubleshooting
     if (!$con) { echo "not connected to server"; return mysqli_error($con);}
     $selected = mysqli_select_db($con,$database);
     if (!$selected) { echo "database not selected"; return mysqli_error($con); }
