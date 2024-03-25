@@ -37,22 +37,22 @@ function insert_training_period($period) {
     Returns either false or an array with the query results
 */
 
-function get_training_periods_by_year($year) {
+function get_training_periods_by_semester_and_year($semester, $year) {
     $connection = connect();
     $query = "select * from dbtrainingperiods
-              where year = '$year' order by startTime asc";
+              where year = '$year' and semester = '$semester' order by startDate asc";
     try{
         $results= mysqli_query($connection, $query);
     } catch (Exception $e) {
-        echo "No Training Periods With That Year Found";
+        echo "No Training Periods With That Semester & Year Found";
         return null;
     }
-    require_once('include/output.php');
     $periods = [];
     foreach ($results as $row) {
-        $periods []= hsc($row);
+        $periods[] = $row;
     }
     mysqli_close($connection);
+    echo '<pre>'; print_r($periods); echo '</pre>';
     return $periods;
 }
 
@@ -60,12 +60,17 @@ function get_training_periods_by_year($year) {
     Returns boolean indicating if training period was deleted
 */
 function remove_training_period($id) {
-    query = "delete from dbtrainingperiods where id='$id'";
-    $connection = connect();
-    $result = mysqli_query($connection, $query);
-    $result = boolval($result);
-    mysqli_close($connection);
-    return $result;
+    $con=connect();
+    $query = 'SELECT * FROM dbtrainingperiods WHERE id = "' . $id . '"';
+    $result = mysqli_query($con,$query);
+    if ($result == null || mysqli_num_rows($result) == 0) {
+        mysqli_close($con);
+        return false;
+    }
+    $query = 'DELETE FROM dbtrainingperiods WHERE id = "' . $id . '"';
+    $result = mysqli_query($con,$query);
+    mysqli_close($con);
+    return true;
 }
 
 /* Update the year for a training period given the id

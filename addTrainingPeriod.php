@@ -24,38 +24,82 @@
     require_once('include/input-validation.php');
     require_once('database/dbEvents.php');
     require_once('database/dbCourses.php');
+    require_once('database/dbTrainingPeriods.php');
+    // Process form submission
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Validate and retrieve course details from form input
+        $courses = array();
+        // Training period passed from selectTrainingPeriod.php
+        // Hardcoded for now until training period gets dynamically passed from selectTrainingPeriod.php
+        $semester = 'Spring';    //isset($_POST['training-period']) ? $_POST['training-period'] : false;
+        $year = '2025';          //isset($_POST['yeardropdown']) ? $_POST['yeardropdown'] : false;
 
-    if (isset($_POST['create-courses'])) {
-        $args = sanitize($_POST, null);
-        $required = array(
-            "coursename",
-            "date",
-            "starttime",
-            "endtime",
-            "trainer",
-            "description",
-            "location",
-            "capacity"
-        );
 
-        /*foreach ($args as $arg) {
-            echo "Arg ", $arg, "\n";
-        }
-
-        foreach($required as $req) {
-            echo "Required ", $req, "\n";
-        }
-        */
-
-        $option = isset($_POST['training-periods']) ? $_POST['training-periods'] : false;   //training period that new courses will connect to
-
-        if (!wereRequiredFieldsSubmitted($args, $required)) {
-            echo 'bad form data';
-            die();
-        } else {
-            //Create new Course and insert into dbCourses
-        }
+        //Grab row(s) from dbtrainingperiods that match the given semester & year
+        $training_periods = get_training_periods_by_semester_and_year($semester, $year);
+        // Grab the id for said row(s) to link the new course to its training period
+        $periodId = $training_periods[0]['id'];
         
+        foreach ($_POST['courses'] as $course) {
+            $args = sanitize($course, null);
+
+            $courseName = $args['new_course_name'];
+            $abbrevName = $args['new_course_abbrev_name'];
+            $startTime = $args['new_course_start_time'];
+            $endTime = $args['new_course_end_time'];
+            $date = $args['new_course_date'];
+            $trainer = $args['new_course_trainer'];
+            $description = $args['new_course_description'];
+            $location = $args['new_course_location'];
+            $capacity = intval($args['new_course_capacity']);
+
+            // Check if any required fields are missing or invalid for each course
+            if (empty($courseName) || empty($startTime) || empty($endTime) || empty($date) || empty($trainer) || empty($description) || empty($location) || /* || empty(staffId) || empty(eventId) || */ empty($periodId) || $capacity < 1 || $capacity > 20) {
+                // Redirect back to the form with an error message
+                header("Location: addTrainingPeriod.php?error=missing_fields");
+                exit();
+            }
+
+            // Validate time range for each course
+            if (!validate24hTimeRange($startTime, $endTime)) {
+                // Redirect back to the form with an error message
+                header("Location: addTrainingPeriod.php?error=bad_time_range");
+                exit();
+            }
+
+            //  array with course details for each course
+            $courseArgs = [
+                $courseName,
+                $abbrevName,
+                $trainer,
+                //staffId,
+                //$eventId,
+                $periodId,
+                $date, 
+                $startTime, 
+                $endTime, 
+                $description, 
+                $location, 
+                $capacity
+            ];
+
+            $courses[] = $courseArgs;
+        }
+
+        // Create the new courses
+        foreach ($courses as $courseArgs) {
+            $result = create_course($courseArgs);
+
+            if (!$result) {
+                // Redirect back to the form with an error message
+                header("Location: addCourse.php?error=create_failed");
+                exit();
+            }
+        }
+
+        // Redirect to the calendar page upon successful creation of all courses
+        header("Location: calendar.php?createSuccess");
+        exit();
     }
     
 ?>
