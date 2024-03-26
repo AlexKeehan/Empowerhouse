@@ -74,6 +74,8 @@ $fallEndDate = "-10-31";
         try{
             //echo "attempting insertion into db";
             $result= mysqli_query($con, $query);
+            header('Location: addTrainingPeriod.php'); //after hitting submit, route to next php if successful
+
         } catch (Exception $e) {
             echo "training-period already present in database"; //currently for debugging, should be replaced with a popup or something
         }
