@@ -1,7 +1,9 @@
 <?php
 /**
- * @version March 24, 2024
- * @author Alex Keehan
+ * making this for standardization to match other database phps.
+ * all phps that interact with a particular db use one of these to centralize all operations
+ * currently dbtrainingperiods is only accessed by selectTrainingPeriod.php so this isn't needed yet
+ * but if any new php files interact with dbtrainingperiods then it could lead to duplicate code across multiple files
  */
 include_once('dbinfo.php');
 #include_once(dirname(__FILE__).'/../domain/Person.php');
@@ -9,13 +11,9 @@ include_once('dbinfo.php');
 /*
     Insert a new training period into the dbtrainingperiods table
     Returns null if insertion failed. Otherwise, returns id
-*/
-function insert_training_period($period) {
-    $connection = connect();
-    $semester = $period[0];
-    $year = $period[1];
-    $startDate = $period[2];
-    $endDate = $period[3];
+ */
+include_once('dbinfo.php');
+//include_once(dirname(__FILE__).'/../domain/TrainingPeriod.php'); //should I have this line?
 
     $query = "
         insert into dbTrainingperiods (semester, year, startDate, endDate)
@@ -55,22 +53,25 @@ function get_training_periods_by_semester_and_year($semester, $year) {
     return $periods;
 }
 
-/* Removes a trainin period with the cooresponding id
-    Returns boolean indicating if training period was deleted
-*/
-function remove_training_period($id) {
+function add_trainingperiod($trainingperiod) {
+    if (!$trainingperiod instanceof TrainingPeriod)
+        die("Error: add_trainingperiod type mismatch");
     $con=connect();
-    $query = 'SELECT * FROM dbtrainingperiods WHERE id = "' . $id . '"';
+
+    $query = "SELECT * FROM dbtrainingperiods WHERE id = '" . $trainingperiod->get_id() . "'"; //id might be wrong choice here
     $result = mysqli_query($con,$query);
+    //if there's no entry for this id, add it
+    //might be better to check for name, since that will also be unique and id is auto-incremented by the table
     if ($result == null || mysqli_num_rows($result) == 0) {
+        mysqli_query($con,'INSERT INTO dbtrainingperiods VALUES("' .
+                $trainingperiod->get_id() . '","' .
+                $trainingperiod->get_name() . '","' . 
+                $trainingperiod->get_startdate() . '","' .
+                $trainingperiod->get_enddate() .            
+                '");');							
         mysqli_close($con);
-        return false;
+        return true;
     }
-    $query = 'DELETE FROM dbtrainingperiods WHERE id = "' . $id . '"';
-    $result = mysqli_query($con,$query);
-    mysqli_close($con);
-    return true;
-}
 
 /* Update the year for a training period given the id
     Returns true or false depending on success of update
@@ -97,9 +98,9 @@ function get_training_period_by_id($id) {
     $query = "SELECT * FROM dbtrainingperiods WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
     if (mysqli_num_rows($result) !== 1) {
-        mysqli_close($con);
-        return false;
-    }
+    mysqli_close($con);
+    return false;
+}
     $result_row = mysqli_fetch_assoc($result);
     mysqli_close($con);
     return $result_row;
