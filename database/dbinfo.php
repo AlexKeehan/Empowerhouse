@@ -21,8 +21,8 @@ function connect() {
     $user = "housedbdup";
     $pass = "housedbdup";
     if ($_SERVER['SERVER_NAME'] == 'jenniferp119.sg-host.com') {
-        $user = 'uwpcgsjb3tzec';
-        $database = 'dbyrqpvdjpzamq';
+        $user = 'housedbdup';
+        $database = 'housedbdup';
     }
     $con = mysqli_connect($host,$user,$pass,$database);
     if (!$con) { echo "not connected to server"; return mysqli_error($con);}
