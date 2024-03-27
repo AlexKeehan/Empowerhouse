@@ -21,10 +21,9 @@ function insert_training_period($period) {
         insert into dbTrainingperiods (semester, year, startDate, endDate)
         values ('$semester', '$year', '$startDate', '$endDate')
     ";
-    try{
-        $result= mysqli_query($connection, $query);
-    } catch (Exception $e) {
-        echo "Training Period Already Present In Database";
+    $result= mysqli_query($connection, $query);
+
+    if (!$result) {
         return null;
     }
     $id = mysqli_insert_id($connection);

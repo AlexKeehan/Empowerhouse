@@ -38,6 +38,9 @@ $con = mysqli_connect("localhost","housedb","housedb","housedb");
         //echo "hello world"; //okay this works for debugging
         $semester = $_POST["training-period"];
         $year = $_POST["yeardropdown"];
+
+        $_SESSION['semester'] = $_POST['training-period'];
+        $_SESSION['year'] = $_POST['yeardropdown'];
         //does not require error checking for adding to past years because the year dropdown is now dynamic
         //may require error checking for adding training periods that've already passed
         //but that could also be allowed, it wouldn't cause any problems to add them
@@ -66,8 +69,12 @@ $con = mysqli_connect("localhost","housedb","housedb","housedb");
                 break;
             }
         $period = [$semester, $year, $startDate, $endDate];
-        insert_training_period($period);
-
+        try{
+            insert_training_period($period);
+        } catch (Exception $e) {
+            echo "Training Period Already Present In Database";
+        }
+        //header('Location: addTrainingPeriod.php');
         //Not necessary to do it this way now that dbTrainingPeriods.php exists
         //$query = "INSERT INTO `dbtrainingperiods` (`id`, `name`, `startdate`, `enddate`) VALUES (NULL, '$semester $year', '$startDate', '$endDate')";
         //echo "hello world";
