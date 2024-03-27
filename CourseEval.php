@@ -152,14 +152,9 @@
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        
-        // Check if the user is a volunteer
-        $isVolunteer = false;
-        if ($person && $person->get_type() === 'volunteer') {
-            $isVolunteer = true;
-        }
+
         // If not a volunteer, display error message and stop further execution
-        if (!$isVolunteer) {
+        if ($_SESSION['access_level'] == 1) {
             echo "Error: You do not have the proper permission to submit.";
         } else {
             // Prepare SQL statement

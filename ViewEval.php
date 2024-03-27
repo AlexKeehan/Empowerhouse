@@ -80,9 +80,9 @@
                 echo "<p> increased understanding: ".$curr_eval["IncreasedUnderstanding"] . "</p>";
                 echo "<p> learned new info: ".$curr_eval["LearnedNewInfo"] . "</p>";
                 echo "<h3> How could this training be improved?</h3>";
-                echo "<p>".$curr_eval["Improvements"] . "</p>";
+                echo "<p style='word-wrap: break-word; max-width: 95%;'>".$curr_eval["Improvements"] . "</p>";
                 echo "<h3> What information did you find most helpful?</h3>";
-                echo "<p>".$curr_eval["HelpfullInformation"] . "</p>";
+                echo "<p style='word-wrap: break-word; max-width: 95%;'>".$curr_eval["HelpfullInformation"] . "</p>";
                 }
             }
             ?>
