@@ -1,6 +1,9 @@
 <?php
-    // Page for an Admin to add a new Training Period and add Courses to it.
-    // Author Alex Keehan
+/** 
+ * Page to insert new courses into dbTrainingPeriods
+ * @ Author Alex Keehan
+ * @ Version March 27 2024
+ **/
     session_cache_expire(30);
     session_start();
     ini_set("display_errors",1);
@@ -104,10 +107,21 @@
         }
 
         // Redirect to the calendar page upon successful creation of all courses
-        //header("Location: calendar.php?createSuccess");
-        //exit();
+        header("Location: calendar.php?createSuccess");
+        exit();
     }
-    
+
+    // Extract date from URL if provided
+    $date = null;
+    if (isset($_GET['date'])) {
+        $date = $_GET['date'];
+        $datePattern = '/[0-9]{4}-[0-9]{2}-[0-9]{2}/';
+        $timeStamp = strtotime($date);
+        if (!preg_match($datePattern, $date) || !$timeStamp) {
+            header('Location: calendar.php');
+            exit();
+        }
+    }   
 ?>
 <!DOCTYPE html>
 <html>
@@ -217,7 +231,8 @@
                 courseDiv.innerHTML = newCourseHtml;
                 coursesContainer.appendChild(courseDiv);
 
-                courseIndex++; // increment index for the next course fields
+                // increment index for the next course fields
+                courseIndex++;
             });
         });
     </script>

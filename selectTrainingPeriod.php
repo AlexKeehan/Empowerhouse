@@ -1,4 +1,9 @@
 <?php
+/**
+*@ Authors Chris Cronin & Alex Keehan
+*@ Version March 27 2024
+**/
+
 //these two lines are the code snippet needed by all .php files to connect to the database
 require_once('database/dbinfo.php'); //or another .php file which in turn includes dbinfo.php
 $con = connect();
@@ -35,9 +40,7 @@ $fallEndDate = "-10-31";
     }
 
     require_once('database/dbTrainingPeriods.php');
-    //my code, comment out if not ready in time
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //echo "hello world"; //okay this works for debugging
         $semester = $_POST["training-period"];
         $year = $_POST["yeardropdown"];
 
@@ -72,17 +75,22 @@ $fallEndDate = "-10-31";
 
         /**
          * id is null because it auto-increments
-         * name is combination of semester and year and is human readable; ex: "Spring 2024"
+         * semester is either Spring, Summer or Fall
          * startdate and endate were calculated earlier and are formatted so that mysql accepts them as input for the date data type
          */
-        $query = "INSERT INTO `dbtrainingperiods` (`id`, `name`, `startdate`, `enddate`) VALUES (NULL, '$semester $year', '$startDate', '$endDate')";
-        try{
-            //echo "attempting insertion into db";
-            $result= mysqli_query($con, $query);
-            header('Location: addTrainingPeriod.php'); //after hitting submit, route to next php if successful
-
-        } catch (Exception $e) {
-            echo "training-period already present in database"; //currently for debugging, should be replaced with a popup or something
+        $query = [
+            $semester,
+            $year,
+            $startDate,
+            $endDate
+        ];
+        // Insert new training period into dbTrainingPeriods
+        $result = add_trainingperiod($query);
+        if (!$result) {
+            echo "Training Period is already present in database";
+        } else {
+            //after hitting submit, route to next php if training period insertion is successful
+            header('Location: addTrainingPeriod.php');
         }
     }
 
