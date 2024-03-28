@@ -4,8 +4,9 @@
     "\\css",
     "\\database",
     "\\domain",
+    "\\include",
     "\\js"
   ],
-  "SelectedNode": "\\domain\\Person.php",
+  "SelectedNode": "\\database\\dbinfo.php",
   "PreviewInSolutionExplorer": false
 }

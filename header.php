@@ -73,9 +73,9 @@
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
         $permission_array['addevent.php'] = 2;
-        $permission_array['addcourse.php'] = 2;  //Added permissions for new file addCourse.php
-        $permission_array['addtrainingperiod.php'] = 2;     //Added permissions for new file addTrainingPeriod.php
-        $permission_array['selecttrainingperiod.php'] = 2;     //Added permissions for new file selectTrainingPeriod.php
+        $permission_array['addcourse.php'] = 2;             //Added permissions for new file addCourse.php
+        $permission_array['addTrainingPeriod.php'] = 2;     //Added permissions for new file addTrainingPeriod.php
+        $permission_array['selectTrainingPeriod.php'] = 2;  //Added permissions for new file selectTrainingPeriod.php
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
