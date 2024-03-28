@@ -94,10 +94,10 @@ $fallEndDate = "-10-31";
         }
     }
 
-    if ($_SESSION['error'] != "") {
-        echo $_SESSION['error'];
-        $_SESSION['error'] = "";
-    }
+    // if ($_SESSION['error'] != "") {
+    //     echo $_SESSION['error'];
+    //     $_SESSION['error'] = "";
+    // }
 ?>
 <!DOCTYPE html>
 <html>
