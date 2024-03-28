@@ -44,7 +44,7 @@
             $l_name = $person->get_last_name();
             $name = $f_name . " " . $l_name;
             $evals = get_evalutaion_by_Instructor($name);
-            // $eval = $evals[0];
+            
             echo "<h1> Select an evaluation to view: </h1>";
             $i = 0;
             if(!$evals){
@@ -54,7 +54,7 @@
                 echo "<form method = \"post\">";
                 echo "<select name = \"eval\">";
                 foreach ($evals as &$eval){
-                    echo "<option value=". $i +1 . "> ". ($i + 1) . ") " .$eval["InstructorName"] . "| Topic: ".$eval["Topic"] . "</option>";
+                    echo "<option value=". $i +1 . "> ". ($i + 1) . ") " .$eval["InstructorName"] . "| Topic: ".$eval["Topic"] . "| Overall Rating: ". $eval["OverallRating"]. "</option>";
                     $i++;
                 }
                 echo "</select>";
@@ -64,9 +64,14 @@
                 $eval_num = $_POST["eval"];
                 $eval_num--;
                 $curr_eval = $evals[$eval_num];
-                echo "<p> eval number ". $eval_num + 1 . "</p>";
-                echo "<p> topic: ".$curr_eval["Topic"] . "</p>";
-                echo "<p> rating: ".$curr_eval["OverallRating"] . "</p>";
+                echo "<h2> eval # ". $eval_num + 1 . "</h2>";
+                echo "<h3> Instructor Name:</h3>";
+                echo "<p> ". $curr_eval["InstructorName"] . "</p>";
+                echo "<h3> Topic:</h3>";
+                echo "<p> ".$curr_eval["Topic"] . "</p>";
+                echo "<h3> Overall Rating:</h3>";
+                echo "<p>".$curr_eval["OverallRating"] . "</p>";
+                echo "<h3> In your opinion the instructor...:</h3>";
                 echo "<p> respected participnts: ".$curr_eval["RespectsParticipants"] . "</p>";
                 echo "<p> managed group well : ".$curr_eval["ManageGroup"] . "</p>";
                 echo "<p> provided clear explainations: ".$curr_eval["ClarityExplanation"] . "</p>";
@@ -74,8 +79,10 @@
                 echo "<p> showed enthusiasm: ".$curr_eval["EnthusiasmForTopic"] . "</p>";
                 echo "<p> increased understanding: ".$curr_eval["IncreasedUnderstanding"] . "</p>";
                 echo "<p> learned new info: ".$curr_eval["LearnedNewInfo"] . "</p>";
-                echo "<p> What could be improved: ".$curr_eval["Improvements"] . "</p>";
-                echo "<p> Helpful Info: ".$curr_eval["HelpfullInformation"] . "</p>";
+                echo "<h3> How could this training be improved?</h3>";
+                echo "<p style='word-wrap: break-word; max-width: 95%;'>".$curr_eval["Improvements"] . "</p>";
+                echo "<h3> What information did you find most helpful?</h3>";
+                echo "<p style='word-wrap: break-word; max-width: 95%;'>".$curr_eval["HelpfullInformation"] . "</p>";
                 }
             }
             ?>
