@@ -197,6 +197,8 @@
                     echo "Total Volunteer Hours";
                 }elseif($type == "indiv_vol_hours"){
                     echo "Individual Volunteer Hours";
+                }elseif($type == "complete_training"){
+                    echo "Volunteers Who Completed Training";
                 }
                 ?> 
             </span>
@@ -276,7 +278,7 @@
    </div>
 	<div>   
         <?php
-            if($type != "top_perform" ){
+            if($type != "top_perform" && $type != "complete_training"){
                 echo "
                 <label>Total Volunteer Hours: </label>"; 
                 echo '&nbsp&nbsp&nbsp';
@@ -557,6 +559,53 @@
             }
         }
 
+        // View volunteers who have completed training with all date range & all name range
+        if ($type == "complete_training" && $dateFrom == NULL && $dateTo ==NULL && $lastFrom == NULL && $lastTo == NULL){
+            echo"
+            <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Completed Training</th>
+            </tr>
+            <tbody>";  
+            $con=connect();
+            $type1 = "volunteer";
+            if($stats != "All"){
+                $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining
+                WHERE dbpersons.status='$stats' AND dbpersons.type='$type1' AND dbpersons.completedTraining='True'
+		        GROUP BY dbpersons.first_name,dbpersons.last_name";
+            }else{
+                $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining
+                FROM dbpersons WHERE dbpersons.type='$type1' AND dbpersons.completedTraining='True'
+                GROUP BY dbpersons.last_name";
+		        
+            }
+            $result = mysqli_query($con,$query);
+            while($row = mysqli_fetch_assoc($result)){
+                echo"<tr>
+                <td>" . $row['first_name'] . "</td>
+                <td>" . $row['last_name'] . "</td>
+                <td>" . $row['email'] . "</td>
+                <td>" . $row['completedTraining'] . "</td>
+                </tr>";
+            }
+        }
+
+        // View volunteers who have completed training with date range & name range
+        //if ($type == "complete_training" && !$dateFrom == NULL && !$dateTo ==NULL && !$lastFrom == NULL && !$lastTo == NULL){
+
+        //}
+
+        // View volunteers who have completed training with only date range
+        //if ($type == "complete_training" && !$dateFrom == NULL && !$dateTo ==NULL && $lastFrom == NULL && $lastTo == NULL){
+
+        //}
+        // View volunteers who have completed training with only name range
+        //if ($type == "complete_training" && $dateFrom == NULL && $dateTo ==NULL && !$lastFrom == NULL && !$lastTo == NULL){
+
+        //}
 
         // view Top performers report with all date range and all name range
         if($type == "top_perform" && $dateFrom == NULL && $dateTo ==NULL && $lastFrom == NULL && $lastTo == NULL){
