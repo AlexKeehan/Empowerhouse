@@ -869,6 +869,7 @@ function find_user_names($name) {
                 WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";            
 	    else
+                //dbEvents does not have endtime or startime
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
