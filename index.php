@@ -61,9 +61,13 @@
                     <span>View Calendar</span>
                 </div>
                 <?php if ($_SESSION['access_level'] >= 2): ?>
-                    <div class="dashboard-item" data-link="addEvent.php">
+                    <div class="dashboard-item" data-link="selectTrainingPeriod.php">
                         <img src="images/new-event.svg">
                         <span>Create Event</span>
+                    </div>
+                    <div class="dashboard-item" data-link="addCourse.php">
+                        <img src="images/new-event.svg">
+                        <span>Add Course</span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="eventSearch.php">
@@ -104,12 +108,20 @@
                     <img src="images/document.svg">
                     <span>View Documents</span>
                 </div>
+                <div class="dashboard-item" data-link="ViewEval.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>View Evaluations</span>
+                </div>
                 <?php if ($notRoot and $admin) : ?>
                     <div class="dashboard-item" data-link="userSearch.php">
                         <img src="images/view-profile.svg">
                         <span>View Users</span>
                     </div>
                 <?php endif ?>
+                <div class="dashboard-item" data-link="ViewEval.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>View Evaluations</span>
+                </div>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
                     <span>Change Password</span>

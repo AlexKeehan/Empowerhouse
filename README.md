@@ -1,5 +1,5 @@
-# Empowerhouse Volunteer Management System (VMS) Matthew Rose's Branch
-## Purpose
+# Empowerhouse Volunteer Management System (VMS)
+## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert, Matthew Rose, Diana Guzman, Tubba Noor
 This project is forked from [Gwyneth's Gift Volunteer Management System](https://github.com/lk-umw-cpsc/gwyneth) (VMS).
 
 Our group has been working during the Fall 2023 Semester at The University of Mary Washington on a non-profit website used for Empowerhouse. The goal of our web application is to develop a volunteer training portal to help users register for events and maintain their records of completed and assigned training materials.
@@ -13,6 +13,7 @@ A major overhaul to the existing system took place during the Spring 2023 semest
 
 The Fall 2023 Semester and changes made for [Empowerhouse](https://www.empowerhouseva.org/) were developed by Nahom Tilahun, Ashley Quijada, Richard Volynski, Ted Stanton, Wade Nelson, and Justin Raze.
 
+Diana Guzman
 
 ## User Types
 There are three types of users (also called 'roles') within the VMS.
@@ -159,5 +160,3 @@ The project remains under the [GNU General Public License v3.0](https://www.gnu.
 Thank you to Dr. Polack and Tammy for the chance to work on this exciting project. A lot of love went into making it!
 
 Testing the push.
-
-# Tubba was here. 
