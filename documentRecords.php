@@ -56,6 +56,13 @@
                                     <a href="#" class="document-link" data-document-id="2" data-document-name="Acknowledgement of Receipt">Acknowledgement of Receipt</a>
                                     </li>
 
+
+                                    <li class="column">
+                                    <a href="#" class="document-link" data-document-id="3" data-document-name="Volunteer Application">Volunteer Application</a>
+                                    </li>
+
+
+
                                     <!-- Container for signature forms -->
                                     <div id="signature-forms-container"></div> 
 
@@ -153,6 +160,26 @@
 
                 console.log('Signing document:', documentName);
 
+
+                //Sending signature to DocuSign
+                console.log('Signature sent to DocuSign:', signature);
+
+                // Adds the verificatiom, the check mark that the document was signed
+                var documentLink = $('.document-link[data-document-id="' + documentId + '"]');
+                // Following line is making sure the message does not already exist
+                if (documentLink.siblings('.sign-success-message').length === 0) { 
+                    documentLink.after('<span class="sign-success-message" style="color:green; margin-left:5px;">Signed ✔</span>');
+                    setTimeout(function() {
+                        documentLink.siblings('.sign-success-message').fadeOut('slow', function() {
+                            $(this).remove(); // Remove the message after fading out
+                        });
+                    }, 3000); // Message lasts 3 seconds, then disappears
+                }
+
+                // To clear the signature input after it has been signed and sent
+                form.find('input[name="signature"]').val('');
+
+            
                 // Send signature data to DocuSign
                 DocuSign.signDocument({
                     apiKey: 'e0edfd40-a150-431d-9784-fc37e913314f',
@@ -171,6 +198,8 @@
                 });
             });
         });
+    
+    
     </script>
 </body>
 

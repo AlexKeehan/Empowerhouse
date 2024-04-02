@@ -9,31 +9,32 @@ include_once('dbinfo.php');
 /**
  * returns an array of  associative arrays of course evaluations based on the instructors name
  * How to use data when called:
-* index each evaluation by evaluations[x] ex: $eval = evaluations[1] will return the second evaluation
- * index each data field by eval["key"] ex: eval["Topic"] will return the Topic of the evaluation
+ * index each evaluation by evaluations[x] ex: evaluations[1] will return the second evaluation
+ * index each data field by evaluations["key"] ex: evaluations["Topic"] will return the Topic of the evaluations
  */
 function get_evalutaion_by_Instructor($InstructorName) {
     $con=connect();
-    $query = "SELECT * FROM dbEvaluations WHERE InstructorName = '" . $InstructorName . "'";
+    $query = "SELECT * FROM dbEvaluations WHERE InstructorName = '". $InstructorName ."'";
     $result = mysqli_query($con,$query);
-    if (mysqli_num_rows($result) < 1) {
+    if ($result == null || mysqli_num_rows($result) == 0) {
         mysqli_close($con);
         return false;
     }
-    $result_row = mysqli_fetch_assoc($result);
+    //$result = mysqli_query($con,$query);
     $evaluations = array();
     while ($result_row = mysqli_fetch_assoc($result)) {
         $eval = $result_row;
         $evaluations[] = $eval;
     }
+
     return $evaluations;
 }
 
 /**
  * returns an array of  associative arrays of course evaluations based on the instructors name
  *  How to use data when called:
- * index each evaluation by evaluations[x] ex: $eval = evaluations[1] will return the second evaluation
- * index each data field by eval["key"] ex: eval["Topic"] will return the Topic of the evaluation
+ * index each evaluation by evaluations[x] ex: evaluations[1] will return the second evaluation
+ * index each data field by evaluations["key"] ex: evaluations["Topic"] will return the Topic of the evaluations
  */
 function get_evalutaion_by_Topic($Topic) {
     $con=connect();
