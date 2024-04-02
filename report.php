@@ -72,7 +72,7 @@
 	    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_click"]) 
         && isset($_POST["report_type"]) && isset($_POST["date_from"]) && 
         isset($_POST["date_to"]) && isset($_POST['lname_start']) && isset($_POST['lname_end']) 
-        && isset($_POST['name']) && isset($_POST['statusFilter'])) { //fixed the indentation
+        && isset($_POST['name']) && isset($_POST['statusFilter'])) { //fixed the indentation 
             //if all fields are isset, do the following:
             $args = sanitize($_POST); //sanitize the input
             $report = $args['report_type']; //the type of report requested

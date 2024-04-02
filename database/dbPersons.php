@@ -838,7 +838,8 @@ function find_user_names($name) {
         }
         return $hours;
     }
-
+    //read here, total volunteer hours
+    //dear god, I think I might want to redo this portion from scratch.
     function get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo){
         $con = connect();
         $type1 = "volunteer";
