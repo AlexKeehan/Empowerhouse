@@ -104,6 +104,10 @@
                     <img src="images/document.svg">
                     <span>View Documents</span>
                 </div>
+                <div class="dashboard-item" data-link="courseSignUp.php">
+                    <img src="images/create-report.svg">
+                    <span>Volunteer Course Sign Up</span>
+                </div>
                 <?php if ($notRoot and $admin) : ?>
                     <div class="dashboard-item" data-link="userSearch.php">
                         <img src="images/view-profile.svg">
