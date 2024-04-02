@@ -17,18 +17,17 @@ if (!$loggedIn) {
     die();
 }
 
-// Fetch course names from the dbpersons table
-$courseNames = [];
+// Fetch course names and IDs from the dbcourses table
+$courseData = [];
 $conn = connect(); // Assume $db is your PDO or MySQLi connection object from dbinfo.php
-$query = "SELECT name FROM dbcourses"; // Adjust based on your actual table schema
+$query = "SELECT id, name FROM dbcourses"; // Adjust based on your actual table schema
 $result = $conn->query($query);
 if ($result) {
     while ($row = $result->fetch_assoc()) {
-        $courseNames[] = $row['name'];
+        $courseData[$row['id']] = $row['name'];
     }
 }
 
-$courses = null;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once('include/input-validation.php');
     
@@ -40,7 +39,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else if (isset($args['submitDateRange'])) {
         // Process date range search similarly, adjusted for courses
     } else if (isset($args['sign-up'])) {
-        // Adjust for courses as necessary
+        if ($_SESSION['access_level'] != 1) {
+            echo "Error: You do not have the proper permission to submit.";
+        } else {
+            // Prepare SQL statement
+            $sql = "INSERT INTO dbcoursesignup (course_id, person_id) VALUES (?, ?)";
+            
+            // Prepare and bind parameters
+            $courseID = $_POST['course_id'];
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("is", $courseID, $userID); // s for string
+            
+            // Execute the statement
+            if ($stmt->execute()) {
+                echo "New record inserted successfully.";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+            // Close statement
+            $stmt->close();
+        }
     }
 }
 ?>
@@ -59,15 +77,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- Course display logic -->
             <?php endif; ?>
 
-            <h2>Search for a Course</h2>
+            <h2>Sign Up for a Course</h2>
             <form method="post">
-                <label for="name">Name</label>
-                <select name="name" id="name" required>
-                    <?php foreach ($courseNames as $name): ?>
-                        <option value="<?= htmlspecialchars($name) ?>"><?= htmlspecialchars($name) ?></option>
+                <label for="course_id">Course</label>
+                <select name="course_id" id="course_id" required>
+                <option value="" disabled selected>Select</option>
+                    <?php foreach ($courseData as $id => $name): ?>
+                        <option value="<?= $id ?>"><?= htmlspecialchars($name) ?></option>
                     <?php endforeach; ?>
                 </select>
-                <input type="submit" name="submitName" id="submitName" value="Search by Name">
+                <input type="submit" name="sign-up" id="sign-up" value="Sign Up">
             </form>
             <!-- Other forms adjusted for courses -->
             <a class="button cancel" href="index.php" style="margin-top: -.5rem">Return to Dashboard</a>

@@ -62,8 +62,8 @@
         $permission_array['documentRecords.php'] = 1;
         $permission_array['documentrecords.php'] = 1;
         $permission_array['courseeval.php'] = 1;
-        $permission_array['courseSignUp.php'] = 1;
-        
+        $permission_array['coursesignup.php'] = 1;
+
         //pages only managers can view
         $permission_array['verify.php'] = 2;
         $permission_array['personsearch.php'] = 2;
