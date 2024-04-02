@@ -173,15 +173,13 @@
                         documentLink.siblings('.sign-success-message').fadeOut('slow', function() {
                             $(this).remove(); // Remove the message after fading out
                         });
-                    }, 3000); // Message will disappear after 3 seconds
+                    }, 3000); // Message lasts 3 seconds, then disappears
                 }
 
                 // To clear the signature input after it has been signed and sent
                 form.find('input[name="signature"]').val('');
 
             
-
-
                 // Send signature data to DocuSign
                 DocuSign.signDocument({
                     apiKey: 'e0edfd40-a150-431d-9784-fc37e913314f',
