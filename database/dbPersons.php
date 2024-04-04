@@ -746,21 +746,28 @@ function find_user_names($name) {
     }
     date_default_timezone_set("America/New_York");
 
-    function get_events_attended_by($personID) {
+    //wip
+    
+    function get_events_attended_by($personID) { //dbEventVolunteers doesn't have date, will need to join or do something
         $today = date("Y-m-d");
-        $query = "select * from dbEventVolunteers, dbEvents
+        /*$query = "select * from dbEventVolunteers, dbEvents
                   where userID='$personID' and eventID=id
-                  and date<='$today'
-                  order by date asc";
+                  and dbEvents.eventdate<='$today'
+                  order by dbEvents.eventdate asc"; //quick temp fix by changing to eventdate*/
+        //replace query with one of my own design
+        //whoops this query gets a different assortment of things
+        //$query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, SUM(dbeventvolunteers.hours) FROM dbpersons JOIN dbeventvolunteers ON dbpersons.id = dbeventvolunteers.userid;";
+        $query = "SELECT * FROM dbeventvolunteers;"; //eventid, userid, hours
         $connection = connect();
         $result = mysqli_query($connection, $query);
         if ($result) {
             require_once('include/time.php');
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             mysqli_close($connection);
-            foreach ($rows as &$row) {
-                $row['duration'] = calculateHourDuration($row['startTime'], $row['endTime']);
-            }
+            /*foreach ($rows as &$row) {
+                //$row['duration'] = calculateHourDuration($row['dbevents.starttime'], $row['dbevents.endtime']);
+                //$row['duration'] = $row['dbeventvolunteers.hours'];
+            }*/
             unset($row); // suggested for security
             return $rows;
         } else {
@@ -815,11 +822,12 @@ function find_user_names($name) {
         }
     }
 
-    function get_hours_volunteered_by($personID) {
+    function get_hours_volunteered_by($personID) { //wip, oh god this doesn't even have the values THEY want
+        //oh great, because I did it more efficiently I don't even need this function at all, but it's still getting called. FANTASTIC
         $events = get_events_attended_by($personID);
         $hours = 0;
         foreach ($events as $event) {
-            $duration = $event['duration'];
+            $duration = $event['hours'];
             if ($duration > 0) {
                 $hours += $duration;
             }
@@ -866,14 +874,14 @@ function find_user_names($name) {
 	    if ($stats == 'Active' || $stats == 'Inactive') 
 		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
                 WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";            
 	    else
                 //dbEvents does not have endtime or startime
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
 		WHERE date >= '$dateFrom' AND date<='$dateTo'
 		GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";
@@ -907,13 +915,13 @@ function find_user_names($name) {
 	    if ($stats == 'Active' || $stats == 'Inactive') 
                 $query = $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
 		WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";
 	    else
 		$query = $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
                 WHERE date >= '$dateFrom' AND date<='$dateTo'
 		GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";
@@ -945,14 +953,14 @@ function find_user_names($name) {
 	    if ($stats == 'Active' || $stats == 'Inactive') 
 		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
                 WHERE dbPersons.status='$stats'
 		GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";
 	    else
 		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
                 GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";
                 //$query = "SELECT * FROM dbPersons WHERE dbPersons.status='$stats'";

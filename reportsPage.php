@@ -278,7 +278,7 @@
    </div>
 	<div>   
         <?php
-            if($type != "top_perform" && $type != "complete_training"){
+            if($type != "top_perform" && $type != "complete_training"){ //look here
                 echo "
                 <label>Total Volunteer Hours: </label>"; 
                 echo '&nbsp&nbsp&nbsp';
@@ -556,6 +556,36 @@
             } catch (TypeError $e) {
                 // Code to handle the exception or error goes here
                 echo "No Results found!"; 
+            }
+        }
+        //wip
+        // View first name, last name, email, and hours worked in all name and date range
+        if ($type == "total_vol_hours" && $dateFrom == NULL && $dateTo ==NULL && $lastFrom == NULL && $lastTo == NULL){
+            echo"
+            <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Hours</th>
+            </tr>
+            <tbody>";  
+            $con=connect();
+            $type1 = "volunteer";
+            if($stats != "All"){ //need to change these to my new ones
+                $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, SUM(dbeventvolunteers.hours) AS foo FROM dbeventvolunteers JOIN dbpersons on dbeventvolunteers.userid = dbpersons.id";
+            }else{
+                $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, SUM(dbeventvolunteers.hours) AS foo FROM dbeventvolunteers JOIN dbpersons on dbeventvolunteers.userid = dbpersons.id";
+		        
+            }
+            $result = mysqli_query($con,$query);
+            while($row = mysqli_fetch_assoc($result)){
+                echo"<tr>
+                <td>" . $row['first_name'] . "</td>
+                <td>" . $row['last_name'] . "</td>
+                <td>" . $row['email'] . "</td>
+                <td>" . $row['foo'] . "</td>
+                </tr>";
             }
         }
 
