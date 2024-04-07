@@ -45,6 +45,7 @@ DROP TABLE IF EXISTS `dbeventvolunteers`;
 DROP TABLE IF EXISTS `dbmessages`;
 DROP TABLE IF EXISTS `dbpersons`;
 DROP TABLE IF EXISTS `dbtrainingperiods`;
+DROP TABLE IF EXISTS `dbevaluations`;
 
 
 -- --------------------------------------------------------
@@ -290,6 +291,18 @@ INSERT INTO `dbtrainingperiods` (`id`, `semester`, `year`, `startdate`, `enddate
 (10, 'Summer', '2032', '2032-05-01', '2032-06-30');
 
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table 'dbTrainingPeriods'
+--
+
+CREATE TABLE `dbevaluations` (
+  `InstructorName` text NOT NULL,
+  `Topic` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 --
 -- Indexes for dumped tables
 --
@@ -338,6 +351,13 @@ ALTER TABLE `dbPersons`
 --
 ALTER TABLE `dbtrainingperiods`
   ADD PRIMARY KEY (`id`);
+
+
+--
+-- Indexes for table 'dbTrainingPeriods'
+--
+ALTER TABLE `dbevaluations`
+  ADD PRIMARY KEY (`InstructorName`);
 
 
 
