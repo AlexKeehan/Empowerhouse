@@ -17,7 +17,7 @@
 
 function connect() {
     $host = "localhost";
-    $database = "emphousedb";
+    $database = "housedb";
     $user = "housedb";
     $pass = "housedb";
 
