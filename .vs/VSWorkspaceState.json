@@ -3,9 +3,8 @@
     "",
     "\\css",
     "\\database",
-    "\\domain",
-    "\\js"
+    "\\include"
   ],
-  "SelectedNode": "\\domain\\Person.php",
+  "SelectedNode": "\\reportsPage.php",
   "PreviewInSolutionExplorer": false
 }

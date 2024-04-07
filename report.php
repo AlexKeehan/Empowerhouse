@@ -149,6 +149,7 @@
                 <option value = "indiv_vol_hours">Individual Volunteer Hours</option>
                 <option value = "top_perform">Top Performers</option>
                 <option value = "email_volunteer_list">Volunteer's Email Adresses</option>
+                <option value = "complete_training">Volunteers Who Completed Training </option>
             </select>
 	</div>
 	<div>
