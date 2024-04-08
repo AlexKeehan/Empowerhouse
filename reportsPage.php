@@ -656,9 +656,11 @@ function getBetweenDates($startDate, $endDate)
                     <tbody>"; 
                 $type1 = "volunteer";
                 $today =  date('Y-m-d');
+                // If status is NOT All
                 if($stats != "All")
                 {
-                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining
+                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining
                     FROM dbpersons
                     WHERE dbpersons.status='$stats' 
                     AND dbpersons.type='$type1' 
@@ -668,29 +670,14 @@ function getBetweenDates($startDate, $endDate)
                 }
                 else
                 {
-                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining
+                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining
                     FROM dbpersons 
                     WHERE dbpersons.type='$type1' 
                     AND dbpersons.completedTraining='True'
                     AND dbpersons.dateCompletedTraining <= '$today'
                     GROUP BY dbpersons.last_name";
                 }
-                $result = mysqli_query($con,$query);
-                while($row = mysqli_fetch_assoc($result))
-                {
-                    echo"<tr>
-                        <td>" . $row['first_name'] . "</td>
-                        <td>" . $row['last_name'] . "</td>
-                        <td>" . $row['email'] . "</td>
-                        <td>" . $row['completedTraining'] . "</td>
-                        <td>" . $row['dateCompletedTraining'] . "</td>
-                        </tr>";
-                }
-            }
-            // View volunteers who have completed training with date range & name range
-            elseif (!$dateFrom == NULL && !$dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL) 
-            {
-                echo "DATE & NAME ";
             }
             // View volunteers who have completed training with only date range
             elseif (!$dateFrom == NULL && !$dateTo == NULL && $lastFrom == NULL && $lastTo == NULL) 
@@ -707,37 +694,38 @@ function getBetweenDates($startDate, $endDate)
                     </tr>
                     <tbody>"; 
                 $type1 = "volunteer";
+                $today =  date('Y-m-d');
+                // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining, dbpersons.dateCompletedTraining 
+                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
                     FROM dbpersons 
                     WHERE dbpersons.completedTraining='True' 
-                    AND ('$dateFrom' <= dbpersons.dateCompletedTraining AND '$dateTo' >= dbpersons.dateCompletedTraining) 
+                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
                     AND dbpersons.type='$type1'
                     AND dbpersons.status='$stats'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";                    
+                    AND dbpersons.dateCompletedTraining <= '$today'
+                    ORDER BY dbpersons.last_name";                    
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining, dbpersons.dateCompletedTraining 
+                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
                     FROM dbpersons 
                     WHERE dbpersons.completedTraining='True' 
-                    AND ('$dateFrom' <= dbpersons.dateCompletedTraining AND '$dateTo' >= dbpersons.dateCompletedTraining) 
+                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
                     AND dbpersons.type='$type1'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
-                }
-                $result = mysqli_query($con,$query);
-                while($row = mysqli_fetch_assoc($result))
-                {
-                    echo"<tr>
-                    <td>" . $row['first_name'] . "</td>
-                    <td>" . $row['last_name'] . "</td>
-                    <td>" . $row['email'] . "</td>
-                    <td>" . $row['completedTraining'] . "</td>
-                    <td>" . $row['dateCompletedTraining'] . "</td>
-                    </tr>";
+                    AND dbpersons.dateCompletedTraining <= '$today'
+                    ORDER BY dbpersons.last_name";       
                 }
             }
+            // View volunteers who have completed training with date range & name range
+            elseif (!$dateFrom == NULL && !$dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL) 
+            {
+                echo "DATE & NAME ";
+            }
+     
             // View volunteers who have completed training with only name range
             elseif ($dateFrom == NULL && $dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL) 
             {
@@ -754,12 +742,14 @@ function getBetweenDates($startDate, $endDate)
                     <tbody>"; 
                 $type1 = "volunteer";
                 $today =  date('Y-m-d');
+                // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining, dbpersons.dateCompletedTraining 
+                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
                     FROM dbpersons 
                     WHERE dbpersons.completedTraining='True' 
-                    AND ('$dateFrom' <= dbpersons.dateCompletedTraining AND '$dateTo' >= dbpersons.dateCompletedTraining) 
+                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
                     AND dbpersons.type='$type1'
                     AND dbpersons.status='$stats'
                     AND dbpersons.dateCompletedTraining <= '$today'
@@ -767,25 +757,26 @@ function getBetweenDates($startDate, $endDate)
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, dbpersons.completedTraining, dbpersons.dateCompletedTraining 
+                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
                     FROM dbpersons 
                     WHERE dbpersons.completedTraining='True' 
-                    AND ('$dateFrom' <= dbpersons.dateCompletedTraining AND '$dateTo' >= dbpersons.dateCompletedTraining) 
+                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
                     AND dbpersons.type='$type1'
                     AND dbpersons.dateCompletedTraining <= '$today'
                     GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
                 }
-                $result = mysqli_query($con,$query);
-                while($row = mysqli_fetch_assoc($result))
-                {
-                    echo"<tr>
-                    <td>" . $row['first_name'] . "</td>
-                    <td>" . $row['last_name'] . "</td>
-                    <td>" . $row['email'] . "</td>
-                    <td>" . $row['completedTraining'] . "</td>
-                    <td>" . $row['dateCompletedTraining'] . "</td>
-                    </tr>";
-                }
+            }
+            $result = mysqli_query($con,$query);
+            while($row = mysqli_fetch_assoc($result))
+            {
+                echo"<tr>
+                <td>" . $row['first_name'] . "</td>
+                <td>" . $row['last_name'] . "</td>
+                <td>" . $row['email'] . "</td>
+                <td>" . $row['completedTraining'] . "</td>
+                <td>" . $row['dateCompletedTraining'] . "</td>
+                </tr>";
             }
         }
 
