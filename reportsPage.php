@@ -1,7 +1,7 @@
 <?php 
 /**
 * @version April 6, 2023
-* @author Alip Yalikun
+* @authors Alip Yalikun, Alex Keehan
 */
 
 
@@ -636,14 +636,14 @@ function getBetweenDates($startDate, $endDate)
             }
         }
 
+        // User chose reports on volunteers who completed training
         if ($type == "complete_training") 
         {
-            echo "IN ";
             $con=connect();
             // View volunteers who have completed training with no date range & no name range
             if ($dateFrom == NULL && $dateTo ==NULL && $lastFrom == NULL && $lastTo == NULL)
-            {
-                echo "None ";   
+            { 
+                // Print out column "headers"
                 echo"
                     <table>
                     <tr>
@@ -682,7 +682,7 @@ function getBetweenDates($startDate, $endDate)
             // View volunteers who have completed training with only date range
             elseif (!$dateFrom == NULL && !$dateTo == NULL && $lastFrom == NULL && $lastTo == NULL) 
             {
-                echo "DATE "; 
+                // Print out column "headers"
                 echo"
                     <table>
                     <tr>
@@ -720,16 +720,10 @@ function getBetweenDates($startDate, $endDate)
                     ORDER BY dbpersons.last_name";       
                 }
             }
-            // View volunteers who have completed training with date range & name range
-            elseif (!$dateFrom == NULL && !$dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL) 
-            {
-                echo "DATE & NAME ";
-            }
-     
             // View volunteers who have completed training with only name range
             elseif ($dateFrom == NULL && $dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL) 
             {
-                echo "NAME ";
+                // Print out column "headers"
                 echo"
                     <table>
                     <tr>
@@ -762,6 +756,48 @@ function getBetweenDates($startDate, $endDate)
                     FROM dbpersons 
                     WHERE dbpersons.completedTraining='True' 
                     AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND dbpersons.type='$type1'
+                    AND dbpersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
+                }
+            }
+            // View volunteers who have completed training with date range & name range
+            elseif (!$dateFrom == NULL && !$dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL) 
+            {
+                // Print out column "headers"
+                echo"
+                    <table>
+                    <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Completed Training</th>
+                    <th>Date Completed Training</th>
+                    </tr>
+                    <tbody>"; 
+                $type1 = "volunteer";
+                // If status is NOT All
+                if($stats != "All") 
+                {
+                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
+                    FROM dbpersons 
+                    WHERE dbpersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbpersons.type='$type1'
+                    AND dbpersons.status='$stats'
+                    AND dbpersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";                    
+                } 
+                else 
+                {
+                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
+                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
+                    FROM dbpersons 
+                    WHERE dbpersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
                     AND dbpersons.type='$type1'
                     AND dbpersons.dateCompletedTraining <= '$today'
                     GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
