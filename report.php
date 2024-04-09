@@ -142,13 +142,13 @@
         <form class="report_select" method="post">
 	<div>
 
-            <label for="report_type">Select Report Type</label><span><i><font size="3">*For Emails Just Hit Submit</font></i></span>
+            <label for="report_type">Select Report Type</label><span><i><font size="3"> *For Emails Just Select Status then Hit Submit</font></i></span>
             <select name="report_type" id="report_type">
                 <option value = "general_volunteer_report">General Volunteer Report</option>
                 <option value = "total_vol_hours">Total Volunteer Hours</option>
                 <option value = "indiv_vol_hours">Individual Volunteer Hours</option>
                 <option value = "top_perform">Top Performers</option>
-                <option value = "email_volunteer_list">Volunteer's Email Adresses</option>
+                <option value = "volunteer_emails">Volunteer's Email Adresses</option>
             </select>
 	</div>
 	<div>
