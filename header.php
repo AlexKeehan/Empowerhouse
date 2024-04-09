@@ -45,6 +45,7 @@
         $permission_array['apply.php'] = 0;
         $permission_array['logout.php'] = 0;
         $permission_array['register.php'] = 0;
+        $permission_array['login.php'] = 0;
         //pages volunteers can view
         $permission_array['help.php'] = 1;
         $permission_array['dashboard.php'] = 1;
@@ -62,6 +63,11 @@
         $permission_array['documentRecords.php'] = 1;
         $permission_array['documentrecords.php'] = 1;
         $permission_array['courseeval.php'] = 1;
+        $permission_array['vieweval.php'] = 1;
+        $permission_array['selecttrainingperiod.php'] = 1;
+        $permission_array['addtrainingperiod.php'] = 1;
+        $permission_array['coursesignup.php'] = 1;
+
         //pages only managers can view
         $permission_array['verify.php'] = 2;
         $permission_array['personsearch.php'] = 2;
@@ -73,14 +79,17 @@
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
         $permission_array['addevent.php'] = 2;
-        $permission_array['addcourse.php'] = 2;  //Added permissions for new file addCourse.php
-        $permission_array['addtrainingperiod.php'] = 2;     //Added permissions for new file addTrainingPeriod.php
-        $permission_array['selecttrainingperiod.php'] = 2;     //Added permissions for new file selectTrainingPeriod.php
+        $permission_array['addcourse.php'] = 2;             //Added permissions for new file addCourse.php
+        $permission_array['addTrainingPeriod.php'] = 2;     //Added permissions for new file addTrainingPeriod.php
+        $permission_array['selectTrainingPeriod.php'] = 2;  //Added permissions for new file selectTrainingPeriod.php
         $permission_array['editevent.php'] = 2;
         $permission_array['roster.php'] = 2;
         $permission_array['report.php'] = 2;
         $permission_array['reportspage.php'] = 2;
         $permission_array['resetpassword.php'] = 2;
+        $permission_array['viewval.php'] = 2;
+        $permission_array['selecttrainingperiod.php'] = 2;
+        $permission_array['vieweval.php'] = 2;
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strpos($_SERVER['PHP_SELF'],"/")+1));
