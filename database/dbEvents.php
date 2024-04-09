@@ -232,3 +232,18 @@ function delete_event($id) {
     return $result;
 }
 
+function fetch_events_in_date_range_as_array($dateFrom, $dateTo) {
+    $connection = connect();
+    $query = "
+        select * from dbEvents
+        where eventDate>='$dateFrom' and eventDate<='$dateTo'
+    ";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        return null;
+    }
+    $all = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_close($connection);
+    return $all;
+}
+

@@ -145,7 +145,8 @@ INSERT INTO `dbevents` (`id`, `eventname`, `eventdate`, `starttime`, `endtime`) 
 
 CREATE TABLE `dbeventvolunteers` (
   `eventID` int(11) NOT NULL,
-  `userID` varchar(256) NOT NULL
+  `userID` varchar(256) NOT NULL/*,
+  `eventdate` date DEFAULT NULL*/
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -297,7 +298,7 @@ INSERT INTO `dbtrainingperiods` (`id`, `semester`, `year`, `startdate`, `enddate
 --
 
 CREATE TABLE `dbevaluations` (
-  `InstructorName` text NOT NULL,
+  `InstructorName` varchar(50) NOT NULL,
   `Topic` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
