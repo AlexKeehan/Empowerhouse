@@ -92,7 +92,7 @@ function retrieve_event($id) {
 // not in use, may be useful for future iterations in changing how events are edited (i.e. change the remove and create new event process)
 function update_event_date($id, $new_event_date) {
 	$con=connect();
-	$query = 'UPDATE dbEvents SET event_date = "' . $new_event_date . '" WHERE id = "' . $id . '"';
+	$query = 'UPDATE dbEvents SET eventdate = "' . $new_event_date . '" WHERE id = "' . $id . '"';
 	$result = mysqli_query($con,$query);
 	mysqli_close($con);
 	return $result;
@@ -230,5 +230,20 @@ function delete_event($id) {
     $result = boolval($result);
     mysqli_close($connection);
     return $result;
+}
+
+function fetch_events_in_date_range_as_array($dateFrom, $dateTo) {
+    $connection = connect();
+    $query = "
+        select * from dbEvents
+        where eventDate>='$dateFrom' and eventDate<='$dateTo'
+    ";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        return null;
+    }
+    $all = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_close($connection);
+    return $all;
 }
 

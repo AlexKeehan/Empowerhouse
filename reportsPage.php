@@ -1,7 +1,8 @@
 <?php 
 /**
+
 * @version April 6, 2023
-* @authors Alip Yalikun, Alex Keehan
+* @authors Alip Yalikun, Alex Keehan & Diana Guzman
 */
 
 
@@ -224,18 +225,26 @@ function getBetweenDates($startDate, $endDate)
                 if($type == "top_perform")
                 {
                     echo "Top Performers"; 
-                }elseif($type == "general_volunteer_report")
+                }
+                elseif($type == "general_volunteer_report")
                 {
                     echo "General Volunteer Report";
-                }elseif($type == "total_vol_hours")
+                }
+                elseif($type == "total_vol_hours")
                 {
                     echo "Total Volunteer Hours";
-                }elseif($type == "indiv_vol_hours")
+                }
+                elseif($type == "indiv_vol_hours")
                 {
                     echo "Individual Volunteer Hours";
-                }elseif($type == "complete_training")
+                }
+                elseif($type == "complete_training")
                 {
                     echo "Volunteers Who Completed Training";
+                }
+                elseif($type == "volunteer_emails")
+                {
+                    echo "Volunteer Emails";
                 }
                 ?> 
             </span>
@@ -339,12 +348,13 @@ function getBetweenDates($startDate, $endDate)
     </main>
 	
 	<div class="center_a">
-        <a href="report.php">
-        <button class = "theB">New Report</button>
-        </a>
-        <a href="index.php">
-        <button class = "theB">Home Page</button>
-        </a>
+                
+                <a href="report.php">
+               <!---   <button class = "theB">New Report</button> -->
+                </a>
+                <a href="index.php">
+                <!---  <button class = "theB">Home Page</button> -->
+                </a>
 	</div>
         <div class="table-wrapper">
         <?php 
@@ -429,8 +439,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+		            WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+		            GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
             else
@@ -438,8 +448,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date >= '$dateFrom' AND date<='$dateTo' AND type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+		            WHERE eventDate >= '$dateFrom' AND eventDate <='$dateTo' AND type='$type1'
+		            GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
             $result = mysqli_query($con,$query);
@@ -576,8 +586,9 @@ function getBetweenDates($startDate, $endDate)
             {
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id 
+                WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+		            GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
             else
@@ -585,8 +596,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date >= '$dateFrom' AND date<='$dateTo' AND type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+                WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
             $result = mysqli_query($con,$query); 
@@ -659,24 +670,24 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All")
                 {
-                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining
-                    FROM dbpersons
-                    WHERE dbpersons.status='$stats' 
-                    AND dbpersons.type='$type1' 
-                    AND dbpersons.completedTraining='True'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-		            GROUP BY dbpersons.first_name, dbpersons.last_name";
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining
+                    FROM dbPersons
+                    WHERE dbPersons.status='$stats' 
+                    AND dbPersons.type='$type1' 
+                    AND dbPersons.completedTraining='True'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+		            GROUP BY dbPersons.first_name, dbPersons.last_name";
                 }
                 else
                 {
-                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining
-                    FROM dbpersons 
-                    WHERE dbpersons.type='$type1' 
-                    AND dbpersons.completedTraining='True'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.last_name";
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining
+                    FROM dbPersons 
+                    WHERE dbPersons.type='$type1' 
+                    AND dbPersons.completedTraining='True'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.last_name";
                 }
             }
             // View volunteers who have completed training with only date range
@@ -698,26 +709,26 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.status='$stats'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    ORDER BY dbpersons.last_name";                    
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.status='$stats'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    ORDER BY dbPersons.last_name";                    
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    ORDER BY dbpersons.last_name";       
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    ORDER BY dbPersons.last_name";       
                 }
             }
             // View volunteers who have completed training with only name range
@@ -739,26 +750,26 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.status='$stats'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";                    
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.status='$stats'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";                    
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";       
                 }
             }
             // View volunteers who have completed training with date range & name range
@@ -779,28 +790,28 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.status='$stats'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";                    
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.status='$stats'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";                    
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";       
                 }
             }
             $result = mysqli_query($con,$query);
@@ -835,8 +846,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$today' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+                WHERE eventDate<='$today' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur DESC LIMIT 5";
             }
             else
@@ -844,8 +855,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$today' AND dbPersons.type='$type1'
-		        GROUP BY dbEventVolunteers.userID
+                WHERE eventDate<='$today' AND dbPersons.type='$type1'
+                GROUP BY dbEventVolunteers.userID
                 ORDER BY Dur DESC LIMIT 5";
             }
             $result = mysqli_query($con,$query);
@@ -891,8 +902,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+                WHERE eventDate<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur DESC LIMIT 5";
             }
             else
@@ -900,8 +911,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$dateTo' AND dbPersons.type='$type1'
-		        GROUP BY dbEventVolunteers.userID
+                WHERE eventDate<='$dateTo' AND dbPersons.type='$type1'
+                GROUP BY dbEventVolunteers.userID
                 ORDER BY Dur DESC LIMIT 5";
             }
             $result = mysqli_query($con,$query);
@@ -964,8 +975,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$today' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+                WHERE eventDate<='$today' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur DESC LIMIT 5";
             }
             else
@@ -973,8 +984,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$today' AND dbPersons.type='$type1'
-		        GROUP BY dbEventVolunteers.userID
+                WHERE eventDate<='$today' AND dbPersons.type='$type1'
+                GROUP BY dbEventVolunteers.userID
                 ORDER BY Dur DESC LIMIT 5";
             }
             $result = mysqli_query($con,$query);
@@ -1027,8 +1038,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
+                WHERE eventDate<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur DESC LIMIT 5";
             }
             else
@@ -1036,8 +1047,8 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date<='$dateTo' AND dbPersons.type='$type1'
-		        GROUP BY dbEventVolunteers.userID
+                WHERE eventDate<='$dateTo' AND dbPersons.type='$type1'
+                GROUP BY dbEventVolunteers.userID
                 ORDER BY Dur DESC LIMIT 5";
             }
             $result = mysqli_query($con,$query);
@@ -1093,22 +1104,21 @@ function getBetweenDates($startDate, $endDate)
                 </tr>
                 <tbody>";
             $con=connect();
-            if($stats != "All")
-            {
-                $query = "SELECT dbPersons.id,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime
+            if($stats != "All"){
+                $query = "SELECT dbPersons.id, dbEvents.name, dbEvents.location, dbEvents.eventDate, dbEvents.startTime, dbEvents.endTime
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                WHERE dbPersons.id ='$indivID' AND dbPersons.status='$stats' AND dbEvents.date<= '$today'
+                WHERE dbPersons.id ='$indivID' AND dbPersons.status='$stats' AND dbEvents.eventDate<= '$today'
                 GROUP BY dbEvents.name
-		        ORDER BY dbEvents.date desc";
+		            ORDER BY dbEvents.eventDate desc";
             }
-            else
-            {
-                $query = "SELECT dbPersons.id,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime
+          else
+          {
+                $query = "SELECT dbPersons.id,dbEvents.name, dbEvents.location,dbEvents.eventDate,dbEvents.startTime,dbEvents.endTime
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                WHERE dbPersons.id ='$indivID' AND dbEvents.date <= '$today'
-		        ORDER BY dbEvents.date desc";
+                WHERE dbPersons.id ='$indivID' AND dbEvents.eventDate <= '$today'
+		            ORDER BY dbEvents.eventDate desc";
             }
             $theEventHrs = get_events_attended_by_desc($indivID);
 	        //$result = mysqli_query($con,$query);
@@ -1145,23 +1155,23 @@ function getBetweenDates($startDate, $endDate)
                 </tr>
                 <tbody>";
             $con=connect();
-            if($stats != "All")
-            {
-                $query = "SELECT dbPersons.id,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime,
+           if($stats != "All")
+           {
+                $query = "SELECT dbPersons.id,dbEvents.name, dbEvents.location,dbEvents.eventDate,dbEvents.startTime,dbEvents.endTime,
                 (dbEvents.endTime - dbEvents.startTime) AS DURATION
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                WHERE dbPersons.id ='$indivID' AND dbPersons.status='$stats' AND date > '$dateFrom' AND date < '$dateTo'
-                ORDER BY dbEvents.date desc";
+                WHERE dbPersons.id ='$indivID' AND dbPersons.status='$stats' AND eventDate > '$dateFrom' AND eventDate < '$dateTo'
+                ORDER BY dbEvents.eventDate desc";
             }
-            else
-            {
-                $query = "SELECT dbPersons.id,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime,
+          else
+          {
+                $query = "SELECT dbPersons.id,dbEvents.name, dbEvents.location,dbEvents.eventDate,dbEvents.startTime,dbEvents.endTime,
                 (dbEvents.endTime - dbEvents.startTime) AS DURATION
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                WHERE dbPersons.id ='$indivID' AND date > '$dateFrom' AND date < '$dateTo'
-                ORDER BY dbEvents.date desc";
+                WHERE dbPersons.id ='$indivID' AND eventDate > '$dateFrom' AND eventDate < '$dateTo'
+                ORDER BY dbEvents.eventDate desc";
             }    
             //$result = mysqli_query($con,$query);
             
@@ -1206,25 +1216,25 @@ function getBetweenDates($startDate, $endDate)
                 <tbody>";
             $con=connect();
             $type1 = "volunteer";
-            if($stats != "All")
-            {
-                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime,
+           if($stats != "All")
+           {
+                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.eventDate,dbEvents.startTime,dbEvents.endTime,
                 (dbEvents.endTime - dbEvents.startTime) AS DURATION
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                 WHERE dbPersons.status='$stats' AND dbPersons.type='$type1'
                 GROUP BY dbPersons.first_name, dbPersons.last_name
-		        ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPersons.first_name";
+		            ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPersons.first_name";
             }
-            else
-            {
-                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime,
+          else
+          {
+                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.eventDate,dbEvents.startTime,dbEvents.endTime,
                 (dbEvents.endTime - dbEvents.startTime) AS DURATION
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                 WHERE dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name, dbPersons.last_name
-                ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPersons.first_name";
+		            GROUP BY dbPersons.first_name, dbPersons.last_name
+                ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPersons.first_name";
             }    
             $result = mysqli_query($con,$query);
             
@@ -1270,18 +1280,18 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPersons.first_name";
+		            WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+		            GROUP BY dbPersons.first_name,dbPersons.last_name
+                ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPersons.first_name";
             }
-            else
-            {
+          else
+          {
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPersons.first_name";
+                WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
+                ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPersons.first_name";
             }
             $result = mysqli_query($con,$query);
             try {
@@ -1341,18 +1351,18 @@ function getBetweenDates($startDate, $endDate)
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPerson.first_name";
+                WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
+                ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPerson.first_name";
             }
-            else
-            {
+          else
+          {
                 $query = "SELECT *, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.type='$type1'
-		        GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPersons.first_name";
+                WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.type='$type1'
+                GROUP BY dbPersons.first_name,dbPersons.last_name
+                ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPersons.first_name";
             }
             $result = mysqli_query($con,$query);
             try {
@@ -1395,8 +1405,7 @@ function getBetweenDates($startDate, $endDate)
 
 
         // Name range filter on total_vol_hours report
-        if($type == "total_vol_hours" && $dateFrom == NULL && $dateTo ==NULL && !$lastFrom == NULL && !$lastTo == NULL)
-        {
+        if($type == "total_vol_hours" && $dateFrom == NULL && $dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL){
             echo"
                 <table>
                 <tr>
@@ -1410,25 +1419,25 @@ function getBetweenDates($startDate, $endDate)
                 <tbody>";
             $con=connect();
             $type1 = "volunteer";
-            if($stats != "All") 
-            {
-                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime,
+           if($stats != "All")
+           {
+                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.eventDate,dbEvents.startTime,dbEvents.endTime,
                 (dbEvents.endTime - dbEvents.startTime) AS DURATION
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                 WHERE dbPersons.status='$stats' AND dbPersons.type='$type1'
                 GROUP BY dbPersons.first_name, dbPersons.last_name
-		        ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPersons.first_name";
+		        ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPersons.first_name";
             }
-            else
-            {
-                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.date,dbEvents.startTime,dbEvents.endTime,
+          else
+          {
+                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name,dbEvents.name, dbEvents.location,dbEvents.eventDate,dbEvents.startTime,dbEvents.endTime,
                 (dbEvents.endTime - dbEvents.startTime) AS DURATION
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		        WHERE dbPersons.type='$type1'
+		            WHERE dbPersons.type='$type1'
                 GROUP BY dbPersons.first_name, dbPersons.last_name
-                ORDER BY dbEvents.date DESC, dbPersons.last_name, dbPersons.first_name";
+                ORDER BY dbEvents.eventDate DESC, dbPersons.last_name, dbPersons.first_name";
             }    
             $result = mysqli_query($con,$query);
             $nameRange = range($lastFrom,$lastTo);
@@ -1439,16 +1448,16 @@ function getBetweenDates($startDate, $endDate)
                     if($row['last_name'][0] == $a)
                     {
                         echo"<tr>
-            		    <td>" . $row['first_name'] . "</td>
-            		    <td>" . $row['last_name'] . "</td>
-            		    <td>" . $row['name'] . "</td>
-            		    <td>" . $row['location'] . "</td>
-            		    <td>" . $row['date'] . "</td>
-            		    <td>" . get_hours_volunteered_by($row['id']) . "</td>
-			            </tr>";
-                    }
-	    	    } 
-            }
+            		<td>" . $row['first_name'] . "</td>
+            		<td>" . $row['last_name'] . "</td>
+            		<td>" . $row['name'] . "</td>
+            		<td>" . $row['location'] . "</td>
+            		<td>" . $row['date'] . "</td>
+            		<td>" . get_hours_volunteered_by($row['id']) . "</td>
+			        </tr>";
+	    	        }  
+		        }
+	        }
             echo"
                 <tr>
                 <td style='border: none;' bgcolor='white'></td>
@@ -1458,8 +1467,75 @@ function getBetweenDates($startDate, $endDate)
                 <td bgcolor='white'><label>Total Hours:</label></td>
                 <td bgcolor='white'><label>". get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo) ."</label></td>
                 </tr>";
-        }
-    ?> 
+	    }
+        //Display email list only - PSEUDOCODE
+         if($type == "volunteer_emails"){
+            $con=connect();
+            echo"
+            <table>
+            <tr>
+                <th>Volunteer Emails</th>
+            </tr>
+            <tbody>";
+
+            $type1 = "Status";
+            $type1 = "volunteer";
+            if($stats!="All"){
+                $query = "SELECT * FROM dbPersons WHERE type='$type1' AND status='$stats'
+			ORDER BY dbPersons.last_name, dbPersons.first_name";
+            }else{
+                $query = "SELECT * FROM dbPersons WHERE type='$type1'
+			ORDER BY dbPersons.last_name, dbPersons.first_name";
+            }
+            $result = mysqli_query($con,$query);
+            $totHours = array();
+            while($row = mysqli_fetch_assoc($result)){
+                $phone = $row['phone1'];
+                $mail = $row['email'];
+                echo"<tr>
+                <td><a href='mailto:$mail'>" . $row['email'] . "</a></td>
+                </tr>"; 
+                $hours = get_hours_volunteered_by($row['id']);   
+                $totHours[] = $hours;
+            }
+            $sum = 0;
+            foreach($totHours as $hrs){
+                $sum += $hrs;
+            }
+            echo"
+                <tr>
+                <td style='border: none;' bgcolor='white'></td>
+                </tr>";
+
+
+
+         }
+        /*
+            //NOTE: var save the value of the Active/Inactive form in a variable (Control + F for "radio" in "report.php" to find it)
+
+            //NOTE: if the value is All, we're getting all the emails / the entire email column
+            query = select email from dbPersons
+
+            //NOTE: else, filter by Active/Inactive value
+            query = select email from dbPersons where status = '.var.'
+
+            //NOTE: This code to create a table row for each email.
+            $result = mysqli_query($con,$query);
+            while($row = mysqli_fetch_assoc($result)) {
+                echo
+                    "<tr>
+            		<td>" . $row['email'] . "</td>
+			        </tr>";
+
+	        }
+        */
+
+
+
+
+
+
+      ?> 
 
 
         </tbody>
