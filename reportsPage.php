@@ -225,19 +225,25 @@ function getBetweenDates($startDate, $endDate)
                 if($type == "top_perform")
                 {
                     echo "Top Performers"; 
-                }elseif($type == "general_volunteer_report")
+                }
+                elseif($type == "general_volunteer_report")
                 {
                     echo "General Volunteer Report";
-                }elseif($type == "total_vol_hours")
+                }
+                elseif($type == "total_vol_hours")
                 {
                     echo "Total Volunteer Hours";
-                }elseif($type == "indiv_vol_hours")
+                }
+                elseif($type == "indiv_vol_hours")
                 {
                     echo "Individual Volunteer Hours";
-                }elseif($type == "complete_training")
+                }
+                elseif($type == "complete_training")
                 {
                     echo "Volunteers Who Completed Training";
-                }elseif($type == "volunteer_emails"){
+                }
+                elseif($type == "volunteer_emails")
+                {
                     echo "Volunteer Emails";
                 }
                 ?> 
@@ -664,24 +670,24 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All")
                 {
-                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining
-                    FROM dbpersons
-                    WHERE dbpersons.status='$stats' 
-                    AND dbpersons.type='$type1' 
-                    AND dbpersons.completedTraining='True'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-		            GROUP BY dbpersons.first_name, dbpersons.last_name";
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining
+                    FROM dbPersons
+                    WHERE dbPersons.status='$stats' 
+                    AND dbPersons.type='$type1' 
+                    AND dbPersons.completedTraining='True'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+		            GROUP BY dbPersons.first_name, dbPersons.last_name";
                 }
                 else
                 {
-                    $query = "SELECT dbpersons.id, dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining
-                    FROM dbpersons 
-                    WHERE dbpersons.type='$type1' 
-                    AND dbpersons.completedTraining='True'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.last_name";
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining
+                    FROM dbPersons 
+                    WHERE dbPersons.type='$type1' 
+                    AND dbPersons.completedTraining='True'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.last_name";
                 }
             }
             // View volunteers who have completed training with only date range
@@ -703,26 +709,26 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.status='$stats'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    ORDER BY dbpersons.last_name";                    
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.status='$stats'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    ORDER BY dbPersons.last_name";                    
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    ORDER BY dbpersons.last_name";       
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    ORDER BY dbPersons.last_name";       
                 }
             }
             // View volunteers who have completed training with only name range
@@ -744,26 +750,26 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.status='$stats'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";                    
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.status='$stats'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";                    
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";       
                 }
             }
             // View volunteers who have completed training with date range & name range
@@ -784,28 +790,28 @@ function getBetweenDates($startDate, $endDate)
                 // If status is NOT All
                 if($stats != "All") 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.status='$stats'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";                    
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.status='$stats'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";                    
                 } 
                 else 
                 {
-                    $query = "SELECT dbpersons.first_name, dbpersons.last_name, dbpersons.email, 
-                    dbpersons.completedTraining, dbpersons.dateCompletedTraining 
-                    FROM dbpersons 
-                    WHERE dbpersons.completedTraining='True' 
-                    AND LOWER(LEFT(dbpersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
-                    AND (dbpersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
-                    AND dbpersons.type='$type1'
-                    AND dbpersons.dateCompletedTraining <= '$today'
-                    GROUP BY dbpersons.dateCompletedTraining, dbpersons.last_name";       
+                    $query = "SELECT dbPersons.first_name, dbPersons.last_name, dbPersons.email, 
+                    dbPersons.completedTraining, dbPersons.dateCompletedTraining 
+                    FROM dbPersons 
+                    WHERE dbPersons.completedTraining='True' 
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    AND (dbPersons.dateCompletedTraining BETWEEN '$dateFrom' AND '$dateTo') 
+                    AND dbPersons.type='$type1'
+                    AND dbPersons.dateCompletedTraining <= '$today'
+                    GROUP BY dbPersons.dateCompletedTraining, dbPersons.last_name";       
                 }
             }
             $result = mysqli_query($con,$query);

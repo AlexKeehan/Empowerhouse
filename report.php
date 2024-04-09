@@ -97,30 +97,30 @@
                         require_once('include/output.php');
                         if (count($persons) > 0) {
                             echo '
-                            <div class="table-wrapper">
+                                <div class="table-wrapper">
                                 <table class="general">
                                     <thead>
                                         <tr>
                                             <th>First</th>
                                             <th>Last</th>
-					    <th>Email</th>
-					    <th></th>
+					                    <th>Email</th>
+					                    <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="standout">';
                             foreach ($persons as $person) {
                                 echo '
-                                     <tr>
-                                         <td>' . $person->get_first_name() . '</td>
-                                         <td>' . $person->get_last_name() . '</td>
- 					 <td><a href="mailto:' . $person->get_id() . '">' . $person->get_id() . '</a></td>
-				     <td><a href="reportsPage.php?report_type='. $report .'&date_from='. $dFrom .'&date_to='. $dTo .'&lname_start='. $lastFrom .'&lname_end='. $lastTo .'&name='. $name .'&indivID='. $person->get_id().' &role='. $person->get_type()[0] .' &status= '.$person->get_status().' ">Run Report</a></td>
-				     </tr>';
+                                    <tr>
+                                    <td>' . $person->get_first_name() . '</td>
+                                    <td>' . $person->get_last_name() . '</td>
+ 					                <td><a href="mailto:' . $person->get_id() . '">' . $person->get_id() . '</a></td>
+				                    <td><a href="reportsPage.php?report_type='. $report .'&date_from='. $dFrom .'&date_to='. $dTo .'&lname_start='. $lastFrom .'&lname_end='. $lastTo .'&name='. $name .'&indivID='. $person->get_id().' &role='. $person->get_type()[0] .' &status= '.$person->get_status().' ">Run Report</a></td>
+				                    </tr>';
                             }
                             echo '
-                                    </tbody>
+                                </tbody>
                                 </table>
-                            </div>';
+                                </div>';
                         } else {
                             echo '<div class="error-toast">Your search returned no results.</div>';
                         }
@@ -149,6 +149,7 @@
                 <option value = "indiv_vol_hours">Individual Volunteer Hours</option>
                 <option value = "top_perform">Top Performers</option>
                 <option value = "email_volunteer_list">Volunteer's Email Adresses</option>
+                <option value = "complete_training">Volunteers Who Completed Training</option>
             </select>
 	</div>
 	<div>
