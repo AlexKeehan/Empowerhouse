@@ -26,6 +26,12 @@
     <head>
         <?php require_once('universal.inc') ?>
         <title>Empower House VMS | Verify</title>
+        <style>
+            form {
+                margin-left: 1in; 
+                margin-right: 1in;
+            }
+    </style>
     </head>
     <body>
         <?php require_once('header.php') ?>
@@ -53,8 +59,7 @@
 
                     $conn->close();
                 ?>
-            </select><br>
-
+            </select><br><br>
             <input type="submit" name="Submit" value="Submit">
         </form>
     </body>

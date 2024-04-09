@@ -61,6 +61,11 @@ if (isset($_POST['coursename'])) {
         /* Add some space between buttons */
         .button-spacing {
             margin-bottom: 10px;
+
+        }
+        form {
+            margin-left: 1in; 
+            margin-right: 1in;
         }
     </style>
 </head>
@@ -68,14 +73,14 @@ if (isset($_POST['coursename'])) {
     <?php require_once('header.php') ?>
 
     <form method="post" action="takeAttendance.php">
-        <h3>Attendees</h3>
+        <h3>Attendees</h3><br>
         <!-- Checkbox for each attendee -->
         <?php
             foreach ($attendees as $attendee) {
-                echo "<input type='checkbox' name='attendee[]' value='$attendee'>$attendee<br>";
+                echo "<input type='checkbox' name='attendee[]' value='$attendee'> $attendee<br>";
             }
     
-        ?>
+        ?> <br>
         <!-- Submit button -->
         <input class="button-spacing" type="submit" value="Submit">
     </form>
