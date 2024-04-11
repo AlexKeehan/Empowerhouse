@@ -129,6 +129,7 @@ $(function() {
 	  		<option value="all-volunteer-hours">Total Volunteer Hours</option>
 	  		<option value="indiv-volunteer-hours">Individual Volunteers</option>
 	  		<option value="top-hours-volunteered">Top Performers</option>
+			<option value="missing-paperwork">Missing Paperwork</option>
 			</select>
 		</td>
 		<td class = "search-description" valign="top">&nbsp;&nbsp; Date Range: 
