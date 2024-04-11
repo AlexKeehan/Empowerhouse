@@ -72,7 +72,7 @@ if (isset($_POST['coursename'])) {
 <body>
     <?php require_once('header.php') ?>
 
-    <form method="post" action="takeAttendance.php">
+    <form method="post">
         <h3>Attendees</h3><br>
         <!-- Checkbox for each attendee -->
         <?php
@@ -90,3 +90,26 @@ if (isset($_POST['coursename'])) {
     </form>
 </body>
 </html>
+
+
+<?php
+ 
+ $con = connect();
+ if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+    }
+include_once('database/dbinfo.php');
+    if(isset($_POST['attendee'])) {
+        $ispresent = $_POST['attendee'];
+    foreach($attendees as $atttendee){
+        $present = in_array($attendee, $ispresent) ? "1" : "0";
+        mysqli_query($con,'INSERT INTO dbattendance (person_id, course_id, attendance) VALUES("' .
+        $attendee . '","' .
+        $courseID . '","' .
+        $present .'");');	
+    }						
+        mysqli_close($con);
+        return true;
+    }
+
+?>
