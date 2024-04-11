@@ -97,30 +97,30 @@
                         require_once('include/output.php');
                         if (count($persons) > 0) {
                             echo '
-                            <div class="table-wrapper">
+                                <div class="table-wrapper">
                                 <table class="general">
                                     <thead>
                                         <tr>
                                             <th>First</th>
                                             <th>Last</th>
-					    <th>Email</th>
-					    <th></th>
+					                    <th>Email</th>
+					                    <th></th>
                                         </tr>
                                     </thead>
                                     <tbody class="standout">';
                             foreach ($persons as $person) {
                                 echo '
-                                     <tr>
-                                         <td>' . $person->get_first_name() . '</td>
-                                         <td>' . $person->get_last_name() . '</td>
- 					 <td><a href="mailto:' . $person->get_id() . '">' . $person->get_id() . '</a></td>
-				     <td><a href="reportsPage.php?report_type='. $report .'&date_from='. $dFrom .'&date_to='. $dTo .'&lname_start='. $lastFrom .'&lname_end='. $lastTo .'&name='. $name .'&indivID='. $person->get_id().' &role='. $person->get_type()[0] .' &status= '.$person->get_status().' ">Run Report</a></td>
-				     </tr>';
+                                    <tr>
+                                    <td>' . $person->get_first_name() . '</td>
+                                    <td>' . $person->get_last_name() . '</td>
+ 					                <td><a href="mailto:' . $person->get_id() . '">' . $person->get_id() . '</a></td>
+				                    <td><a href="reportsPage.php?report_type='. $report .'&date_from='. $dFrom .'&date_to='. $dTo .'&lname_start='. $lastFrom .'&lname_end='. $lastTo .'&name='. $name .'&indivID='. $person->get_id().' &role='. $person->get_type()[0] .' &status= '.$person->get_status().' ">Run Report</a></td>
+				                    </tr>';
                             }
                             echo '
-                                    </tbody>
+                                </tbody>
                                 </table>
-                            </div>';
+                                </div>';
                         } else {
                             echo '<div class="error-toast">Your search returned no results.</div>';
                         }
@@ -136,27 +136,28 @@
             //     echo $letter . " ";
             // }
 	    ?>
-        
-	<h2>Generate Report</h2>
+	<h2>Generate Volunteer Report</h2>
 	<br>
 
         <form class="report_select" method="post">
 	<div>
 
-            <label for="report_type">Select Report Type</label>
+            <label for="report_type">Select Report Type</label><span><i><font size="3"> *For Emails Just Select Status then Hit Submit</font></i></span>
             <select name="report_type" id="report_type">
                 <option value = "general_volunteer_report">General Volunteer Report</option>
                 <option value = "total_vol_hours">Total Volunteer Hours</option>
                 <option value = "indiv_vol_hours">Individual Volunteer Hours</option>
                 <option value = "top_perform">Top Performers</option>
+                <option value = "email_volunteer_list">Volunteer's Email Adresses</option>
+                <option value = "complete_training">Volunteers Who Completed Training</option>
             </select>
 	</div>
-	<br>
 	<div>
-	 <label>Status </label>
+	 <label>Status </label> <span><i><font size="3">
+     <br>
 	<?php
             // Set filter on status of volunteers to return in the report result
-	    echo '&nbsp&nbsp&nbsp&nbsp&nbsp';
+        echo "<br>";
             echo '<input type="radio" name="statusFilter" id = "allStatus" value="All" checked>&nbspAll&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
             echo '<input type="radio" name="statusFilter" id = "isActive" value="Active" >&nbspActive&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
             echo '<input type="radio" name="statusFilter" id = "isInactive" value="Inactive">&nbspInactive&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
@@ -188,7 +189,6 @@
 	    <label for="name">Name</label> <span><i><font size="3">*Individual Hours Report Only</font></i></span>
             <input type="text" id="name" name="name" value="" placeholder="Enter a volunteer's first and/or last name">
 	</div>
-
             <input type="submit" name="submit_click">
 	
         </form>

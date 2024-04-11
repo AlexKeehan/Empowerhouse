@@ -31,7 +31,7 @@ session_cache_expire(30);
 include_once('domain/Person.php');
 include_once('database/dbPersons.php');
 
-if ($_POST['_form_submit'] != 1 && $_POST['_form_submit'] != 2 && $_POST['_form_submit'] != 3)
+if ($_POST['_form_submit'] != 1 && $_POST['_form_submit'] != 2 && $_POST['_form_submit'] != 3 && $_POST['_form_submit'] != 4)
 include('dataSearch.inc.php'); // the form has not been submitted, so show it
 
 process_form();
@@ -146,9 +146,8 @@ function process_form() {
 		date_default_timezone_set('America/New_York');
         $current_time = array("Export date: " . date("F j, Y, g:i a"));
 		export_data($current_time, array_merge(array("id"),$_POST['export_attr']), $export_data);
-	}
 }
-
+}
 function export_data($current_time, $search_attr, $export_data) {
 	$filename = "dataexport.csv";
 	$handle = fopen($filename, "w");

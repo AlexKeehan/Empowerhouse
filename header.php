@@ -66,6 +66,8 @@
         $permission_array['vieweval.php'] = 1;
         $permission_array['selecttrainingperiod.php'] = 1;
         $permission_array['addtrainingperiod.php'] = 1;
+        $permission_array['coursesignup.php'] = 1;
+
         //pages only managers can view
         $permission_array['verify.php'] = 2;
         $permission_array['personsearch.php'] = 2;
@@ -90,6 +92,7 @@
         $permission_array['resetpassword.php'] = 2;
         $permission_array['viewval.php'] = 2;
         $permission_array['selecttrainingperiod.php'] = 2;
+        $permission_array['vieweval.php'] = 2;
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strpos($_SERVER['PHP_SELF'],"/")+1));
