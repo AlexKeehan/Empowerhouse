@@ -15,6 +15,22 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbPersons.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\index.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\header.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:header.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\login.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:login.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\register.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:register.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
@@ -51,10 +67,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbCourses.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\output.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
@@ -77,14 +89,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:documentRecords.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\header.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:header.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\index.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\CourseEval.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -134,7 +138,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -146,33 +150,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "login.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\login.php",
+              "RelativeDocumentMoniker": "login.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\login.php",
+              "RelativeToolTip": "login.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-09T21:49:15.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "reportsPage.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\reportsPage.php",
               "RelativeDocumentMoniker": "reportsPage.php",
               "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\reportsPage.php",
               "RelativeToolTip": "reportsPage.php",
-              "ViewState": "AQIAAKoBAAAAAAAAAAAAAHIBAAAbAAAA",
+              "ViewState": "AQIAAHICAAAAAAAAAAAAAIMCAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-03-31T13:06:57.659Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "report.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
-              "RelativeDocumentMoniker": "report.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
-              "RelativeToolTip": "report.php",
-              "ViewState": "AQIAADoAAAAAAAAAAAAiwHgAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:06:55.58Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "dbMessages.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbMessages.php",
               "RelativeDocumentMoniker": "database\\dbMessages.php",
@@ -180,8 +184,7 @@
               "RelativeToolTip": "database\\dbMessages.php",
               "ViewState": "AQIAACQAAAAAAAAAAAAAADsAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:04:29.855Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T13:04:29.855Z"
             },
             {
               "$type": "Document",
@@ -191,14 +194,14 @@
               "RelativeDocumentMoniker": "database\\dbPersons.php",
               "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbPersons.php",
               "RelativeToolTip": "database\\dbPersons.php",
-              "ViewState": "AQIAACoDAAAAAAAAAAAiwEoDAAAZAAAA",
+              "ViewState": "AQIAALsCAAAAAAAAAAAiwPACAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-03-31T13:02:01.244Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "inbox.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\inbox.php",
               "RelativeDocumentMoniker": "inbox.php",
@@ -206,12 +209,11 @@
               "RelativeToolTip": "inbox.php",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAACAAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:00:14.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-31T13:00:14.076Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "dbTrainingPeriods.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbTrainingPeriods.php",
               "RelativeDocumentMoniker": "database\\dbTrainingPeriods.php",
@@ -219,12 +221,11 @@
               "RelativeToolTip": "database\\dbTrainingPeriods.php",
               "ViewState": "AQIAAB4AAAAAAAAAAAAAADcAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-25T23:02:47.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-25T23:02:47.297Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "addTrainingPeriod.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addTrainingPeriod.php",
               "RelativeDocumentMoniker": "addTrainingPeriod.php",
@@ -236,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "selectTrainingPeriod.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\selectTrainingPeriod.php",
               "RelativeDocumentMoniker": "selectTrainingPeriod.php",
@@ -248,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "documents.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\documents.php",
               "RelativeDocumentMoniker": "documents.php",
@@ -260,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "event.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\event.php",
               "RelativeDocumentMoniker": "event.php",
@@ -272,19 +273,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 4,
               "Title": "header.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\header.php",
               "RelativeDocumentMoniker": "header.php",
               "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\header.php",
               "RelativeToolTip": "header.php",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAAAHIAAACtAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:08:24.962Z"
+              "WhenOpened": "2024-03-09T17:08:24.962Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "dbLog.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbLog.php",
               "RelativeDocumentMoniker": "database\\dbLog.php",
@@ -296,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "input-validation.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\input-validation.php",
               "RelativeDocumentMoniker": "include\\input-validation.php",
@@ -308,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "output.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php",
               "RelativeDocumentMoniker": "include\\output.php",
@@ -320,31 +322,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 6,
               "Title": "dbinfo.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php",
               "RelativeDocumentMoniker": "database\\dbinfo.php",
               "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php",
               "RelativeToolTip": "database\\dbinfo.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAA3AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-19T12:01:46.766Z"
+              "WhenOpened": "2024-03-19T12:01:46.766Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 3,
               "Title": "index.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\index.php",
               "RelativeDocumentMoniker": "index.php",
               "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\index.php",
               "RelativeToolTip": "index.php",
-              "ViewState": "AQIAACQAAAAAAAAAAAAiwEUAAAAiAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAiwG4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:05:16.297Z"
+              "WhenOpened": "2024-03-09T17:05:16.297Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "report.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
+              "RelativeDocumentMoniker": "report.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
+              "RelativeToolTip": "report.php",
+              "ViewState": "AQIAALEAAAAAAAAAAAAAAA8AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-31T13:06:55.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "addEvent.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addEvent.php",
               "RelativeDocumentMoniker": "addEvent.php",
@@ -352,12 +369,11 @@
               "RelativeToolTip": "addEvent.php",
               "ViewState": "AQIAACEAAAAAAAAAAAAAAEYAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:06:53.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-09T17:06:53.948Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "register.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\register.php",
               "RelativeDocumentMoniker": "register.php",
@@ -365,12 +381,11 @@
               "RelativeToolTip": "register.php",
               "ViewState": "AQIAAPkAAAAAAAAAAAAiwBQBAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T15:22:45.466Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-20T15:22:45.466Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "addCourse.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addCourse.php",
               "RelativeDocumentMoniker": "addCourse.php",
@@ -382,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "dbCourses.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbCourses.php",
               "RelativeDocumentMoniker": "database\\dbCourses.php",
@@ -394,7 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "eventSearch.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\eventSearch.php",
               "RelativeDocumentMoniker": "eventSearch.php",
@@ -406,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "dbEvaluations.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvaluations.php",
               "RelativeDocumentMoniker": "database\\dbEvaluations.php",
@@ -418,7 +433,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "documentRecords.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php",
               "RelativeDocumentMoniker": "documentRecords.php",
@@ -430,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "calender.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\calender.php",
               "RelativeDocumentMoniker": "calender.php",
@@ -442,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "calendar.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\calendar.php",
               "RelativeDocumentMoniker": "calendar.php",
@@ -454,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "CourseEval.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\CourseEval.php",
               "RelativeDocumentMoniker": "CourseEval.php",
@@ -466,7 +481,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "viewNotification.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\viewNotification.php",
               "RelativeDocumentMoniker": "viewNotification.php",
@@ -478,7 +493,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "event.js",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\js\\event.js",
               "RelativeDocumentMoniker": "js\\event.js",
@@ -490,7 +505,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "event.css",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\css\\event.css",
               "RelativeDocumentMoniker": "css\\event.css",
@@ -502,7 +517,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "dbEvents.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvents.php",
               "RelativeDocumentMoniker": "database\\dbEvents.php",
@@ -514,7 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "editEvent.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\editEvent.php",
               "RelativeDocumentMoniker": "editEvent.php",
