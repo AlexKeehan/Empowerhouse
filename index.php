@@ -65,9 +65,9 @@
                         <img src="images/new-event.svg">
                         <span>Create Event</span>
                     </div>
-                    <div class="dashboard-item" data-link="addCourse.php">
+                    <div class="dashboard-item" data-link="manageCourses.php">
                         <img src="images/new-event.svg">
-                        <span>Add Course</span>
+                        <span>Manage Courses</span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="eventSearch.php">
