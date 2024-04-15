@@ -1462,8 +1462,8 @@ function getBetweenDates($startDate, $endDate)
                 <td bgcolor='white'><label>". get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo) ."</label></td>
                 </tr>";
 	    }
-        //Display email list only - PSEUDOCODE
-         if($type == "volunteer_emails"){
+        //Display email list only 
+         if($type == "email_volunteer_list"){
             $con=connect();
             echo"
             <table>
@@ -1475,12 +1475,11 @@ function getBetweenDates($startDate, $endDate)
             $type1 = "Status";
             $type1 = "volunteer";
             if($stats!="All"){
-                $query = "SELECT * FROM dbPersons WHERE type='$type1' AND status='$stats'
-			ORDER BY dbPersons.last_name, dbPersons.first_name";
+                $query = "SELECT * FROM dbPersons WHERE type='$type1' AND status='$stats' ORDER BY dbPersons.last_name, dbPersons.first_name";
             }else{
-                $query = "SELECT * FROM dbPersons WHERE type='$type1'
-			ORDER BY dbPersons.last_name, dbPersons.first_name";
+                $query = "SELECT * FROM dbPersons WHERE type='$type1'ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
+
             $result = mysqli_query($con,$query);
             $totHours = array();
             while($row = mysqli_fetch_assoc($result)){
@@ -1491,10 +1490,6 @@ function getBetweenDates($startDate, $endDate)
                 </tr>"; 
                 $hours = get_hours_volunteered_by($row['id']);   
                 $totHours[] = $hours;
-            }
-            $sum = 0;
-            foreach($totHours as $hrs){
-                $sum += $hrs;
             }
             echo"
                 <tr>
@@ -1514,14 +1509,6 @@ function getBetweenDates($startDate, $endDate)
             query = select email from dbPersons where status = '.var.'
 
             //NOTE: This code to create a table row for each email.
-            $result = mysqli_query($con,$query);
-            while($row = mysqli_fetch_assoc($result)) {
-                echo
-                    "<tr>
-            		<td>" . $row['email'] . "</td>
-			        </tr>";
-
-	        }
         */
 
 
