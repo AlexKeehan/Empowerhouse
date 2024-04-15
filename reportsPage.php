@@ -1368,8 +1368,48 @@ function getBetweenDates($startDate, $endDate)
             }
             else
             {
-                $query = "SELECT * FROM dbPersons WHERE type='volunteer'
-                ORDER BY dbPersons.last_name, dbPersons.first_name";
+
+                foreach ($nameRange as $a)
+                {
+                    if($row['last_name'][0] == $a)
+                    {
+                        echo"<tr>
+            		<td>" . $row['first_name'] . "</td>
+            		<td>" . $row['last_name'] . "</td>
+            		<td>" . $row['name'] . "</td>
+            		<td>" . $row['location'] . "</td>
+            		<td>" . $row['date'] . "</td>
+            		<td>" . get_hours_volunteered_by($row['id']) . "</td>
+			        </tr>";
+	    	        }  
+		        }
+	        }
+            echo"
+                <tr>
+                <td style='border: none;' bgcolor='white'></td>
+                <td style='border: none;' bgcolor='white'></td>
+                <td style='border: none;' bgcolor='white'></td>
+                <td style='border: none;' bgcolor='white'></td>
+                <td bgcolor='white'><label>Total Hours:</label></td>
+                <td bgcolor='white'><label>". get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo) ."</label></td>
+                </tr>";
+	    }
+        //Display email list only 
+         if($type == "email_volunteer_list"){
+            $con=connect();
+            echo"
+            <table>
+            <tr>
+                <th>Volunteer Emails</th>
+            </tr>
+            <tbody>";
+
+            $type1 = "Status";
+            $type1 = "volunteer";
+            if($stats!="All"){
+                $query = "SELECT * FROM dbPersons WHERE type='$type1' AND status='$stats' ORDER BY dbPersons.last_name, dbPersons.first_name";
+            }else{
+                $query = "SELECT * FROM dbPersons WHERE type='$type1'ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
 
             $result = mysqli_query($con,$query);
@@ -1382,10 +1422,6 @@ function getBetweenDates($startDate, $endDate)
                 </tr>"; 
                 $hours = get_hours_volunteered_by($row['id']);   
                 $totHours[] = $hours;
-            }
-            $sum = 0;
-            foreach($totHours as $hrs){
-                $sum += $hrs;
             }
             echo"
                 <tr>
@@ -1402,14 +1438,6 @@ function getBetweenDates($startDate, $endDate)
             query = select email from dbPersons where status = '.var.'
 
             //NOTE: This code to create a table row for each email.
-            $result = mysqli_query($con,$query);
-            while($row = mysqli_fetch_assoc($result)) {
-                echo
-                    "<tr>
-            		<td>" . $row['email'] . "</td>
-			        </tr>";
-
-	        }
         */
     ?> 
     </tbody>
