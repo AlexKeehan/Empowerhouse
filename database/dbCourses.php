@@ -257,15 +257,16 @@ function create_course($event) {
     $abbrevName = $event[1];
     $staffId= $event[2];
     $eventId = $event[3];
-    $date = $event[4];
-    $startTime = $event[5];
-    $endTime = $event[6];
-    $description = $event[7];
-    $location = $event[8];
-    $capacity = $event[9];
+    $periodId = $event[4];
+    $date = $event[5];
+    $startTime = $event[6];
+    $endTime = $event[7];
+    $description = $event[8];
+    $location = $event[9];
+    $capacity = $event[10];
     $query = "
-        insert into dbCourses (name, abbrevName, staffId, eventId, date, startTime, endTime, description, location, capacity)
-        values ('$name', '$abbrevName', '$staffId', '$eventId', '$date', '$startTime', '$endTime', '$description', '$location', '$capacity')
+        insert into dbCourses (name, abbrevName, staffId, eventId, periodId, date, startTime, endTime, description, location, capacity)
+        values ('$name', '$abbrevName', '$staffId', '$eventId', '$periodId', '$date', '$startTime', '$endTime', '$description', '$location', '$capacity')
     ";
     $result = mysqli_query($connection, $query);
     if (!$result) {
@@ -277,23 +278,53 @@ function create_course($event) {
     return $id;
 }
 
-function update_course($coursename, $eventID, $eventDetails) {
+//changed this function since previous did not work
+function update_course($courseId, $eventDetails) {
     $connection = connect();
-    $staffId = $eventDetails["staffId"];
-    $date = $eventDetails["date"];
-    $startTime = $eventDetails["start-time"];
-    $endTime = $eventDetails["end-time"];
-    $description = $eventDetails["description"];
-    $location = $eventDetails["location"];
-    $capacity = $eventDetails["capacity"];
-    $query = "
-        update dbCourses set staffId='$staffId', date='$date', startTime='$startTime', endTime='$endTime', description='$description', location='$location', capacity='$capacity'
-        where name = '$coursename' and eventId = '$eventID' 
-    ";
-    $result = mysqli_query($connection, $query);
-    mysqli_commit($connection);
+        $query = "UPDATE dbCourses 
+              SET name=?, 
+                  abbrevName=?, 
+                  staffId=?, 
+                  eventId=?, 
+                  periodId=?, 
+                  date=?, 
+                  startTime=?, 
+                  endTime=?, 
+                  description=?, 
+                  location=?, 
+                  capacity=?
+              WHERE id=?";
+        $statement = mysqli_prepare($connection, $query);
+    if (!$statement) {
+        echo "Error: " . mysqli_error($connection);
+        return false;
+    }
+        mysqli_stmt_bind_param($statement, "sssssssssssi", 
+        $eventDetails[1],     // name
+        $eventDetails[2],     // abbrevName
+        $eventDetails[3],     // staffId
+        $eventDetails[4],     // eventId
+        $eventDetails[5],     // periodId
+        $eventDetails[6],     // date
+        $eventDetails[7],     // startTime
+        $eventDetails[8],     // endTime
+        $eventDetails[9],     // description
+        $eventDetails[10],    // location
+        $eventDetails[11],    // capacity
+        $courseId             // id
+    );
+        $result = mysqli_stmt_execute($statement);
+    
+    if (!$result) {
+        echo "Error: " . mysqli_error($connection);
+        mysqli_stmt_close($statement);
+        mysqli_close($connection);
+        return false;
+    }
+        mysqli_stmt_close($statement);
     mysqli_close($connection);
-    return $result;
+    
+    return true;
 }
 
 function find_course($nameLike) {
@@ -353,4 +384,34 @@ function find_first_course_month($eventId) {
     $date=substr($course['date'], 0,7);
     return $date;
 }
+
+// function to fetch all courses
+function fetch_all_courses() {
+    $connection = connect();
+    $query = "SELECT * FROM dbCourses";
+    $result = mysqli_query($connection, $query);
+    if (!$result) {
+        mysqli_close($connection);
+        return null;
+    }
+    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_close($connection);
+    return $courses;
+}
+
+//remove an event from dbCourses table.  If already there, return false
+function remove_course_from_courses($course_name) {
+    $con = connect();
+    $query = 'SELECT * FROM dbCourses WHERE name = "' . $course_name . '"';
+    $result = mysqli_query($con, $query);
+    if ($result == null || mysqli_num_rows($result) == 0) {
+        mysqli_close($con);
+        return false;
+    }
+    $query = 'DELETE FROM dbCourses WHERE name = "' . $course_name . '"';
+    $result = mysqli_query($con, $query);
+    mysqli_close($con);
+    return true;
+}
+
 ?>

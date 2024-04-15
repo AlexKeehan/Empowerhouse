@@ -107,10 +107,10 @@
             </h1>
             <!-- <input type="date" id="month-jumper" value="<?php echo date('Y-m-d', $month); ?>" min="2023-01-01"> -->
             <?php if (isset($_GET['deleteSuccess'])) : ?>
-                <div class="happy-toast">Event deleted successfully.</div>
+                <div class="happy-toast">Event(s) removed successfully.</div>
             <?php endif ?>
             <?php if (isset($_GET['createSuccess'])): ?>
-                <div class="happy-toast">Event created successfully!</div>
+                <div class="happy-toast">Event(s) created successfully!</div>
             <?php endif ?>
             <?php if (isset($_GET['editSuccess'])): ?>
                 <div class="happy-toast">Event details updated successfully!</div>

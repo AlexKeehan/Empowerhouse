@@ -44,8 +44,8 @@
                 } else if (in_array('volunteer', $types)) {
                     $_SESSION['access_level'] = 1;
                 } else {
-		    $_SESSION['access_level'] = 0;
-		}
+		            $_SESSION['access_level'] = 0;
+		        }
                 $_SESSION['f_name'] = $user->get_first_name();
                 $_SESSION['l_name'] = $user->get_last_name();
                 $_SESSION['venue'] = $user->get_venue();

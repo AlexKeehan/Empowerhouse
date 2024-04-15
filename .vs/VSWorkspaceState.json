@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\css",
-    "\\database",
-    "\\domain",
-    "\\js"
+    ""
   ],
-  "SelectedNode": "\\domain\\Person.php",
+  "SelectedNode": "\\.DS_Store",
   "PreviewInSolutionExplorer": false
 }

@@ -65,9 +65,9 @@
                         <img src="images/new-event.svg">
                         <span>Create Event</span>
                     </div>
-                    <div class="dashboard-item" data-link="addCourse.php">
+                    <div class="dashboard-item" data-link="manageCourses.php">
                         <img src="images/new-event.svg">
-                        <span>Add Course</span>
+                        <span>Manage Courses</span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="eventSearch.php">
@@ -107,6 +107,14 @@
                 <div class="dashboard-item" data-link="documents.php">
                     <img src="images/document.svg">
                     <span>View Documents</span>
+                </div>
+                <div class="dashboard-item" data-link="viewEval.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>View Evaluations</span>
+                </div>
+                <div class="dashboard-item" data-link="courseSignUp.php">
+                    <img src="images/create-report.svg">
+                    <span>Volunteer Course Sign Up</span>
                 </div>
                 <?php if ($notRoot and $admin) : ?>
                     <div class="dashboard-item" data-link="userSearch.php">
