@@ -89,3 +89,24 @@ function get_training_period_by_id($id) {
     mysqli_close($con);
     return $result_row;
 }
+
+/* Retrieve all training periods from the dbtrainingperiods table
+   Returns an array of all training periods or null if no periods are found
+*/
+function get_all_training_periods() {
+    $connection = connect();
+    $query = "SELECT * FROM dbtrainingperiods";
+    try {
+        $results = mysqli_query($connection, $query);
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
+        return null;
+    }
+    $periods = [];
+    foreach ($results as $row) {
+        $periods[] = $row;
+    }
+    mysqli_close($connection);
+    return $periods;
+}
+?>
