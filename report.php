@@ -156,6 +156,7 @@
             <option value = "top_perform">Top Performers</option>
             <option value = "email_volunteer_list">Volunteer's Email Adresses</option>
             <option value = "complete_training">Volunteers Who Completed Training</option>
+            <option value = "missing_paperwork">Volunteer Missing Paperwork</option>
         </select>
 	</div>
 	<div>

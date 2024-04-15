@@ -46,7 +46,11 @@ function show_report($venue) {
 		}
 		else if (in_array('information', $_POST['report-types'])) {
 			report_all_volunteers_info($name_from, $name_to, $venue, $export);	
-	}
+		}
+		// logic that will generate the missing paperwork report when a user selects it
+		else if (in_array('missing-paperwork', $_POST['report-types'])) {
+			report_missing_paperwork($venue);
+        }
 
 	}
 }
@@ -111,6 +115,42 @@ function report_all_volunteers_info($name_from, $name_to, $venue, $export) {
 	$report = getall_dbPersons($name_from, $name_to, $venue);
 	display_volunteers_full($report, $export, $venue);
 }
+
+//start chnages/updates
+
+// retrieves the volunteers with missing paperwork
+function report_missing_paperwork($venue) {
+	$missing_paperwork_volunteers = get_missing_paperwork_volunteers($venue);
+
+	//checking to see if there are any volunteers with missing paperwork
+	if ($missing_paperwork_volunteers) {
+		//function call to pretty_venue and would display a bold heading for the missing paperwork report
+        echo "<br><b>".pretty_venue($venue)." Missing Paperwork Report</b><br>";
+
+		//then would make the headers for the report table
+		echo "<table>";
+        echo "<tr><th>Name</th><th>Contact</th><th>Missing Documents</th></tr>";
+
+		// loop to go through the volunteers and display their information
+		foreach ($missing_paperwork_volunteers as $volunteer) {
+            echo "<tr>";
+            echo "<td>".$volunteer['first_name']." ".$volunteer['last_name']."</td>";
+            echo "<td>".$volunteer['email']."</td>";
+            echo "<td>".$volunteer['missing_documents']."</td>";
+            echo "</tr>";
+        }
+
+		echo "</table>";
+    } else {
+		// if no volunteers
+		echo "No volunteers with missing paperwork found.";
+    }
+
+}
+
+//add function get missing paperwork here with database query 
+
+//end update
 
 function pretty_date($date){
 	//eg. date is 78-03-30, this function can convert it into "March 30, 1978"
