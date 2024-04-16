@@ -108,7 +108,7 @@
                     <img src="images/document.svg">
                     <span>View Documents</span>
                 </div>
-                <div class="dashboard-item" data-link="ViewEval.php">
+                <div class="dashboard-item" data-link="viewEval.php">
                     <img src="images/paper-file-svgrepo-com.svg">
                     <span>View Evaluations</span>
                 </div>
@@ -122,10 +122,6 @@
                         <span>View Users</span>
                     </div>
                 <?php endif ?>
-                <div class="dashboard-item" data-link="ViewEval.php">
-                    <img src="images/paper-file-svgrepo-com.svg">
-                    <span>View Evaluations</span>
-                </div>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
