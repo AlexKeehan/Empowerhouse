@@ -234,12 +234,11 @@ function delete_event($id) {
 
 function fetch_events_in_date_range_as_array($dateFrom, $dateTo) {
     $connection = connect();
-    $query = "
-        select * from dbEvents
-        where eventDate>='$dateFrom' and eventDate<='$dateTo'
-    ";
+    $query = "SELECT * FROM dbEvents
+    WHERE eventDate BETWEEN '$dateFrom' AND '$dateTo'";
     $result = mysqli_query($connection, $query);
-    if (!$result) {
+    if (!$result) 
+    {
         return null;
     }
     $all = mysqli_fetch_all($result, MYSQLI_ASSOC);
