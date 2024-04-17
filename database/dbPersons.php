@@ -746,7 +746,9 @@ function find_user_names($name) {
     }
     date_default_timezone_set("America/New_York");
 
-    function get_events_attended_by($personID) {
+    //wip
+    
+    function get_events_attended_by($personID) { //dbEventVolunteers doesn't have date, will need to join or do something
         $today = date("Y-m-d");
         $query = "select * from dbEventVolunteers, dbEvents
                   where userID='$personID'
@@ -822,16 +824,31 @@ function find_user_names($name) {
         }
     }
 
-    function get_hours_volunteered_by($personID) {
-        $events = get_events_attended_by($personID);
-        $hours = 0;
-        foreach ($events as $event) {
-            $duration = $event['duration'];
-            if ($duration > 0) {
-                $hours += $duration;
+    //replacing it with a new one
+    //thank god it doesn't have any arguments besides userid
+    //wip
+    //
+    function new_get_hours_volunteered_by($personID){
+        $con = connect(); //get connection to db
+        $query = "SELECT SUM(hours) AS foo /*get the sum of the hours columns */
+        FROM dbeventvolunteers  /* from dbeventvolunteers table (eventid, userid, hours) */
+        WHERE userID = '$personID';"; //where userid matches the given
+	    $result = mysqli_query($con,$query); //result will be a 1x1 table
+        $tothours = mysqli_fetch_array($result); //converts the result table to an array
+        return $tothours[0]; //since the array only has 1 value (sum of hours of person), returning index [0] give this neatly
+    }
+    function get_hours_volunteered_by($personID) { //wip, oh god this doesn't even have the values THEY want
+        //oh great, because I did it more efficiently I don't even need this function at all, but it's still getting called. FANTASTIC
+        //gonna walk thru this thing
+        $events = get_events_attended_by($personID); //get array of events which the person volunteered at
+        $hours = 0; //set int hours = 0
+        foreach ($events as $event) { //loop over every event returned
+            $duration = $event['hours']; //this is how long the event lasted
+            if ($duration > 0) {  //if the event that the person volunteered at was longer than 0 hours
+                $hours += $duration; //add the duration
             }
         }
-        return $hours;
+        return $hours; //return the sum
     }
 
     function get_hours_volunteered_by_and_date($personID,$fromDate,$toDate) {
@@ -845,8 +862,23 @@ function find_user_names($name) {
         }
         return $hours;
     }
+
+    //I'm just gonna wing it and make a new one
+    /*
+    desired output: int that is the sum of total volunteer hours from a list of events
+    desired input: currently, lets wing it
+    */
+    function get_tot_vol_hours2(){
+        $con = connect(); //connect to db
+        $query = "SELECT SUM(hours) FROM dbeventvolunteers;"; //dbeventvolunteers has eventid, userid, hours
+        $result = mysqli_query($con,$query); //get just hours
+        $tothours = mysqli_fetch_array($result);
+        return $tothours['SUM(hours)'];
+        }
+
     //read here, total volunteer hours
     //dear god, I think I might want to redo this portion from scratch.
+    //apparently this is giving 3x the actual number, so it does need redoing, great.
     function get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo){
         $con = connect();
         $type1 = "volunteer";
@@ -952,14 +984,14 @@ function find_user_names($name) {
 	    if ($stats == 'Active' || $stats == 'Inactive') 
 		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
                 WHERE dbPersons.status='$stats'
 		GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";
 	    else
 		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.eventID
                 GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";
                 //$query = "SELECT * FROM dbPersons WHERE dbPersons.status='$stats'";
