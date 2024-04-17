@@ -845,7 +845,8 @@ function find_user_names($name) {
         }
         return $hours;
     }
-
+    //read here, total volunteer hours
+    //dear god, I think I might want to redo this portion from scratch.
     function get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo){
         $con = connect();
         $type1 = "volunteer";
@@ -876,6 +877,7 @@ function find_user_names($name) {
                 WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.status='$stats' GROUP BY dbPersons.first_name,dbPersons.last_name
                 ORDER BY Dur";            
 	    else
+                //dbEvents does not have endtime or startime
                 $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                 FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                 JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
