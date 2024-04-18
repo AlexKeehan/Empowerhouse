@@ -1450,6 +1450,9 @@ function getBetweenDates($startDate, $endDate)
 	<a href="index.php">
         <button class = "theB">Home Page</button>
     </a>
+    <a href="reportsExport.php">
+        <button class = "theB">Export Report</button>
+    </a>
     </div>
     </main>
     <footer>
