@@ -83,6 +83,8 @@
         $permission_array['reportspage.php'] = 2;
         $permission_array['resetpassword.php'] = 2;
         $permission_array['vieweval.php'] = 2;
+        $permission_array['takeattendance.php'] = 2;
+        $permission_array['takeattendance-2.php'] = 2;
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strpos($_SERVER['PHP_SELF'],"/")+1));
