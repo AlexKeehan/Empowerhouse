@@ -51,6 +51,7 @@ $notRoot = $person->get_id() != 'vmsroot';
             // Check if the form was submitted
             $coursename = "";
             $courseID;
+            //print_r($_POST);
             if (isset($_POST['coursename'])) {
                 $coursename = $_POST['coursename'];
             }
@@ -75,7 +76,7 @@ $notRoot = $person->get_id() != 'vmsroot';
                     $stmt2->bind_param("i", $courseID);
                     $stmt2->execute();
                     $result2 = $stmt2->get_result();
-            
+                    $_SESSION['courseID'] = $courseID;
                     // Generate checkboxes for unique attendees
                     while ($row = $result2->fetch_assoc()) {
                         $attendeeID = $row['id'];
@@ -94,39 +95,27 @@ $notRoot = $person->get_id() != 'vmsroot';
                 // Free result set
                 $stmt->close();
             }
-            echo "aaaa ";
+            //echo "aaaa ";
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+                //print_r($_POST);
                 // need courseID again 
-                echo "bbbb ";
-                echo $coursename;
-                $stmt = $conn->prepare("SELECT id FROM dbcourses WHERE name = ?");
-                $stmt->bind_param("s", $coursename);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                if ($result->num_rows > 0) {
-                    // Fetching the course ID
-                    $row = $result->fetch_assoc();
-                    $courseID = $row['id'];
-                    echo "Course ID: " . $courseID . "<br>"; // Print the course ID
-                } else {
-                    echo "No course found with the name: $coursename";
-                }
+                //echo "bbbb ";
                 if (isset($_POST['attendee'])) {
                     // Connect to the database
                     $conn = connect();
                     // Prepare SQL statement for inserting attendance
-                    echo "cccc ";
+                    //echo "cccc ";
                     $stmt = $conn->prepare("INSERT INTO dbattendance (person_id, course_id, date, attendance) VALUES (?, ?, CURDATE(), ?)");
         
                     // Bind parameters and execute the statement for each selected attendee
                     foreach ($_POST['attendee'] as $attendeeID) {
                         $attendance = 1; // Assume checked by default
                         // If attendee is not checked, set attendance to 0
-                        echo "dddd ";
+                        //echo "dddd ";
                         if (!in_array($attendeeID, $_POST['attendee'])) {
                             $attendance = 0;
                         }
-                        $stmt->bind_param("sis", $attendeeID, $courseID, $attendance);
+                        $stmt->bind_param("sis", $attendeeID, $_SESSION['courseID'], $attendance);
                         $stmt->execute();
                     }
         
