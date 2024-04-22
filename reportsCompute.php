@@ -148,8 +148,6 @@ function report_missing_paperwork($venue) {
 
 }
 
-//add function get missing paperwork here with database query 
-
 //end update
 
 function pretty_date($date){
