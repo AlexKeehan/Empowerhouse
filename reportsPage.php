@@ -1414,7 +1414,7 @@ function getBetweenDates($startDate, $endDate)
         */
 
         //start chnages for volunteer missing paperwork
-        
+
         //Diplay missing volunteer paperwork
         if ($type == "missing_paperwork") {
             $con = connect();
