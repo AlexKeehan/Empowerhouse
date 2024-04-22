@@ -143,6 +143,7 @@
 	            //echo('<a href="' . $path . 'viewSchedule.php?venue=bangor'."".'">Bangor</a>');
 		    echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'verify.php">Verify</a></li>');
 	            echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'selectTrainingPeriod.php">Add Training Period</a></li>');
+                echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'manageCourses.php">Manage Courses</a></li>');
 	            echo('<span class="nav-divider">|</span>');
 	            echo('<span class="navbar-brand">Volunteers</span>');
                 echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'personSearch.php">Search</a></li>
