@@ -44,6 +44,7 @@ $fallEndDate = "-10-31";
         $semester = $_POST["training-period"];
         $year = $_POST["yeardropdown"];
 
+        //Pass information to addCourse.php through SESSION
         $_SESSION['semester'] = $_POST['training-period'];
         $_SESSION['year'] = $_POST['yeardropdown'];
         //does not require error checking for adding to past years because the year dropdown is now dynamic
@@ -90,7 +91,7 @@ $fallEndDate = "-10-31";
             echo "Training Period is already present in database";
         } else {
             //after hitting submit, route to next php if training period insertion is successful
-            header('Location: addTrainingPeriod.php');
+            header('Location: addCourse.php');
         }
     }
 
@@ -106,7 +107,7 @@ $fallEndDate = "-10-31";
         <title>Empowerhouse VMS | Create Event</title>
     </head>
     <body>
-        <?php require_once('header.php')?> <!--check if this is actually used-->
+        <?php require_once('header.php') ?> <!--check if this is actually used-->
         <h1>Select Training Period</h1>
         <main>
             <h2>Available Training Periods</h2>
