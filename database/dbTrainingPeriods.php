@@ -11,25 +11,23 @@ include_once('dbinfo.php');
 //include_once(dirname(__FILE__).'/../domain/TrainingPeriod.php'); //should I have this line?
 
 
-/* Query dbtrainingperiods table for entries with matching years
-    Returns either false or an array with the query results
+/* Query dbtrainingperiods table for entry with matching year & semester
+    Returns either false or the resulting row
 */
 function get_training_periods_by_semester_and_year($semester, $year) {
     $connection = connect();
     $query = "select * from dbtrainingperiods
-              where year = '$year' and semester = '$semester' order by startDate asc";
+            where year = '$year' and semester = '$semester' 
+            order by startDate asc";
     try{
-        $results= mysqli_query($connection, $query);
+        $result= mysqli_query($connection, $query);
     } catch (Exception $e) {
         echo "No Training Periods With That Semester & Year Found";
         return null;
     }
-    $periods = [];
-    foreach ($results as $row) {
-        $periods[] = $row;
-    }
+    $result = mysqli_fetch_assoc($result);
     mysqli_close($connection);
-    return $periods;
+    return $result;
 }
 
 /*
