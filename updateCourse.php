@@ -1,19 +1,19 @@
 
 <?php
 /** 
- * Page to update data for a course from dbCourses 
+ * Page to search for and update data for a course from dbCourses 
  * @ Author Emily Lambert
- * @ Version April 5 2024
+ * @ Version April 18 2024
  **/
 
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Include necessary files
 require_once('include/input-validation.php');
 require_once('database/dbCourses.php');
 require_once('database/dbEvents.php');
-require_once('database/dbtrainingperiods.php');
+require_once('database/dbTrainingPeriods.php');
 
 //var_dump($_POST);
 
@@ -40,7 +40,7 @@ $trainingPeriods = get_all_training_periods();
 $courseID = null;
 $courseDetails = null;
 $error = '';
-$allCourses = fetch_all_courses();
+$courses = fetch_all_courses();
 
 // Process form submission for selecting a course
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_course'])) {
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
 
         // Redirect to a calendar page upon successful update of course
         if (empty($error)) {
-            header("Location: calendar.php?updateSuccess");
+            header("Location: calendar.php?editSuccess");
             exit();
         }
     }
@@ -133,105 +133,175 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
     <?php require_once('universal.inc'); ?>
     <title>Empowerhouse VMS | Update Course</title>
     <style>
-    .required::after {
-        content: "*";
-        color: red;
-    }
+        .required::after {
+            content: "*";
+            color: red;
+        }
+        #course-search {
+            margin-bottom: 10px;
+        }
+        .search-results {
+            display: none;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            position: absolute;
+            z-index: 1;
+            width: 100%; 
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .search-results li {
+            list-style-type: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .search-results li:hover {
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
     <?php require_once('header.php'); ?>
     <h1>Update Course</h1>
     <main class="date">
-        <h2>Choose Course to Update</h2>
-        <form id="select-course-form" method="post">
+        <h2>Select a Course to Update</h2>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <fieldset>
-                <legend>Select Course</legend>
-                <?php if (!empty($error)) : ?>
-                    <p class="error"><?php echo $error; ?></p>
-                <?php endif; ?>
-                <label for="selected_course_id">Choose a Course:</label>
-                <select name="selected_course_id" id="selected_course_id">
-                    <option value="">Select a Course</option>
-                    <?php
-                    // display available courses in the dropdown menu
-                    foreach ($allCourses as $course) {
-                        echo "<option value=\"" . $course['id'] . "\">" . $course['name'] . "</option>";
-                    }
-                    ?>
-                </select>
+                <legend>Course Selection</legend>
+                <div style="position: relative;">
+                    <input type="text" id="course-search" name="course_search" placeholder="Search for courses...">
+                    <ul class="search-results" id="search-results"></ul>
+                </div>
+                <div id="selected-course">
+                    <h3>Course to Update:</h3>
+                </div>
                 <button type="submit" name="update_course">Update Course</button>
             </fieldset>
         </form>
-        
+        <button onclick="window.location.href='index.php';">Back to Dashboard</button>
+
         <?php if ($courseDetails) : ?>
-        <h2>Update Course Details</h2>
-        <form id="update-course-form" method="post">
-            <fieldset>
-                <legend>Course Details</legend>
-                <?php if (!empty($error)) : ?>
-                    <p class="error"><?php echo $error; ?></p>
-                <?php endif; ?>
-                <div id="courses-container">
-                    <div class="course">
-                        <input type="hidden" name="courses[0][course_id]" value="<?php echo $courseID; ?>">
-                        
-                        <label for="new_course_name">Course Name <span class="required"></span></label>
-                        <input type="text" name="courses[0][new_course_name]" value="<?php echo $courseDetails['name']; ?>" required placeholder="Enter course name">
+            <h2>Update Course Details</h2>
+            <form id="update-course-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <fieldset>
+                    <legend>Course Details</legend>
+                    <?php if (!empty($error)) : ?>
+                        <p class="error"><?php echo $error; ?></p>
+                    <?php endif; ?>
+                    <div id="courses-container">
+                        <div class="course">
+                            <input type="hidden" name="courses[0][course_id]" value="<?php echo $courseID; ?>">
 
-                        <label for="new_course_abbrev_name">Abbreviated Name</label>
-                        <input type="text" name="courses[0][new_course_abbrev_name]" value="<?php echo $courseDetails['abbrevName']; ?>" placeholder="Enter abbreviated name">
+                            <label for="new_course_name">Course Name <span class="required"></span></label>
+                            <input type="text" name="courses[0][new_course_name]" value="<?php echo $courseDetails['name']; ?>" required placeholder="Enter course name">
 
-                        <label for="new_course_date">Date</label>
-                        <input type="date" name="courses[0][new_course_date]" value="<?php echo $courseDetails['date']; ?>" min="<?php echo date('Y-m-d'); ?>" placeholder="Enter date">
+                            <label for="new_course_abbrev_name">Abbreviated Name</label>
+                            <input type="text" name="courses[0][new_course_abbrev_name]" value="<?php echo $courseDetails['abbrevName']; ?>" placeholder="Enter abbreviated name">
 
-                        <label for="new_course_start_time">Start Time</label>                    
-                        <input type="time" name="courses[0][new_course_start_time]" value="<?php echo $courseDetails['startTime']; ?>" placeholder="Enter start time. Ex. 12:00 PM">
+                            <label for="new_course_date">Date</label>
+                            <input type="date" name="courses[0][new_course_date]" value="<?php echo $courseDetails['date']; ?>" min="<?php echo date('Y-m-d'); ?>" placeholder="Enter date">
 
-                        <label for="new_course_end_time">End Time</label>
-                        <input type="time" name="courses[0][new_course_end_time]" value="<?php echo $courseDetails['endTime']; ?>" placeholder="Enter end time. Ex. 4:00 PM">
+                            <label for="new_course_start_time">Start Time</label>                    
+                            <input type="time" name="courses[0][new_course_start_time]" value="<?php echo $courseDetails['startTime']; ?>" placeholder="Enter start time. Ex. 12:00 PM">
 
-                        <label for="new_course_trainer">Taught By</label>
-                        <input type="text" name="courses[0][new_course_trainer]" value="<?php echo $courseDetails['staffId']; ?>" placeholder="Enter trainer name"> 
+                            <label for="new_course_end_time">End Time</label>
+                            <input type="time" name="courses[0][new_course_end_time]" value="<?php echo $courseDetails['endTime']; ?>" placeholder="Enter end time. Ex. 4:00 PM">
 
-                        <label for="new_course_description">Description</label>
-                        <input type="text" name="courses[0][new_course_description]" value="<?php echo $courseDetails['description']; ?>" placeholder="Enter description">
+                            <label for="new_course_trainer">Taught By</label>
+                            <input type="text" name="courses[0][new_course_trainer]" value="<?php echo $courseDetails['staffId']; ?>" placeholder="Enter trainer name"> 
 
-                        <label for="new_course_location">Location</label>
-                        <input type="text" name="courses[0][new_course_location]" value="<?php echo $courseDetails['location']; ?>" placeholder="Enter location">
+                            <label for="new_course_description">Description</label>
+                            <input type="text" name="courses[0][new_course_description]" value="<?php echo $courseDetails['description']; ?>" placeholder="Enter description">
 
-                        <label for="new_course_capacity">Volunteer Slots</label>
-                        <input type="number" name="courses[0][new_course_capacity]" value="<?php echo $courseDetails['capacity']; ?>" min="0" placeholder="Enter a number">
-                        <!-- dropdown menus for periodID and eventID -->
-                        <label for="event_id">Select Event</label>
-                        <select name="courses[0][event_id]">
-                            <option value="">None</option>
-                            <?php foreach ($events as $event) {
-                                $selected = ($event['id'] == $courseDetails['eventId']) ? 'selected' : '';
-                                echo "<option value=\"" . $event['id'] . "\" $selected>" . $event['eventname'] . "</option>";
-                            } ?>
-                        </select>
-                        <label for="period_id">Select Training Period</label>
-                        <select name="courses[0][period_id]">
-                            <option value="">None</option> 
-                            <?php foreach ($trainingPeriods as $period) {
-                                $selected = ($period['id'] == $courseDetails['periodId']) ? 'selected' : '';
-                                echo "<option value=\"" . $period['id'] . "\" $selected>" . $period['semester'] . " " . $period['year'] . "</option>";
-                            } ?>
-                        </select>
+                            <label for="new_course_location">Location</label>
+                            <input type="text" name="courses[0][new_course_location]" value="<?php echo $courseDetails['location']; ?>" placeholder="Enter location">
+
+                            <label for="new_course_capacity">Volunteer Slots</label>
+                            <input type="number" name="courses[0][new_course_capacity]" value="<?php echo $courseDetails['capacity']; ?>" min="0" placeholder="Enter a number">
+
+                            <!-- dropdown menus for periodID and eventID -->
+                            <label for="event_id">Select Event</label>
+                            <select name="courses[0][event_id]">
+                                <option value="">None</option>
+                                <?php foreach ($events as $event) {
+                                    echo "<option value=\"" . $event['id'] . "\">" . $event['eventname'] . "</option>";
+                                } ?>
+                            </select>
+                            <label for="period_id">Select Training Period</label>
+                            <select name="courses[0][period_id]">
+                                <option value="">None</option> 
+                                <?php foreach ($trainingPeriods as $period) {
+                                    echo "<option value=\"" . $period['id'] . "\">" . $period['semester'] . " " . $period['year'] . "</option>";
+                                } ?>
+                            </select>
+                        </div>
+                        <button type="submit" name="submit_update">Update Course</button>
                     </div>
-                    <button type="submit" name="submit_update">Update Course</button>
-                </div>
-            </fieldset>
-        </form>
+                </fieldset>
+            </form>
         <?php endif; ?>
-        <script>
-            document.getElementById('selected_course_id').addEventListener('change', function() {
-                var selectedCourseId = this.value;
-                document.querySelector('select[name="selected_course_id"]').value = selectedCourseId;
-            });
-        </script>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseSearch = document.getElementById('course-search');
+            const searchResults = document.getElementById('search-results');
+            const selectedCourse = document.getElementById('selected-course');
+
+            // function to update selected course
+            function updateSelectedCourse(course) {
+                selectedCourse.innerHTML = '<h3>Course to Update:</h3>';
+                const courseDetails = document.createElement('div');
+                courseDetails.textContent = `${course.name} - ${course.abbrevName} | ${course.date} | ${course.startTime} - ${course.endTime} | ${course.description} | ${course.location} | ${course.capacity} Slots`;
+                selectedCourse.appendChild(courseDetails);
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'selected_course_id';
+                hiddenInput.value = course.id;
+                selectedCourse.appendChild(hiddenInput);
+            }
+
+            // function to handle course selection
+            function handleCourseSelection(course) {
+                updateSelectedCourse(course);
+                searchResults.style.display = 'none';
+                courseSearch.value = '';
+            }
+
+            // function to display search results
+            function displaySearchResults(filteredCourses) {
+                searchResults.innerHTML = '';
+                filteredCourses.forEach(course => {
+                    const li = document.createElement('li');
+                    li.textContent = `${course.name} - ${course.abbrevName} | ${course.date} | ${course.startTime} - ${course.endTime} | ${course.description} | ${course.location} | ${course.capacity} Slots`;
+                    li.addEventListener('click', () => handleCourseSelection(course));
+                    searchResults.appendChild(li);
+                });
+                searchResults.style.display = filteredCourses.length > 0 ? 'block' : 'none';
+            }
+
+            // function to filter courses based on search term
+            function filterCourses(searchTerm) {
+                const filteredCourses = <?php echo json_encode($courses); ?>;
+                return filteredCourses
+                    .filter(course => course.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                    .sort((a, b) => a.name.localeCompare(b.name)); 
+            }
+
+            // event listener for user input in search bar
+            courseSearch.addEventListener('input', function() {
+                const searchTerm = courseSearch.value.trim();
+                const filteredCourses = filterCourses(searchTerm);
+                displaySearchResults(filteredCourses);
+            });
+
+            // close dropdown menu when clicking away from it
+            document.addEventListener('click', function(event) {
+                if (!searchResults.contains(event.target) && event.target !== courseSearch) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

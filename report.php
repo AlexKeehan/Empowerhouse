@@ -67,6 +67,8 @@
 
     <main class="report">
 	<?php
+        //following if statement is triggered on submit as far as I can tell
+        //this first one is triggered if ALL fields have been filled
 	    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_click"]) 
         && isset($_POST["report_type"]) && isset($_POST["date_from"]) && 
         isset($_POST["date_to"]) && isset($_POST['lname_start']) && isset($_POST['lname_end']) 
