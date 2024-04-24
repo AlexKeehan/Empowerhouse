@@ -111,6 +111,10 @@ $notRoot = $person->get_id() != 'vmsroot';
                     foreach ($_POST['attendee'] as $attendeeID) {
                         $attendance = 1; // Assume checked by default
                         // If attendee is not checked, set attendance to 0
+
+                        //Assuming that only one course is needed to complete training
+                        $query = ("UPDATE dbPersons SET completedTraining = 'True', dateCompletedTraining=CURDATE() WHERE dbPersons.id='$attendeeID'");
+                        $result = mysqli_query($conn,$query);
                         //echo "dddd ";
                         if (!in_array($attendeeID, $_POST['attendee'])) {
                             $attendance = 0;
