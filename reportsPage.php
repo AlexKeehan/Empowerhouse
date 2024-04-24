@@ -37,6 +37,8 @@ $lastFrom = strtoupper($get['lname_start']);
 $lastTo = strtoupper($get['lname_end']);
 @$stats = $get['statusFilter'];
 $today =  date('Y-m-d');
+$export_array = array();
+$totHours = array();
   
 if($dateFrom != NULL && $dateTo == NULL) 
 {
@@ -238,11 +240,11 @@ function getBetweenDates($startDate, $endDate)
                 {
                     echo "Individual Volunteer Hours";
                 }
-                elseif($type == "complete_training")
+                elseif($type == "completed_training")
                 {
                     echo "Volunteers Who Completed Training";
                 }
-                elseif($type == "volunteer_emails")
+                elseif($type == "email_volunteer_list")
                 {
                     echo "Volunteer Emails";
                 }
@@ -325,7 +327,7 @@ function getBetweenDates($startDate, $endDate)
     </div>
     <div>   
         <?php
-        if($type != "top_perform" && $type != "complete_training")
+        if($type == "general_volunteer_report" || $type == "total_vol_hours" || $type == "indiv_vol_hours")
         {
             echo "<label>Total Volunteer Hours: </label>"; 
             echo '&nbsp&nbsp&nbsp';
@@ -404,8 +406,7 @@ function getBetweenDates($startDate, $endDate)
                 $all_fields = True;
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email,
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
 		            WHERE eventDate >= '$dateFrom' AND eventDate <= '$dateTo' 
@@ -415,8 +416,7 @@ function getBetweenDates($startDate, $endDate)
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
 		            WHERE eventDate >= '$dateFrom' AND eventDate <='$dateTo' AND type='volunteer'
@@ -448,8 +448,7 @@ function getBetweenDates($startDate, $endDate)
                 $date_field = True;
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email,
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id 
                     WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
@@ -458,8 +457,7 @@ function getBetweenDates($startDate, $endDate)
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email,
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbPersons.phone1, dbPersons.email
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate >= '$dateFrom' AND eventDate<='$dateTo' AND type='volunteer'
@@ -475,6 +473,7 @@ function getBetweenDates($startDate, $endDate)
             {
                 while($row = mysqli_fetch_assoc($result))
                 {
+                    $hours = get_hours_volunteered_by($row['id']);  
                     $phone = $row['phone1'];
                     $mail = $row['email'];
                     echo"<tr>
@@ -482,10 +481,10 @@ function getBetweenDates($startDate, $endDate)
                     <td>" . $row['last_name'] . "</td>
                     <td><a href='tel:$phone'>" . formatPhoneNumber($row['phone1']) . "</a></td>
                     <td><a href='mailto:$mail'>" . $row['email'] . "</a></td>
-                    <td>" . get_hours_volunteered_by($row['id']) . "</td>
-                    </tr>"; 
-                    $hours = get_hours_volunteered_by($row['id']);   
+                    <td>" . $hours . "</td>
+                    </tr>";  
                     $totHours[] = $hours;
+                    $export_array[] = [$row['first_name'], $row['last_name'], $row['phone1'], $row['email'], $hours];
                 }
             } 
             elseif ($all_fields)
@@ -502,6 +501,7 @@ function getBetweenDates($startDate, $endDate)
                         {
                             if(in_array($both,$dateRange) && in_array($row['last_name'][0],$nameRange))
                             {
+                                $hours = get_hours_volunteered_by($row['id']);  
                                 $phone = $row['phone1'];
                                 $mail = $row['email'];
                                 echo"<tr>
@@ -509,10 +509,9 @@ function getBetweenDates($startDate, $endDate)
                                 <td>" . $row['last_name'] . "</td>
                                 <td><a href='tel:$phone'>" . formatPhoneNumber($row['phone1']) . "</a></td>
                                 <td><a href='mailto:$mail'>" . $row['email'] . "</a></td>
-                                <td>" . $row['Dur'] . "</td>
-                                </tr>";
-                                $hours = $row['Dur'];   
+                                </tr>";   
                                 $totHours[] = $hours;
+                                $export_array[] = [$row['first_name'], $row['last_name'], $row['phone1'], $row['email'], $hours];
                             }
                         }
                     }
@@ -545,6 +544,7 @@ function getBetweenDates($startDate, $endDate)
                                 </tr>";
                                 $hours = get_hours_volunteered_by($row['id']);   
                                 $totHours[] = $hours;
+                                $export_array[] = [$row['first_name'], $row['last_name'], $row['phone1'], $row['email'], $hours];
                             }
                         } 
                     }
@@ -561,6 +561,7 @@ function getBetweenDates($startDate, $endDate)
                             {
                                 if(in_array($date,$dateRange))
                                 {
+                                    $hours = get_hours_volunteered_by($row['id']);  
                                     $phone = $row['phone1'];
                                     $mail = $row['email'];
                                     echo"<tr>
@@ -568,10 +569,9 @@ function getBetweenDates($startDate, $endDate)
                                     <td>" . $row['last_name'] . "</td>
                                     <td><a href='tel:$phone'>" . formatPhoneNumber($row['phone1']) . "</a></td>
                                     <td><a href='mailto:$mail'>" . $row['email'] . "</a></td>
-                                    <td>" . $row['Dur'] . "</td>
                                     </tr>";
-                                    $hours = $row['Dur'];   
                                     $totHours[] = $hours;
+                                    $export_array[] = [$row['first_name'], $row['last_name'], $row['phone1'], $row['email'], $hours];
                                 }
                             }
                         }
@@ -599,7 +599,7 @@ function getBetweenDates($startDate, $endDate)
         }
 
         // Report on volunteers who completed training
-        if ($type == "complete_training") 
+        if ($type == "completed_training") 
         {
             $con=connect();
             // Print out column "headers"
@@ -739,6 +739,7 @@ function getBetweenDates($startDate, $endDate)
                 <td>" . $row['completedTraining'] . "</td>
                 <td>" . $row['dateCompletedTraining'] . "</td>
                 </tr>";
+                $export_array[] = [$row['first_name'], $row['last_name'], $row['email'], $row['completedTraining'], $row['dateCompletedTraining']];
             }
         }
 
@@ -763,7 +764,6 @@ function getBetweenDates($startDate, $endDate)
             $name_field = False;
             // Only date range
             $date_field = False;
-            $totHours = array();
             $today = date("Y-m-d");
 
             // view Top performers report with all date range and all name range
@@ -772,23 +772,19 @@ function getBetweenDates($startDate, $endDate)
                 $no_fields = True;
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$today' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
-                    GROUP BY dbPersons.first_name,dbPersons.last_name
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbPersons.first_name,dbPersons.last_name";
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$today' AND dbPersons.type='volunteer'
-                    GROUP BY dbEventVolunteers.userID
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbEventVolunteers.userID";
                 }
             }
             // date range and name range for top performer report
@@ -797,23 +793,19 @@ function getBetweenDates($startDate, $endDate)
                 $all_fields = True;
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name,  dbPersons.last_name, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name,  dbPersons.last_name
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
-                    GROUP BY dbPersons.first_name,dbPersons.last_name
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbPersons.first_name,dbPersons.last_name";
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate<='$dateTo' AND dbPersons.type='volunteer'
-                    GROUP BY dbEventVolunteers.userID
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbEventVolunteers.userID";
                 }
             }
             //only name range for top performer report 
@@ -822,23 +814,19 @@ function getBetweenDates($startDate, $endDate)
                 $name_field = True;
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name,
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$today' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
-                    GROUP BY dbPersons.first_name,dbPersons.last_name
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbPersons.first_name,dbPersons.last_name";
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$today' AND dbPersons.type='volunteer'
-                    GROUP BY dbEventVolunteers.userID
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbEventVolunteers.userID";
                 }
             }
             //only date range for top performer report
@@ -848,22 +836,18 @@ function getBetweenDates($startDate, $endDate)
                 if($stats != "All")
                 {
                     $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
-                    GROUP BY dbPersons.first_name,dbPersons.last_name
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbPersons.first_name,dbPersons.last_name";
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, 
-                    SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$dateTo' AND dbPersons.type='volunteer'
-                    GROUP BY dbEventVolunteers.userID
-                    ORDER BY Dur DESC LIMIT 5";
+                    GROUP BY dbEventVolunteers.userID";
                 }
             }
             $result = mysqli_query($con,$query); 
@@ -872,12 +856,12 @@ function getBetweenDates($startDate, $endDate)
             {
                 while($row = mysqli_fetch_assoc($result))
                 {
+                    $hours = get_hours_volunteered_by($row['id']);
                     echo"<tr>
                     <td>" . $row['first_name'] . "</td>
                     <td>" . $row['last_name'] . "</td>
-                    <td>" . $row['Dur'] . "</td>
+                    <td>" . $hours . "</td>
                     </tr>";
-                    $hours = get_hours_volunteered_by($row['id']);
                     $totHours[] = $hours;
                 }
             } 
@@ -895,12 +879,12 @@ function getBetweenDates($startDate, $endDate)
                         {
                             if(in_array($both,$dateRange) && in_array($row['last_name'][0],$nameRange))
                             {
+                                $hours = get_hours_volunteered_by($row['id']);
                                 echo"<tr>
                                 <td>" . $row['first_name'] . "</td>
                                 <td>" . $row['last_name'] . "</td>
-                                <td>" . $row['Dur'] . "</td>
+                                <td>" . $hours . "</td>
                                 </tr>";
-                                $hours = get_hours_volunteered_by($row['id']);
                                 $totHours[] = $hours;
                             }
                         }
@@ -923,12 +907,12 @@ function getBetweenDates($startDate, $endDate)
                         {
                             if($row['last_name'][0] == $a)
                             {
+                                $hours = get_hours_volunteered_by($row['id']);
                                 echo"<tr>
                                 <td>" . $row['first_name'] . "</td>
                                 <td>" . $row['last_name'] . "</td>
-                                <td>" . $row['Dur'] . "</td>
+                                <td>" . $hours . "</td>
                                 </tr>";
-                                $hours = get_hours_volunteered_by($row['id']);
                                 $totHours[] = $hours;
                             }
                         } 
@@ -946,12 +930,12 @@ function getBetweenDates($startDate, $endDate)
                             {
                                 if(in_array($date,$dateRange))
                                 {
+                                    $hours = get_hours_volunteered_by($row['id']);
                                     echo"<tr>
                                     <td>" . $row['first_name'] . "</td>
                                     <td>" . $row['last_name'] . "</td>
-                                    <td>" . $row['Dur'] . "</td>
+                                    <td>" . $hours . "</td>
                                     </tr>";
-                                    $hours = $row['Dur'];
                                     $totHours[] = $hours;
                                 }
                             }
@@ -1049,8 +1033,7 @@ function getBetweenDates($startDate, $endDate)
                 $totalHrs = get_hours_volunteered_by_and_date($indivID, $dateFrom, $dateTo);
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbEvents.eventName, dbEvents.eventDate, dbEvents.startTime, dbEvents.endTime,
-                    (dbEvents.endTime - dbEvents.startTime) AS DURATION
+                    $query = "SELECT dbPersons.id, dbEvents.eventName, dbEvents.eventDate, dbEvents.startTime, dbEvents.endTime
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE dbPersons.id ='$indivID' AND dbPersons.status='$stats' AND eventDate BETWEEN '$dateFrom' AND '$dateTo'
@@ -1058,19 +1041,12 @@ function getBetweenDates($startDate, $endDate)
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbEvents.eventName, dbEvents.eventDate, dbEvents.startTime, dbEvents.endTime,
-                    (dbEvents.endTime - dbEvents.startTime) AS DURATION
+                    $query = "SELECT dbPersons.id, dbEvents.eventName, dbEvents.eventDate, dbEvents.startTime, dbEvents.endTime
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE dbPersons.id ='$indivID' AND eventDate BETWEEN '$dateFrom' AND '$dateTo'
                     ORDER BY dbEvents.eventDate desc";
                 }    
-                //$result = mysqli_query($con,$query);
-            
-                // Code that might throw an exception or error goes here
-                //$dd = getBetweenDates($dateFrom, $dateTo);
-                //$dateRange = @fetch_events_in_date_range_as_array($dateFrom, $dateTo)[0];
-                //while($row = mysqli_fetch_assoc($result)){
             }
             // only name range for indiv_vol_hours report
             elseif ($dateFrom == NULL && $dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL)
@@ -1088,8 +1064,7 @@ function getBetweenDates($startDate, $endDate)
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbEvents.eventName, dbEvents.eventDate, dbEvents.startTime, dbEvents.endTime,
-                    (dbEvents.endTime - dbEvents.startTime) AS DURATION
+                    $query = "SELECT dbPersons.id, dbEvents.eventName, dbEvents.eventDate, dbEvents.startTime, dbEvents.endTime
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE dbPersons.id ='$indivID'
@@ -1101,10 +1076,11 @@ function getBetweenDates($startDate, $endDate)
             $result = mysqli_query($con,$query);
             foreach ($theEventHrs as $event) 
             {
+                $hours = calculateHourDuration($event['startTime'], $event['endTime']);
 		        echo"<tr>
                     <td>" . $event['eventName'] . "</td>
                     <td>" . $event['eventDate'] . "</td>
-                    <td>" . $event['duration'] . "</td>
+                    <td>" . $hours . "</td>
                     </tr>";
 		    }
 
@@ -1139,7 +1115,6 @@ function getBetweenDates($startDate, $endDate)
             $name_field = False;
             // Only date range
             $date_field = False;
-            $totHours = array();
             $today = date("Y-m-d");
             $con=connect();
             
@@ -1251,13 +1226,15 @@ function getBetweenDates($startDate, $endDate)
             {
                 while ($row = mysqli_fetch_assoc($result))
                 {
+                    $hours = get_hours_volunteered_by($row['id']);
             	    echo"<tr>
             	        <td>" . $row['first_name'] . "</td>
             	        <td>" . $row['last_name'] . "</td>
             	        <td>" . $row['eventName'] . "</td>
             	        <td>" . $row['eventDate'] . "</td>
-            	        <td>" . get_hours_volunteered_by($row['id']) . "</td>
+            	        <td>" . $hours . "</td>
 		                </tr>";
+                    $export_array[] = [$row['first_name'], $row['last_name'], $row['eventName'], $row['eventDate'], $hours];
                 }
             } 
             //Both name & date range
@@ -1275,13 +1252,15 @@ function getBetweenDates($startDate, $endDate)
                         {
                             if(in_array($both,$dateRange) && in_array($row['last_name'][0],$nameRange))
                             {
+                                $hours = get_hours_volunteered_by($row['id']);
                                 echo"<tr>
             			            <td>" . $row['first_name'] . "</td>
             			            <td>" . $row['last_name'] . "</td>
             			            <td>" . $row['eventName'] . "</td>
             			            <td>" . $row['eventDate'] . "</td>
-                                    <td>" . get_hours_volunteered_by($row['id']) . "</td>
+                                    <td>" . $hours . "</td>
 				                    </tr>";
+                                $export_array[] = [$row['first_name'], $row['last_name'], $row['eventName'], $row['eventDate'], $hours];
 	    		            }  
 		                }
                     }
@@ -1305,13 +1284,15 @@ function getBetweenDates($startDate, $endDate)
                         {
                             if($row['last_name'][0] == $a)
                             {
+                                $hours = get_hours_volunteered_by($row['id']);
                                 echo"<tr>
                                     <td>" . $row['first_name'] . "</td>
                                     <td>" . $row['last_name'] . "</td>
                                     <td>" . $row['eventName'] . "</td>
                                     <td>" . $row['eventDate'] . "</td>
-                                    <td>" . get_hours_volunteered_by($row['id']) . "</td>
+                                    <td>" . $hours . "</td>
 		                            </tr>";
+                                $export_array[] = [$row['first_name'], $row['last_name'], $row['eventName'], $row['eventDate'], $hours];
 	                        }  
 	                    }
                     }
@@ -1329,13 +1310,15 @@ function getBetweenDates($startDate, $endDate)
                             {
                                 if (in_array($date, $dateRange))
                                 {
+                                    $hours = get_hours_volunteered_by($row['id']);
                                     echo"<tr>
             			                <td>" . $row['first_name'] . "</td>
             			                <td>" . $row['last_name'] . "</td>
             			                <td>" . $row['eventName'] . "</td>
             			                <td>" . $row['eventDate'] . "</td>
-                                        <td>" . get_hours_volunteered_by($row['id']) . "</td>
+                                        <td>" . $hours . "</td>
 				                        </tr>";
+                                    $export_array[] = [$row['first_name'], $row['last_name'], $row['eventName'], $row['eventDate'], $hours];
 	    		                }  
 		                    }
              	        }
@@ -1359,8 +1342,8 @@ function getBetweenDates($startDate, $endDate)
                 </tr>";                
         }
 
-        //Display email list only - PSEUDOCODE
-        if ($type == "volunteer_emails")
+        //Display email list only 
+        if($type == "email_volunteer_list")
         {
             $con=connect();
             echo"
@@ -1369,67 +1352,28 @@ function getBetweenDates($startDate, $endDate)
                     <th>Volunteer Emails</th>
                 </tr>
                 <tbody>";
+
             if($stats!="All")
             {
-                $query = "SELECT * FROM dbPersons WHERE type='volunteer' AND status='$stats'
+                $query = "SELECT * FROM dbPersons WHERE type='volunteer' AND status='$stats' 
                 ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
             else
             {
-
-                foreach ($nameRange as $a)
-                {
-                    if($row['last_name'][0] == $a)
-                    {
-                        echo"<tr>
-            		<td>" . $row['first_name'] . "</td>
-            		<td>" . $row['last_name'] . "</td>
-            		<td>" . $row['name'] . "</td>
-            		<td>" . $row['date'] . "</td>
-            		<td>" . get_hours_volunteered_by($row['id']) . "</td>
-			        </tr>";
-	    	        }  
-		        }
-	        }
-            echo"
-                <tr>
-                <td style='border: none;' bgcolor='white'></td>
-                <td style='border: none;' bgcolor='white'></td>
-                <td style='border: none;' bgcolor='white'></td>
-                <td style='border: none;' bgcolor='white'></td>
-                <td bgcolor='white'><label>Total Hours:</label></td>
-                <td bgcolor='white'><label>". get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo) ."</label></td>
-                </tr>";
-	    }
-        //Display email list only 
-        if($type == "email_volunteer_list")
-        {
-            $con=connect();
-            echo"
-            <table>
-            <tr>
-                <th>Volunteer Emails</th>
-            </tr>
-            <tbody>";
-
-            $type1 = "Status";
-            $type1 = "volunteer";
-            if($stats!="All"){
-                $query = "SELECT * FROM dbPersons WHERE type='$type1' AND status='$stats' ORDER BY dbPersons.last_name, dbPersons.first_name";
-            }else{
-                $query = "SELECT * FROM dbPersons WHERE type='$type1'ORDER BY dbPersons.last_name, dbPersons.first_name";
+                $query = "SELECT * FROM dbPersons WHERE type='volunteer'
+                ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
 
             $result = mysqli_query($con,$query);
-            $totHours = array();
-            while($row = mysqli_fetch_assoc($result)){
-                $phone = $row['phone1'];
+            while($row = mysqli_fetch_assoc($result))
+            {
                 $mail = $row['email'];
                 echo"<tr>
                 <td><a href='mailto:$mail'>" . $row['email'] . "</a></td>
                 </tr>"; 
                 $hours = get_hours_volunteered_by($row['id']);   
                 $totHours[] = $hours;
+                $export_array[] = [$row['email']];
             }
             echo"
                 <tr>
@@ -1458,9 +1402,25 @@ function getBetweenDates($startDate, $endDate)
 	<a href="index.php">
         <button class = "theB">Home Page</button>
     </a>
-    <a href="reportsExport.php">
-        <button class = "theB">Export Report</button>
-    </a>
+    <?php
+    //Only export for certain report types
+    if ($type == "general_volunteer_report" || 
+    $type == "email_volunteer_list" ||
+    $type == "completed_training" || 
+    $type == "total_vol_hours" ||
+    $type == "missing_paperwork")
+    {
+        //Put the type variable into SESSION to pass to reportsExport.php
+        $_SESSION['type'] = $type;
+        //Put the export array into SESSION to pass to reportsExport.php
+        $_SESSION['export_array'] = $export_array;
+        //Show the Export Report button
+        //Redirect to reportsExport.php
+        echo"<a href='reportsExport.php'>
+        <button class = 'theB'>Export Report</button>
+        </a>";
+    }
+    ?>
     </div>
     </main>
     <footer>
