@@ -77,9 +77,20 @@ if (isset($_SESSION['_id'])) {
                                 </div>
                                 <div>
                                     <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Training_Evaluation_of_Trainer-3.25.21.doc" download> Evaluation of Trainer<target="_self"/></a>                                           
+                                        <a href="Documents/Training_Evaluation_of_Trainer-3.25.21.doc" download>Evaluation of Trainer<target="_self"/></a>                                           
                                     </div>
                                 </div>
+                                <!--Only allow admins to download completion certificates-->
+                                <?php
+                                    if ($access_level != 1) {
+                                        echo '
+                                        <div>
+                                            <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
+                                                <a href="images/CompletionCertificate2.png" download>Completion Certificate<target="_self"/></a>   
+                                            </div>
+                                        </div>';
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
