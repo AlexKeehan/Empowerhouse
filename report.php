@@ -95,6 +95,11 @@
             {
 			    echo "<b>Please enter a volunteer's first and/or last name.</b><br>";
 		    }
+            //Date range isn't needed for missing paperwork report, so don't allow user to select it
+            elseif($report=="missing_paperwork" && $dFrom != NULL && $dTo != NULL)
+            {
+                echo "<b>Please do not use a date range with this report type.</b><br>";
+            }
 	    	elseif ($report=="indiv_vol_hours" && $name != NULL) 
             {
 			    echo "<h3>Search Results</h3>";
