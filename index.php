@@ -20,7 +20,7 @@
         $person = retrieve_person($_SESSION['_id']);
     }
     $notRoot = $person->get_id() != 'vmsroot';
-    $admin = $person->get_type()[0] == 'admin';
+    $admin = $person->get_type() == 'admin';
 ?>
 <!DOCTYPE html>
 <html>
