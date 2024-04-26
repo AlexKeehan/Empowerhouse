@@ -67,6 +67,8 @@
 
     <main class="report">
 	<?php
+        //following if statement is triggered on submit as far as I can tell
+        //this first one is triggered if ALL fields have been filled
 	    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_click"]) 
         && isset($_POST["report_type"]) && isset($_POST["date_from"]) && 
         isset($_POST["date_to"]) && isset($_POST['lname_start']) && isset($_POST['lname_end']) 
@@ -148,14 +150,14 @@
 	<br>
         <form class="report_select" method="post">
 	<div>
-        <label for="report_type">Select Report Type</label><span><i><font size="3"> *For Emails Just Select Status then Hit Submit</font></i></span>
+        <label for="report_type">Select Report Type</label><span><i><font size="3"> *For Emails After Selection Just Hit Submit</font></i></span>
         <select name="report_type" id="report_type">
             <option value = "general_volunteer_report">General Volunteer Report</option>
             <option value = "total_vol_hours">Total Volunteer Hours</option>
             <option value = "indiv_vol_hours">Individual Volunteer Hours</option>
             <option value = "top_perform">Top Performers</option>
             <option value = "email_volunteer_list">Volunteer's Email Adresses</option>
-            <option value = "complete_training">Volunteers Who Completed Training</option>
+            <option value = "completed_training">Volunteers Who Completed Training</option>
             <option value = "missing_paperwork">Volunteer Missing Paperwork</option>
         </select>
 	</div>

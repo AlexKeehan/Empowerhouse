@@ -2,13 +2,13 @@
 /** 
  * Page to add multiple courses to dbCourses simultaneously with only course name required
  * @ Author Emily Lambert
- * @ Version April 5 2024
+ * @ Version April 23 2024
  **/
 // Include necessary files
 require_once('include/input-validation.php');
 require_once('database/dbCourses.php');
 require_once('database/dbEvents.php');
-require_once('database/dbtrainingperiods.php');
+require_once('database/dbTrainingPeriods.php');
 
 // Check if user is logged in and has appropriate access level
 session_cache_expire(30);
@@ -31,6 +31,10 @@ if ($accessLevel < 2) {
 $events = get_all_events();
 $trainingPeriods = get_all_training_periods();
 
+// Check if training period information is passed from selectTrainingPeriod.php
+$semester = isset($_SESSION['semester']) ? $_SESSION['semester'] : false;
+$year = isset($_SESSION['year']) ? $_SESSION['year'] : false;
+
 // Process form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate and retrieve course details from form input
@@ -39,6 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: addCourse.php?error=no_courses_provided");
         exit();
     }
+    // Unset session variables because they track if a user routed to this page from selectTrainingPeriod.php or not
+    // This allows the user to use both routes to this file in the same session without problems
+    unset($_SESSION['semester']);
+    unset($_SESSION['year']);
 
     $courses = $_POST['courses'];
     //echo "num of courses submitted: " . count($courses);
@@ -58,7 +66,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $location = $args['new_course_location'];
         $capacity = intval($args['new_course_capacity']);
         $eventId = $args['event_id'];
-        $periodId = $args['period_id'];
+        // If training period is passed from selectTrainingPeriod.php
+        if ($semester != NULL && $year != NULL)
+        {
+            //Grab training period from database that matches the semester and year passed through SESSION
+            $training_period = get_training_periods_by_semester_and_year($semester, $year);
+            //Grab the id from the training period
+            $periodId = $training_period['id'];
+        }
+        //Else, just use the period_id from the dropdown menu
+        else
+        {
+            $periodId = $args['period_id'];
+        }
 
         // Check for required fields 
         if (empty($courseName)) {
@@ -188,13 +208,20 @@ if (isset($_GET['date'])) {
                                 echo "<option value=\"" . $event['id'] . "\">" . $event['eventname'] . "</option>";
                             } ?>
                         </select>
-                        <label for="period_id">Select Training Period</label>
-                        <select name="courses[0][period_id]">
-                            <option value="">None</option> 
-                            <?php foreach ($trainingPeriods as $period) {
-                                echo "<option value=\"" . $period['id'] . "\">" . $period['semester'] . " " . $period['year'] . "</option>";
-                            } ?>
-                        </select>
+                        <?php
+                        // If training period is passed from selectTrainingPeriod.php, then don't show the dropdown menu
+                        if ($semester == NULL && $year == NULL)
+                        {
+                            echo"
+                            <label for='period_id'>Select Training Period</label>
+                            <select name='courses[0][period_id]'>
+                                <option value=''>None</option> ";
+                                foreach ($trainingPeriods as $period) {
+                                    echo "<option value=\"" . $period['id'] . "\">" . $period['semester'] . " " . $period['year'] . "</option>";
+                                } 
+                            echo"</select>";
+                        }
+                        ?>
                     </div>
                 </div>
                 <button id="add-course-btn" type="button">Add Another Course</button>

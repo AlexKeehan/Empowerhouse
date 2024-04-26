@@ -179,7 +179,7 @@
                                 if (isset($events[$e])) {
                                     $dayEvents = $events[$e];
                                     foreach ($dayEvents as $info) {
-                                        $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['abbrevName'] .  '</a>';
+                                        $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['name'] .  '</a>';
                                     }
                                 }
                                 echo '<td class="calendar-day' . $extraClasses . '" ' . $extraAttributes . ' data-date="' . date('Y-m-d', $date) . '">
