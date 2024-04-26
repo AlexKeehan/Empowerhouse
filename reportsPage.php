@@ -25,7 +25,6 @@ require_once('include/input-validation.php');
 require_once('database/dbPersons.php');
 require_once('database/dbEvents.php');
 require_once('include/output.php');
-require_once('reportsCompute.php');
   
 $get = sanitize($_GET);
 $indivID = @$get['indivID'];
@@ -246,6 +245,10 @@ function getBetweenDates($startDate, $endDate)
                 elseif($type == "volunteer_emails")
                 {
                     echo "Volunteer Emails";
+                }
+                elseif($type == "missing_paperwork")
+                {
+                    echo "Volunteers Missing Paperwork";
                 }
                 ?> 
             </span>
@@ -1418,28 +1421,35 @@ function getBetweenDates($startDate, $endDate)
         //Diplay missing volunteer paperwork
         if ($type == "missing_paperwork") {
             $con = connect();
-            echo "
-            <table>
-            <tr>
-                <th>Missing Volunteer Paperwork</th>
-            </tr>
-            <tbody>";
+            echo"
+                <table>
+                <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                </tr>
+                <tbody>";
 
             // SQL query to retrieve volunteers with missing paperwork
-            if ($stats != "All") {
-                $query = "SELECT * FROM dbPersons WHERE type='volunteer' AND status='$stats' AND missing_documents IS NOT NULL
-                    ORDER BY dbPersons.last_name, dbPersons.first_name";
-            } else {
-                $query = "SELECT * FROM dbPersons WHERE type='volunteer' AND missing_documents IS NOT NULL
-                    ORDER BY dbPersons.last_name, dbPersons.first_name";
+            if ($stats != "All") 
+            {
+                $query = "SELECT * FROM dbPersons WHERE type='volunteer' 
+                AND status='$stats' AND dbPersons.completedPaperwork is NULL
+                ORDER BY dbPersons.last_name, dbPersons.first_name";
+            } 
+            else 
+            {
+                $query = "SELECT * FROM dbPersons WHERE type='volunteer' 
+                AND dbPersons.completedPaperwork is NULL
+                ORDER BY dbPersons.last_name, dbPersons.first_name";
             }
 
             $result = mysqli_query($con, $query);
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>";
-                echo "<td>" . $row['first_name'] . " " . $row['last_name'] . "</td>";
+                echo "<td>" . $row['first_name'] . "</td>";
+                echo "<td>" . $row['last_name'] . "</td>";
                 echo "<td><a href='mailto:" . $row['email'] . "'>" . $row['email'] . "</a></td>";
-                echo "<td>" . $row['missing_documents'] . "</td>";
                 echo "</tr>";
             }
             echo "</tbody></table>";
