@@ -121,7 +121,7 @@
                             <td>' . $person->get_first_name() . '</td>
                             <td>' . $person->get_last_name() . '</td>
  					        <td><a href="mailto:' . $person->get_id() . '">' . $person->get_id() . '</a></td>
-				            <td><a href="reportsPage.php?report_type='. $report .'&date_from='. $dFrom .'&date_to='. $dTo .'&lname_start='. $lastFrom .'&lname_end='. $lastTo .'&name='. $name .'&indivID='. $person->get_id().' &role='. $person->get_type()[0] .' &status= '.$person->get_status().' ">Run Report</a></td>
+				            <td><a href="reportsPage.php?report_type='. $report .'&date_from='. $dFrom .'&date_to='. $dTo .'&lname_start='. $lastFrom .'&lname_end='. $lastTo .'&name='. $name .'&indivID='. $person->get_id().' &role='. $person->get_type()[0] .' &statusFilter=' . $status . '">Run Report</a></td>
 				            </tr>';
                     }
                     echo '
