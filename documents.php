@@ -1,20 +1,20 @@
 <?php
-    // Template for new VMS pages. Base your new page on this one
+// Template for new VMS pages. Base your new page on this one
 
-    // Make session information accessible, allowing us to associate
-    // data with the logged-in user.
-    session_cache_expire(30);
-    session_start();
+// Make session information accessible, allowing us to associate
+// data with the logged-in user.
+session_cache_expire(30);
+session_start();
     
-    $loggedIn = false;
-    $accessLevel = 0;
-    $userID = null;
-    if (isset($_SESSION['_id'])) {
-        $loggedIn = true;
-        // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
-        $accessLevel = $_SESSION['access_level'];
-        $userID = $_SESSION['_id'];
-    }
+$loggedIn = false;
+$accessLevel = 0;
+$userID = null;
+if (isset($_SESSION['_id'])) {
+    $loggedIn = true;
+    // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
+    $accessLevel = $_SESSION['access_level'];
+    $userID = $_SESSION['_id'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,41 +50,47 @@
                                     <div class="column">
                                         <li id="VolunteerRecords"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Codebase/documentRecords.php">Volunteer Records</a>
+                                            <a href="http://localhost/Empowerhouse/documentRecords.php">Volunteer Records</a>
                                         </li>
                                     </div>
                                 </ul>
                             </div>
                             <div id="DocumentsListPage_DocumentsListContainer">
                                 <div id="AlwaysAvailableDocuments_Instructions"
-                                    style="font-size: 14px;color: #727272;margin-bottom: 16px;">These are avaible for
-                                    use as need or
+                                    style="font-size: 14px;color: #727272;margin-bottom: 16px;">These are available for
+                                    use as needed or
                                     as directed.</div>
                                 <div>
-                                <div>
-                                        <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Volunteer Letter.doc" download>Employee and Volunteer Policies<target="_self"/a>                                           
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                    
-                                        <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/General Information.docx" download>General Information<target="_self"/a>                                           
-                                        </div>
-                                        </div>
-                                    <div>
-                                        <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Volunteer Letter.doc" download>Volunteer Letter<target="_self"/a>                                           
-                                        </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Training_Evaluation_of_Trainer-3.25.21.doc" download> Evaluation of Trainer<target="_self"/a>                                           
-                                        </div>
+                                    <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
+                                        <a href="Documents/Volunteer Letter.doc" download>Employee and Volunteer Policies<target="_self"/></a>                                           
                                     </div>
                                 </div>
+                                <div>
+                                    <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
+                                        <a href="Documents/General Information.docx" download>General Information<target="_self"/></a>                                           
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
+                                        <a href="Documents/Volunteer Letter.doc" download>Volunteer Letter<target="_self"/></a>                                           
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
+                                        <a href="Documents/Training_Evaluation_of_Trainer-3.25.21.doc" download>Evaluation of Trainer<target="_self"/></a>                                           
+                                    </div>
+                                </div>
+                                <!--Only allow admins to download completion certificates-->
+                                <?php
+                                    if ($access_level != 1) {
+                                        echo '
+                                        <div>
+                                            <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
+                                                <a href="images/CompletionCertificate2.png" download>Completion Certificate<target="_self"/></a>   
+                                            </div>
+                                        </div>';
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -93,5 +99,4 @@
         </div>
     </main>
 </body>
-
 </html>

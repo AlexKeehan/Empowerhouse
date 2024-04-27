@@ -107,10 +107,10 @@
             </h1>
             <!-- <input type="date" id="month-jumper" value="<?php echo date('Y-m-d', $month); ?>" min="2023-01-01"> -->
             <?php if (isset($_GET['deleteSuccess'])) : ?>
-                <div class="happy-toast">Event deleted successfully.</div>
+                <div class="happy-toast">Event(s) removed successfully.</div>
             <?php endif ?>
             <?php if (isset($_GET['createSuccess'])): ?>
-                <div class="happy-toast">Event created successfully!</div>
+                <div class="happy-toast">Event(s) created successfully!</div>
             <?php endif ?>
             <?php if (isset($_GET['editSuccess'])): ?>
                 <div class="happy-toast">Event details updated successfully!</div>
@@ -179,7 +179,7 @@
                                 if (isset($events[$e])) {
                                     $dayEvents = $events[$e];
                                     foreach ($dayEvents as $info) {
-                                        $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['abbrevName'] .  '</a>';
+                                        $eventsStr .= '<a class="calendar-event" href="event.php?id=' . $info['id'] . '">' . $info['name'] .  '</a>';
                                     }
                                 }
                                 echo '<td class="calendar-day' . $extraClasses . '" ' . $extraAttributes . ' data-date="' . date('Y-m-d', $date) . '">

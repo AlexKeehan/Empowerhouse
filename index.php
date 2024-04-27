@@ -20,7 +20,7 @@
         $person = retrieve_person($_SESSION['_id']);
     }
     $notRoot = $person->get_id() != 'vmsroot';
-    $admin = $person->get_type()[0] == 'admin';
+    $admin = $person->get_type() == 'admin';
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,9 +61,13 @@
                     <span>View Calendar</span>
                 </div>
                 <?php if ($_SESSION['access_level'] >= 2): ?>
-                    <div class="dashboard-item" data-link="addEvent.php">
+                    <div class="dashboard-item" data-link="selectTrainingPeriod.php">
                         <img src="images/new-event.svg">
                         <span>Create Event</span>
+                    </div>
+                    <div class="dashboard-item" data-link="manageCourses.php">
+                        <img src="images/new-event.svg">
+                        <span>Manage Courses</span>
                     </div>
                 <?php endif ?>
                 <div class="dashboard-item" data-link="eventSearch.php">
@@ -104,12 +108,28 @@
                     <img src="images/document.svg">
                     <span>View Documents</span>
                 </div>
+                <div class="dashboard-item" data-link="viewEval.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>View Evaluations</span>
+                </div>
+                <div class="dashboard-item" data-link="courseSignUp.php">
+                    <img src="images/create-report.svg">
+                    <span>Volunteer Course Sign Up</span>
+                </div>
                 <?php if ($notRoot and $admin) : ?>
                     <div class="dashboard-item" data-link="userSearch.php">
                         <img src="images/view-profile.svg">
                         <span>View Users</span>
                     </div>
                 <?php endif ?>
+                <div class="dashboard-item" data-link="ViewEval.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>View Evaluations</span>
+                </div>
+                <div class="dashboard-item" data-link="takeAttendance.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>Take Attendance</span>
+                </div>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
