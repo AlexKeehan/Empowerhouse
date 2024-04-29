@@ -169,11 +169,6 @@
                 // Following line is making sure the message does not already exist
                 if (documentLink.siblings('.sign-success-message').length === 0) { 
                     documentLink.after('<span class="sign-success-message" style="color:green; margin-left:5px;">Signed ✔</span>');
-                    setTimeout(function() {
-                        documentLink.siblings('.sign-success-message').fadeOut('slow', function() {
-                            $(this).remove(); // Remove the message after fading out
-                        });
-                    }, 3000); // Message lasts 3 seconds, then disappears
                 }
 
                 // To clear the signature input after it has been signed and sent
