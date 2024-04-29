@@ -72,7 +72,7 @@
                                     <div>
                                         <li id="DocumentsListFilesTab"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Empowerhouse/documents.php">
+                                            <a href="documents.php">
                                                 <span>Paperwork &amp; Forms</span>
                                             </a>
                                         </li>
@@ -80,7 +80,7 @@
                                     <div>
                                         <li id="VolunteerRecords"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Empowerhouse/documentRecords.php">Volunteer
+                                            <a href="documentRecords.php">Volunteer
                                                 Records</a>
                                             <div id="UnderlineBox"
                                                 style="height:2px;width: 100%;position: relative;border-radius: 1px;bottom: 3px;background-color: #396A92;">
@@ -94,13 +94,13 @@
                                 <div>
                                     <div>
                                         <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Reference Document 5.17.docx" download>Reference Document 5.17<target="_self"/a>                                           
+                                        <a href="Documents/Volunteer Reference Form 5.17.18.doc" download>Reference Document 5.17.18<target="_self"/a>                                           
                                         </div>
                                         </div>
                                     <div>
                                     <div>
                                         <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Volunteer Application & Confidentiality Committment.doc" download>Confidentiality Commitment<target="_self"/a>                                           
+                                        <a href="Documents/Volunteer Application _ Confidentiality Committment.doc" download>Confidentiality Commitment<target="_self"/a>                                           
                                         </div>
                                         </div>
                                     <div>
@@ -118,7 +118,7 @@
                                     </div>
                                     <div>
                                         <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Volunteer Application & Confidentiality Committment.doc" download>Volunteer Application<target="_self"/a>                                       
+                                        <a href="Documents/Volunteer Application _ Confidentiality Committment.doc" download>Volunteer Application<target="_self"/a>                                       
                                         </div>
                                         </div>
                                     </div>
@@ -153,51 +153,51 @@
 
         //Handles the signature submission
         $(document).on('click', '.sign-button', function () {
-                var form = $(this).closest('.document-sign-form');
-                var documentId = form.data('document-id');
-                var documentName = $('.document-link[data-document-id="' + documentId + '"]').data('document-name');
-                var signature = form.find('input[name="signature"]').val();
+            var form = $(this).closest('.document-sign-form');
+            var documentId = form.data('document-id');
+            var documentName = $('.document-link[data-document-id="' + documentId + '"]').data('document-name');
+            var signature = form.find('input[name="signature"]').val();
 
-                console.log('Signing document:', documentName);
+            console.log('Signing document:', documentName);
 
 
-                //Sending signature to DocuSign
-                console.log('Signature sent to DocuSign:', signature);
+            //Sending signature to DocuSign
+            console.log('Signature sent to DocuSign:', signature);
 
-                // Adds the verificatiom, the check mark that the document was signed
-                var documentLink = $('.document-link[data-document-id="' + documentId + '"]');
-                // Following line is making sure the message does not already exist
-                if (documentLink.siblings('.sign-success-message').length === 0) { 
-                    documentLink.after('<span class="sign-success-message" style="color:green; margin-left:5px;">Signed ✔</span>');
-                    setTimeout(function() {
-                        documentLink.siblings('.sign-success-message').fadeOut('slow', function() {
-                            $(this).remove(); // Remove the message after fading out
-                        });
-                    }, 3000); // Message lasts 3 seconds, then disappears
-                }
+            // Adds the verificatiom, the check mark that the document was signed
+            var documentLink = $('.document-link[data-document-id="' + documentId + '"]');
+            // Following line is making sure the message does not already exist
+            if (documentLink.siblings('.sign-success-message').length === 0) { 
+                documentLink.after('<span class="sign-success-message" style="color:green; margin-left:5px;">Signed ✔</span>');
+                setTimeout(function() {
+                    documentLink.siblings('.sign-success-message').fadeOut('slow', function() {
+                        $(this).remove(); // Remove the message after fading out
+                    });
+                }, 3000); // Message lasts 3 seconds, then disappears
+            }
 
-                // To clear the signature input after it has been signed and sent
-                form.find('input[name="signature"]').val('');
-
+            // To clear the signature input after it has been signed and sent
+            form.find('input[name="signature"]').val('');
             
-                // Send signature data to DocuSign
-                DocuSign.signDocument({
-                    apiKey: 'e0edfd40-a150-431d-9784-fc37e913314f',
-                    accountId: '4d012b83-b8d9-4f4d-905f-c9c59721aa50',
-                    username: 'tnoor049@gmail.com',
-                    password: '*VdH,2!@ct.sgAt',
-                    documentId: documentId,
-                    documentName: documentName,
-                    signature: signature,
-                    callback: function (response) {
-                        // Handle DocuSign response here (shows the success message)
-                        alert('Document signed successfully!');
-                        // Clear the signature input after submission
-                        form.find('input[name="signature"]').val('');
-                    }
-                });
+            
+            // Send signature data to DocuSign
+            DocuSign.signDocument({
+                apiKey: 'e0edfd40-a150-431d-9784-fc37e913314f',
+                accountId: '4d012b83-b8d9-4f4d-905f-c9c59721aa50',
+                username: 'tnoor049@gmail.com',
+                password: '*VdH,2!@ct.sgAt',
+                documentId: documentId,
+                documentName: documentName,
+                signature: signature,
+                callback: function (response) {
+                    // Handle DocuSign response here (shows the success message)
+                    alert('Document signed successfully!');
+                    // Clear the signature input after submission
+                    form.find('input[name="signature"]').val('');
+                }
             });
         });
+    });
     
     
     </script>

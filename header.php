@@ -98,7 +98,10 @@
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strpos($_SERVER['PHP_SELF'],"/")+1));
-        $current_page = substr($current_page, strpos($current_page,"/")+1);
+        //Siteground works differently than localhost for this
+        //Cuts one too many characters on Siteground if +1 is used
+        //Cuts one too little characters on localhost if +1 is NOT used
+        $current_page = substr($current_page, strpos($current_page,"/"));
         
         if($permission_array[$current_page]>$_SESSION['access_level']){
             //in this case, the user doesn't have permission to view this page.

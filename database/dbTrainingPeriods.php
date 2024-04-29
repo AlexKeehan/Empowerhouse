@@ -79,10 +79,11 @@ function get_training_period_by_id($id) {
     $con=connect();
     $query = "SELECT * FROM dbtrainingperiods WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
-    if (mysqli_num_rows($result) !== 1) {
-    mysqli_close($con);
-    return false;
-}
+    if (mysqli_num_rows($result) == 0) 
+    {
+        mysqli_close($con);
+        return false;
+    }
     $result_row = mysqli_fetch_assoc($result);
     mysqli_close($con);
     return $result_row;

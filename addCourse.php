@@ -70,9 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($semester != NULL && $year != NULL)
         {
             //Grab training period from database that matches the semester and year passed through SESSION
-            $training_period = get_training_periods_by_semester_and_year($semester, $year);
+            $trainingPeriod = get_training_periods_by_semester_and_year($semester, $year);
             //Grab the id from the training period
-            $periodId = $training_period['id'];
+            $periodId = $trainingPeriod['id'];
         }
         //Else, just use the period_id from the dropdown menu
         else
@@ -84,6 +84,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($courseName)) {
             header("Location: addCourse.php?error=missing_course_name");
             exit();
+        }
+        
+        //Check if date is within training period
+        if (!empty($date))
+        {
+            $startDate = $trainingPeriod['startdate'];
+            $endDate = $trainingPeriod['enddate'];
+            if (!($startDate <= $date && $endDate >= $date))
+            {
+                header("Location: addCourse.php?error=date_outside_training_period");
+                exit();
+            }   
         }
 
         // Check if periodID is valid if necessary
@@ -166,6 +178,8 @@ if (isset($_GET['date'])) {
                 echo "<p class='error'>Invalid training period ID provided.</p>";
             } elseif ($error === "no_courses_provided") {
                 echo "<p class='error'>No courses provided in the form.</p>";
+            } elseif ($error == "date_outside_training_period") {
+                echo "<p class='error'>Date provided is outside the training period.</p>";
             }
         }
         ?>

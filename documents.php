@@ -40,7 +40,7 @@ if (isset($_SESSION['_id'])) {
                                     <div class="column">
                                         <li id="DocumentsListFilesTab"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Codebase/documentRecords.php">
+                                            <a href="documentRecords.php">
                                                 <span>Paperwork &amp; Forms</span>
                                             </a>
                                             <div id="UnderlineBox"
@@ -50,7 +50,7 @@ if (isset($_SESSION['_id'])) {
                                     <div class="column">
                                         <li id="VolunteerRecords"
                                             style="position: relative;display: block;list-style-type: none;background: 0 0;float: left;margin: 0 4px 0 0;padding: 0;font-weight: 700;height: 35px;font-size: 14px;">
-                                            <a href="http://localhost/Empowerhouse/documentRecords.php">Volunteer Records</a>
+                                            <a href="documentRecords.php">Volunteer Records</a>
                                         </li>
                                     </div>
                                 </ul>
@@ -77,12 +77,12 @@ if (isset($_SESSION['_id'])) {
                                 </div>
                                 <div>
                                     <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">
-                                        <a href="Documents/Training_Evaluation_of_Trainer-3.25.21.doc" download>Evaluation of Trainer<target="_self"/></a>                                           
+                                        <a href="Documents/Training Evaluation of Trainer-3.25.21.doc" download>Evaluation of Trainer<target="_self"/></a>                                           
                                     </div>
                                 </div>
                                 <!--Only allow admins to download completion certificates-->
                                 <?php
-                                    if ($access_level != 1) {
+                                    if ($accessLevel != 1) {
                                         echo '
                                         <div>
                                             <div id="AlwaysAvaibleDocumentListItem_null" class="AlwaysAvailableDocuments" style="margin-bottom: 12px;text-decoration: none;border-radius: 4px;background-color: #eee;padding: 12px;">

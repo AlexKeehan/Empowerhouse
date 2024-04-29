@@ -41,12 +41,26 @@ $courseID = null;
 $courseDetails = null;
 $error = '';
 $courses = fetch_all_courses();
-
+$trainingPeriod = NULL;
 // Process form submission for selecting a course
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_course'])) {
     if (!empty($_POST['selected_course_id'])) {
         $courseID = $_POST['selected_course_id'];
         $courseDetails = retrieve_course($courseID);
+        //Check for existing training period
+        if ($courseDetails['periodId'] != 0)
+        {
+            //Store training period id in a variable to use in the html form
+            $trainingPeriod = $courseDetails['periodId'];
+            //Query for the rest of the training period information
+            $query_results = get_training_period_by_id($trainingPeriod);
+            //Check if the query returned something
+            if ($query_results)
+            {
+                //Store the name (semester & year) in a variable to print out in the html form
+                $training_period_name = $query_results['semester'] . " " .  $query_results['year'];
+            }     
+        }
     } else {
         $error = 'Please select a course to update.';
     }
@@ -57,7 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
     // Validate and retrieve course details from form input
     if (!isset($_POST['courses']) || empty($_POST['courses'])) {
         // Set error message
-        $error = 'No courses provided.';
+        header("Location: manageCourse.php?error=no_courses_provided");
+        exit();
     } else {
         $courses = $_POST['courses'];
 
@@ -77,19 +92,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
             $location = $args['new_course_location'];
             $capacity = intval($args['new_course_capacity']);
             $eventId = $args['event_id'];
-            $periodId = $args['period_id'];
+            //Check for existing training period
+            if ($trainingPeriod != NULL)
+            {
+                $periodId = $trainingPeriod;
+            }
+            else
+            {
+                $periodId = $args['period_id'];
+            }
+            
 
             //var_dump($courseID, $courseName, $abbrevName, $startTime, $endTime, $date, $trainer, $description, $location, $capacity, $eventId, $periodId);
 
             // Check if course ID is given
             if (empty($courseID)) {
-                $error = 'Course ID is missing.';
+                header("Location: manageCourse.php?error=missing_course_name");
+                exit();
             } else {
                 // Check if periodID is valid if given
                 if (!empty($periodId)) {
                     $existingPeriod = get_training_period_by_id($periodId);
                     if (!$existingPeriod) {
-                        $error = 'Invalid training period ID provided.';
+                        header("Location: manageCourse.php?error=invalid_period_id");
+                        exit();
+                    }
+                }
+
+                //Check if date is within training period
+                if (!empty($date))
+                {
+                    $query_results = get_training_period_by_id($periodId);
+                    $startDate = $query_results['startdate'];
+                    $endDate = $query_results['enddate'];
+                    if ($startDate != NULL && $endDate != NULL)
+                    {
+                        if (!($startDate <= $date && $endDate >= $date))
+                        {
+                            header("Location: manageCourse.php?error=date_outside_training_period");
+                            exit();
+                        }
                     }
                 }
 
@@ -113,13 +155,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
                 $result = update_course($courseID, $updatedCourseArgs);
 
                 if (!$result) {
-                    $error = 'Failed to update one or more courses. Please try again later.';
+                    header("Location: manageCourse.php?error=create_failed");
+                    exit();
                 }
             }
         }
 
         // Redirect to a calendar page upon successful update of course
         if (empty($error)) {
+            echo "done";
             header("Location: calendar.php?editSuccess");
             exit();
         }
@@ -182,12 +226,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
 
         <?php if ($courseDetails) : ?>
             <h2>Update Course Details</h2>
+            <?php
+            // Display error messages  if provided in URL
+            if (isset($_GET['error'])) {
+                echo "in";
+                $error = $_GET['error'];
+                if ($error === "missing_course_name") {
+                    echo "<p class='error'>Please fill in the course name for each course.</p>";
+                } elseif ($error === "create_failed") {
+                    echo "<p class='error'>Failed to create one or more courses. Please try again later.</p>";
+                } elseif ($error === "invalid_period_id") {
+                    echo "<p class='error'>Invalid training period ID provided.</p>";
+                } elseif ($error === "no_courses_provided") {
+                    echo "<p class='error'>No courses provided in the form.</p>";
+                } elseif ($error == "date_outside_training_period") {
+                    echo "<p class='error'>Date provided is outside the training period.</p>";
+                }
+            }
+            ?>
             <form id="update-course-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <fieldset>
                     <legend>Course Details</legend>
-                    <?php if (!empty($error)) : ?>
-                        <p class="error"><?php echo $error; ?></p>
-                    <?php endif; ?>
                     <div id="courses-container">
                         <div class="course">
                             <input type="hidden" name="courses[0][course_id]" value="<?php echo $courseID; ?>">
@@ -227,13 +286,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
                                     echo "<option value=\"" . $event['id'] . "\">" . $event['eventname'] . "</option>";
                                 } ?>
                             </select>
-                            <label for="period_id">Select Training Period</label>
-                            <select name="courses[0][period_id]">
-                                <option value="">None</option> 
-                                <?php foreach ($trainingPeriods as $period) {
-                                    echo "<option value=\"" . $period['id'] . "\">" . $period['semester'] . " " . $period['year'] . "</option>";
-                                } ?>
-                            </select>
+                            <?php
+                            //Check for existing training period
+                            //If so, then only display that training period
+                            if ($trainingPeriod != 0)
+                            {
+                                echo"
+                                <label for='period_id'>Select Training Period</label>
+                                <select name='courses[0][period_id]'>
+                                <option value='$trainingPeriod'>$training_period_name";
+                            }
+                            else
+                            {
+                                echo"
+                                <label for='period_id'>Select Training Period</label>
+                                <select name='courses[0][period_id]'>
+                                    <option value=''>None</option>";
+                                    foreach ($trainingPeriods as $period) {
+                                        echo "<option value=\"" . $period['id'] . "\">" . $period['semester'] . " " . $period['year'] . "</option>";
+                                    }
+                            }
+                            echo "</select>";
+                            ?>
                         </div>
                         <button type="submit" name="submit_update">Update Course</button>
                     </div>
