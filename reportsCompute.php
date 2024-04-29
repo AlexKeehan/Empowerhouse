@@ -47,7 +47,7 @@ function show_report($venue) {
 		else if (in_array('information', $_POST['report-types'])) {
 			report_all_volunteers_info($name_from, $name_to, $venue, $export);	
 		}
-		// logic that will generate the missing paperwork report when a user selects it
+		// logic that will generate the paperwork report when a user selects it
 		else if (in_array('missing-paperwork', $_POST['report-types'])) {
 			report_missing_paperwork($venue);
         }
