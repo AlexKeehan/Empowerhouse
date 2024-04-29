@@ -16,6 +16,7 @@
  */
 include_once('dbinfo.php');
 include_once(dirname(__FILE__).'/../domain/Person.php');
+require_once('include/time.php');
 
 /*
  * add a person to dbPersons table: if already there, return false
@@ -746,231 +747,318 @@ function find_user_names($name) {
     }
     date_default_timezone_set("America/New_York");
 
-    function get_events_attended_by($personID) {
-        $today = date("Y-m-d");
-        $query = "select * from dbEventVolunteers, dbEvents
-                  where userID='$personID' and eventID=id
-                  and date<='$today'
-                  order by date asc";
+
+    //Gets all events attended by a person
+    function get_events_attended_by($personID) 
+    {
         $connection = connect();
+        $today = date("Y-m-d");
+        $query = "SELECT dbEvents.* 
+                FROM dbEvents JOIN dbEventVolunteers ON dbEventVolunteers.eventID=dbEvents.id 
+                JOIN dbPersons ON dbEventVolunteers.userID='$personID' 
+                WHERE dbPersons.id = '$personID' 
+                AND eventDate <= '$today'
+                ORDER BY eventDate ASC";
         $result = mysqli_query($connection, $query);
-        if ($result) {
-            require_once('include/time.php');
+        if ($result) 
+        {
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             mysqli_close($connection);
-            foreach ($rows as &$row) {
-                $row['duration'] = calculateHourDuration($row['startTime'], $row['endTime']);
-            }
-            unset($row); // suggested for security
             return $rows;
-        } else {
+        } 
+        else 
+        {
             mysqli_close($connection);
             return [];
         }
     }
 
-    function get_events_attended_by_and_date($personID,$fromDate,$toDate) {
-        $today = date("Y-m-d");
-        $query = "select * from dbEventVolunteers, dbEvents
-                  where userID='$personID' and eventID=id
-                  and date<='$toDate' and date >= '$fromDate'
-                  order by date desc";
+    //Gets all events attended by a person within a date range
+    function get_events_attended_by_and_date($personID,$fromDate,$toDate) 
+    {
         $connection = connect();
+        $query = "SELECT dbEvents.* 
+                FROM dbEvents JOIN dbEventVolunteers ON dbEventVolunteers.eventID=dbEvents.id 
+                JOIN dbPersons ON dbEventVolunteers.userID='$personID'
+                WHERE dbPersons.id = '$personID'
+                AND eventDate BETWEEN '$fromDate' AND '$toDate'
+                ORDER BY eventDate DESC";
         $result = mysqli_query($connection, $query);
-        if ($result) {
-            require_once('include/time.php');
+        if ($result) 
+        {
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             mysqli_close($connection);
-            foreach ($rows as &$row) {
-                $row['duration'] = calculateHourDuration($row['startTime'], $row['endTime']);
-            }
             unset($row); // suggested for security
             return $rows;
-        } else {
+        } 
+        else 
+        {
             mysqli_close($connection);
             return [];
         }
     }
 
-    function get_events_attended_by_desc($personID) {
-        $today = date("Y-m-d");
-        $query = "select * from dbEventVolunteers, dbEvents
-                  where userID='$personID' and eventID=id
-                  and date<='$today'
-                  order by date desc";
+    //Gets all events attended by a person descending
+    function get_events_attended_by_desc($personID) 
+    {
         $connection = connect();
+        $today = date("Y-m-d");
+        $query = "SELECT dbEvents.*
+                FROM dbEvents JOIN dbEventVolunteers ON dbEventVolunteers.eventID=dbEvents.id
+                JOIN dbPersons ON dbEventVolunteers.userid='$personID'
+                WHERE dbPersons.id='$personID' AND eventDate <= '$today'
+                ORDER BY eventDate DESC";
         $result = mysqli_query($connection, $query);
-        if ($result) {
-            require_once('include/time.php');
+        if ($result) 
+        {
             $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
             mysqli_close($connection);
-            foreach ($rows as &$row) {
-                $row['duration'] = calculateHourDuration($row['startTime'], $row['endTime']);
-            }
             unset($row); // suggested for security
             return $rows;
-        } else {
+        } 
+        else 
+        {
             mysqli_close($connection);
             return [];
         }
     }
 
-    function get_hours_volunteered_by($personID) {
-        $events = get_events_attended_by($personID);
-        $hours = 0;
-        foreach ($events as $event) {
-            $duration = $event['duration'];
-            if ($duration > 0) {
-                $hours += $duration;
+    //Get all hours volunteered by a person
+    function get_hours_volunteered_by($personID) 
+    {
+        $events = get_events_attended_by($personID); //get array of events which the person volunteered at
+        $hours = 0; //set int hours = 0
+        foreach ($events as $event) //loop over every event returned
+        {
+            $duration = calculateHourDuration($event['startTime'], $event['endTime']); //this is how long the event lasted
+            if ($duration > 0) //if the event that the person volunteered at was longer than 0 hours
+            {  
+                $hours += $duration; //add the duration
             }
         }
-        return $hours;
+        return $hours; //return the sum
     }
 
-    function get_hours_volunteered_by_and_date($personID,$fromDate,$toDate) {
-        $events = get_events_attended_by_and_date($personID,$fromDate,$toDate);
-        $hours = 0;
-        foreach ($events as $event) {
-            $duration = $event['duration'];
-            if ($duration > 0) {
-                $hours += $duration;
+    //Get all hours volunteered by a person within a date range
+    function get_hours_volunteered_by_and_date($personID, $fromDate, $toDate) 
+    {
+        $events = get_events_attended_by_and_date($personID, $fromDate, $toDate); //get array of events which the person volunteered at
+        $hours = 0; //track total hours
+        foreach ($events as $event) //loop through events
+        {
+            $duration = calculateHourDuration($event['startTime'], $event['endTime']); //calculate length of event
+            if ($duration > 0) //if event lasted longer than 0 hours
+            {
+                $hours += $duration; //add to total hours
             }
         }
-        return $hours;
+        return $hours; //return total hours
     }
 
-    function get_tot_vol_hours($type,$stats,$dateFrom,$dateTo,$lastFrom,$lastTo){
+    //Get total volunteer hours for every person
+    function get_tot_vol_hours($type, $stats, $dateFrom, $dateTo, $lastFrom, $lastTo)
+    {
         $con = connect();
-        $type1 = "volunteer";
-        //$stats = "Active";
-        if(($type=="general_volunteer_report" || $type == "total_vol_hours") && ($dateFrom == NULL && $dateTo == NULL && $lastFrom == NULL && $lastTo == NULL)){
-	    if ($stats == 'Active' || $stats == 'Inactive') 
-            	$query = $query = "SELECT * FROM dbPersons WHERE type='$type1' AND status='$stats'";
-            else
-            	$query = $query = "SELECT * FROM dbPersons WHERE type='$type1'";
-	    $result = mysqli_query($con,$query);
-            $totHours = array();
-            while($row = mysqli_fetch_assoc($result)){
-                $hours = get_hours_volunteered_by($row['id']);
-                $totHours[] = $hours;
+        $totHours = array();
+        //Check if report type is general volunteer report or total volunteer hours
+        if ($type =="general_volunteer_report" || $type == "total_vol_hours")
+        {
+            //No fields
+            if ($dateFrom == NULL && $dateTo == NULL && $lastFrom == NULL && $lastTo == NULL)
+            {
+                //If stats is not 'All'
+	            if ($stats == 'Active' || $stats == 'Inactive') 
+                {
+                    //Get all persons from dbPersons whose status is 'Active' or 'Inactive'
+                    $query = "SELECT * FROM dbPersons WHERE type='volunteer' AND status='$stats'";
+                }
+                //If stats is 'All'
+                else
+                {
+                    //Get all persons from dbPersons
+                    $query = "SELECT * FROM dbPersons WHERE type='volunteer'";
+                }
+	            $result = mysqli_query($con,$query);
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    //Get hours for selected persons
+                    $hours = get_hours_volunteered_by($row['id']);
+                    //Add hours to total hours
+                    $totHours[] = $hours;
+                }
+                //Sum up all the hours for every selected person and return it
+                $sum = 0;
+                foreach($totHours as $hrs)
+                {
+                    $sum += $hrs;
+                }
+                return $sum;
             }
-            $sum = 0;
-            foreach($totHours as $hrs){
-                $sum += $hrs;
-            }
-            return $sum;
-        }
-        elseif(($type=="general_volunteer_report" || $type == "total_vol_hours") && ($dateFrom && $dateTo && $lastFrom && $lastTo)){
-            $today = date("Y-m-d");
-	    if ($stats == 'Active' || $stats == 'Inactive') 
-		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
-                FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY Dur";            
-	    else
-                $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
-                FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		WHERE date >= '$dateFrom' AND date<='$dateTo'
-		GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY Dur";
+            //Both name & date range
+            elseif ($dateFrom && $dateTo && $lastFrom && $lastTo)
+            {
+                //If stats is not 'All'
+	            if ($stats == 'Active' || $stats == 'Inactive') 
+                {
+                    //Get all persons from dbPersons whose status is 'Active' or 'Inactive' 
+                    //and who volunteered within the date range 
+                    //and whose name is within the name range
+		            $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbEvents.startTime, dbEvents.endTime
+                    FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
+                    JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                    WHERE eventDate BETWEEN '$dateFrom' AND '$dateTo' AND dbPersons.status='$stats' 
+                    GROUP BY dbPersons.first_name, dbPersons.last_name";   
+                }
+                //If stats is 'All'
+	            else
+                {
+                    //Get all persons from dbPersons
+                    //who volunteered within the date range 
+                    //and whose name is within the name range
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbEvents.startTime, dbEvents.endTime
+                    FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
+                    JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+		            WHERE eventDate BETWEEN '$dateFrom' AND '$dateTo'
+		            GROUP BY dbPersons.first_name,dbPersons.last_name";
+                }
                 $result = mysqli_query($con,$query);
+                //Calculate the hours volunteered for every person within the date range & name range
                 try {
                     // Code that might throw an exception or error goes here
                     $dd = getBetweenDates($dateFrom, $dateTo);
                     $nameRange = range($lastFrom,$lastTo);
                     $bothRange = array_merge($dd,$nameRange);
                     $dateRange = @fetch_events_in_date_range_as_array($dateFrom, $dateTo)[0];
-                    $totHours = array();
-                    while($row = mysqli_fetch_assoc($result)){
-                        foreach ($bothRange as $both){
-                            if(in_array($both,$dateRange) && in_array($row['last_name'][0],$nameRange)){
-                                $hours = $row['Dur'];   
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        foreach ($bothRange as $both)
+                        {
+                            if(in_array($both,$dateRange) && in_array($row['last_name'][0],$nameRange))
+                            {
+                                $hours = calculateHourDuration($row['startTime'], $row['endTime']);   
                                 $totHours[] = $hours;
                             }
                         }
                     }
+                    //Sum up all the hours for every selected person and return it
                     $sum = 0;
-                    foreach($totHours as $hrs){
+                    foreach($totHours as $hrs)
+                    {
                         $sum += $hrs;
                     }
-                } catch (TypeError $e) {
+                } 
+                catch (TypeError $e) 
+                {
                     // Code to handle the exception or error goes here
                     echo "No Results found!"; 
                 }
                 return $sum; 
             }
-            elseif(($type == "general_volunteer_report" ||$type == "total_vol_hours") && ($dateFrom && $dateTo && $lastFrom == NULL  && $lastTo == NULL)){
-	    if ($stats == 'Active' || $stats == 'Inactive') 
-                $query = $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
-                FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-		WHERE date >= '$dateFrom' AND date<='$dateTo' AND dbPersons.status='$stats' GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY Dur";
-	    else
-		$query = $query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
-                FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                WHERE date >= '$dateFrom' AND date<='$dateTo'
-		GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY Dur";
+            //Only date range
+            elseif ($dateFrom && $dateTo && $lastFrom == NULL  && $lastTo == NULL)
+            {
+                //If stats is not 'All'
+	            if ($stats == 'Active' || $stats == 'Inactive') 
+                {
+                    //Get all persons from dbPersons whose status is 'Active' or 'Inactive' 
+                    //and who volunteered within the date range 
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbEvents.startTime, dbEvents.endTime
+                    FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
+                    JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+		            WHERE eventDate BETWEEN '$dateFrom' AND '$dateTo' 
+                    AND dbPersons.status='$stats' 
+                    GROUP BY dbPersons.first_name, dbPersons.last_name";
+                }
+                //If stats is 'All'
+	            else
+                {
+                    //Get all persons from dbPersons who volunteered within the date range 
+		            $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbEvents.startTime, dbEvents.endTime
+                    FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
+                    JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                    WHERE eventDate BETWEEN '$dateFrom' AND '$dateTo'
+		            GROUP BY dbPersons.first_name, dbPersons.last_name";
+                }
+
                 $result = mysqli_query($con,$query);
+
+                //Calculate the hours volunteered for each selected person
                 try {
                     // Code that might throw an exception or error goes here
                     $dd = getBetweenDates($dateFrom, $dateTo);
                     $dateRange = @fetch_events_in_date_range_as_array($dateFrom, $dateTo)[0];
-                    $totHours = array();
-                    while($row = mysqli_fetch_assoc($result)){
-                        foreach ($dd as $date){
-                            if(in_array($date,$dateRange)){
-                                $hours = $row['Dur'];   
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        foreach ($dd as $date)
+                        {
+                            if(in_array($date,$dateRange))
+                            {
+                                $hours = calculateHourDuration($row['startTime'], $row['endTime']);   
                                 $totHours[] = $hours;
                             }
                         }
                     }
+                    //Sum up all the hours for every selected person and return it
                     $sum = 0;
-                    foreach($totHours as $hrs){
+                    foreach($totHours as $hrs)
+                    {
                         $sum += $hrs;
                     }
-                }catch (TypeError $e) {
+                }
+                //Catch there being no results
+                catch (TypeError $e) 
+                {
                     // Code to handle the exception or error goes here
                     echo "No Results found!"; 
                 }
                 return $sum;
             }
-            elseif(($type == "general_volunteer_report" ||$type == "total_vol_hours") && ($dateFrom == NULL && $dateTo ==NULL && $lastFrom && $lastTo)){
-	    if ($stats == 'Active' || $stats == 'Inactive') 
-		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
-                FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                WHERE dbPersons.status='$stats'
-		GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY Dur";
-	    else
-		$query = "SELECT dbPersons.id,dbPersons.first_name,dbPersons.last_name, SUM(HOUR(TIMEDIFF(dbEvents.endTime, dbEvents.startTime))) as Dur
-                FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
-                JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
-                GROUP BY dbPersons.first_name,dbPersons.last_name
-                ORDER BY Dur";
-                //$query = "SELECT * FROM dbPersons WHERE dbPersons.status='$stats'";
+            //Only name range
+            elseif ($dateFrom == NULL && $dateTo == NULL && $lastFrom && $lastTo)
+            {
+	            if ($stats == 'Active' || $stats == 'Inactive')
+                {
+                    //Get all persons from dbPersons whose status is 'Active' or 'Inactive' 
+                    //and whose last name is within the name range
+		            $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbEvents.startTime, dbEvents.endTime
+                    FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
+                    JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                    WHERE dbPersons.status='$stats'
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+		            GROUP BY dbPersons.first_name, dbPersons.last_name";
+                }
+	            else
+                {
+                    //Get all persons from dbPersons whose last name is within the name range
+		            $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, dbEvents.startTime, dbEvents.endTime
+                    FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
+                    JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
+                    WHERE LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    GROUP BY dbPersons.first_name, dbPersons.last_name";
+                }
                 $result = mysqli_query($con,$query);
+                //Calculate hours volunteered by each person
                 $nameRange = range($lastFrom,$lastTo);
-                $totHours = array();
-                while($row = mysqli_fetch_assoc($result)){
-                    foreach ($nameRange as $a){
-                        if($row['last_name'][0] == $a){
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    foreach ($nameRange as $a)
+                    {
+                        if($row['last_name'][0] == $a)
+                        {
                             $hours = get_hours_volunteered_by($row['id']);   
                             $totHours[] = $hours;
                         }
                     }
                 }
+                //Sum up all the hours for every selected person and return it
                 $sum = 0;
-                foreach($totHours as $hrs){
+                foreach($totHours as $hrs)
+                {
                     $sum += $hrs;
                 }
                 return $sum;
             }
+        }
     }
 
     function remove_profile_picture($id) {

@@ -79,7 +79,10 @@
         $permission_array['eventedit.php'] = 2;
         $permission_array['modifyuserrole.php'] = 2;
         $permission_array['addevent.php'] = 2;
+        $permission_array['managecourses.php'] = 2;         //Added permissions for new file manageCourses.php
         $permission_array['addcourse.php'] = 2;             //Added permissions for new file addCourse.php
+        $permission_array['removecourse.php'] = 2;             //Added permissions for new file deleteCourse.php
+        $permission_array['updatecourse.php'] = 2;             //Added permissions for new file updateCourse.php
         $permission_array['addTrainingPeriod.php'] = 2;     //Added permissions for new file addTrainingPeriod.php
         $permission_array['selectTrainingPeriod.php'] = 2;  //Added permissions for new file selectTrainingPeriod.php
         $permission_array['editevent.php'] = 2;
@@ -90,6 +93,8 @@
         $permission_array['viewval.php'] = 2;
         $permission_array['selecttrainingperiod.php'] = 2;
         $permission_array['vieweval.php'] = 2;
+        $permission_array['takeattendance.php'] = 2;
+        $permission_array['takeattendance-2.php'] = 2;
 
         //Check if they're at a valid page for their access level.
         $current_page = strtolower(substr($_SERVER['PHP_SELF'], strpos($_SERVER['PHP_SELF'],"/")+1));
@@ -138,6 +143,7 @@
 	            //echo('<a href="' . $path . 'viewSchedule.php?venue=bangor'."".'">Bangor</a>');
 		    echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'verify.php">Verify</a></li>');
 	            echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'selectTrainingPeriod.php">Add Training Period</a></li>');
+                echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'manageCourses.php">Manage Courses</a></li>');
 	            echo('<span class="nav-divider">|</span>');
 	            echo('<span class="navbar-brand">Volunteers</span>');
                 echo('<li class="sub-item"><a class="nav-link active" aria-current="page" href="' . $path . 'personSearch.php">Search</a></li>

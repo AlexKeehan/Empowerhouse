@@ -1,12 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\css",
-    "\\database",
-    "\\domain",
-    "\\include",
-    "\\js"
+    ""
   ],
-  "SelectedNode": "\\database\\dbinfo.php",
+  "SelectedNode": "\\insertAdmin.php",
   "PreviewInSolutionExplorer": false
 }
