@@ -15,6 +15,7 @@ if (!isset($_SESSION['access_level']) || $_SESSION['access_level'] < 1) {
 
 include_once('database/dbPersons.php');
 include_once('domain/Person.php');
+require_once('database/dbMessages.php');
 
 // Get date?
 if (isset($_SESSION['_id'])) {
@@ -111,12 +112,18 @@ $notRoot = $person->get_id() != 'vmsroot';
                     foreach ($_POST['attendee'] as $attendeeID) {
                         $attendance = 1; // Assume checked by default
                         // If attendee is not checked, set attendance to 0
+
+                        //Assuming that only one course is needed to complete training
+                        $query = ("UPDATE dbPersons SET completedTraining = 'True', dateCompletedTraining=CURDATE() WHERE dbPersons.id='$attendeeID'");
+                        $result = mysqli_query($conn,$query);
                         //echo "dddd ";
                         if (!in_array($attendeeID, $_POST['attendee'])) {
                             $attendance = 0;
                         }
                         $stmt->bind_param("sis", $attendeeID, $_SESSION['courseID'], $attendance);
                         $stmt->execute();
+                        message_all_admins($attendeeID, "User Has Completed Training", "User Is Now Available To Volunteer");
+                        send_message($attendeeID, 'vmsroot', "User Has Completed Training", "User Is Now Available To Volunteer");
                     }
         
                     // Close the statement and the database connection
