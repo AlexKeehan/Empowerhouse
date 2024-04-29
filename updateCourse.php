@@ -62,7 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_course'])) {
             }     
         }
     } else {
-        $error = 'Please select a course to update.';
+        header("Location: updateCourse.php?error=no_course_selected");
+        exit();
     }
 }
 
@@ -71,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
     // Validate and retrieve course details from form input
     if (!isset($_POST['courses']) || empty($_POST['courses'])) {
         // Set error message
-        header("Location: manageCourse.php?error=no_courses_provided");
+        header("Location: updateCourse.php?error=no_courses_provided");
         exit();
     } else {
         $courses = $_POST['courses'];
@@ -107,14 +108,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
 
             // Check if course ID is given
             if (empty($courseID)) {
-                header("Location: manageCourse.php?error=missing_course_name");
+                header("Location: updateCourse.php?error=missing_course_name");
                 exit();
             } else {
                 // Check if periodID is valid if given
                 if (!empty($periodId)) {
                     $existingPeriod = get_training_period_by_id($periodId);
                     if (!$existingPeriod) {
-                        header("Location: manageCourse.php?error=invalid_period_id");
+                        header("Location: updateCourse.php?error=invalid_period_id");
                         exit();
                     }
                 }
@@ -129,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
                     {
                         if (!($startDate <= $date && $endDate >= $date))
                         {
-                            header("Location: manageCourse.php?error=date_outside_training_period");
+                            header("Location: updateCourse.php?error=date_outside_training_period");
                             exit();
                         }
                     }
@@ -155,18 +156,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
                 $result = update_course($courseID, $updatedCourseArgs);
 
                 if (!$result) {
-                    header("Location: manageCourse.php?error=create_failed");
+                    header("Location: updateCourse.php?error=create_failed");
                     exit();
                 }
             }
         }
 
         // Redirect to a calendar page upon successful update of course
-        if (empty($error)) {
-            echo "done";
-            header("Location: calendar.php?editSuccess");
-            exit();
-        }
+        header("Location: calendar.php?editSuccess");
+        exit();
     }
 }
 ?>
@@ -207,6 +205,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
 <body>
     <?php require_once('header.php'); ?>
     <h1>Update Course</h1>
+    <?php
+    // Display error messages  if provided in URL
+    if (isset($_GET['error'])) {
+        $error = $_GET['error'];
+        if ($error === "missing_course_name") {
+            echo "<p class='error'>Please fill in the course name for each course.</p>";
+        } elseif ($error == "no_course_selected") {
+            echo "<p class='error'>Please select a course</p>";
+        } elseif ($error === "create_failed") {
+            echo "<p class='error'>Failed to create one or more courses. Please try again later.</p>";
+        } elseif ($error === "invalid_period_id") {
+            echo "<p class='error'>Invalid training period ID provided.</p>";
+        } elseif ($error === "no_courses_provided") {
+            echo "<p class='error'>No courses provided in the form.</p>";
+        } elseif ($error == "date_outside_training_period") {
+            echo "<p class='error'>Date provided is outside the training period.</p>";
+        }
+    }
+    ?>
     <main class="date">
         <h2>Select a Course to Update</h2>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -226,24 +243,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit_update'])) {
 
         <?php if ($courseDetails) : ?>
             <h2>Update Course Details</h2>
-            <?php
-            // Display error messages  if provided in URL
-            if (isset($_GET['error'])) {
-                echo "in";
-                $error = $_GET['error'];
-                if ($error === "missing_course_name") {
-                    echo "<p class='error'>Please fill in the course name for each course.</p>";
-                } elseif ($error === "create_failed") {
-                    echo "<p class='error'>Failed to create one or more courses. Please try again later.</p>";
-                } elseif ($error === "invalid_period_id") {
-                    echo "<p class='error'>Invalid training period ID provided.</p>";
-                } elseif ($error === "no_courses_provided") {
-                    echo "<p class='error'>No courses provided in the form.</p>";
-                } elseif ($error == "date_outside_training_period") {
-                    echo "<p class='error'>Date provided is outside the training period.</p>";
-                }
-            }
-            ?>
             <form id="update-course-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <fieldset>
                     <legend>Course Details</legend>
