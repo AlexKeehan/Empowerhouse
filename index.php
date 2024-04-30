@@ -130,6 +130,10 @@
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
                 </div>
+                <div class="dashboard-item" data-link="TShirtSize.php">
+                    <img src="images/t-shirt.svg">
+                    <span>Change T-Shirt Size</span>
+                </div>
                 <div class="dashboard-item" data-link="logout.php">
                     <img src="images/logout.svg">
                     <span>Log out</span>

@@ -168,7 +168,7 @@ function make_a_course($result_row) {
 // retrieve only those events that match the criteria given in the arguments
 function getonlythose_dbCourse($name, $day, $venue) {
    $con=connect();
-   $query = "SELECT * FROM dbEvents WHERE event_name LIKE '%" . $event_name . "%'" .
+   $query = "SELECT * FROM dbEvents WHERE event_name LIKE '%" . $name . "%'" .
            " AND event_name LIKE '%" . $name . "%'" .
            " AND venue = '" . $venue . "'" . 
            " ORDER BY event_name";

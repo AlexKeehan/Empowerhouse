@@ -26,8 +26,12 @@
             $username = strtolower($args['username']);
             $password = $args['password'];
             $user = retrieve_person($username);
+
             if (!$user) {
+
                 $badLogin = true;
+
+            //password_verify() is causing issues, even though the passwords are the same!
             } else if (password_verify($password, $user->get_password())) {
                 $changePassword = false;
                 if ($user->is_password_change_required()) {
@@ -66,6 +70,7 @@
                 }
                 die();
             } else {
+                echo"<h1>hella bad!</h1>";
                 $badLogin = true;
             }
         }
