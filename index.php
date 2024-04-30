@@ -20,7 +20,7 @@
         $person = retrieve_person($_SESSION['_id']);
     }
     $notRoot = $person->get_id() != 'vmsroot';
-    $admin = $person->get_type()[0] == 'admin';
+    $admin = $person->get_type() == 'admin';
 ?>
 <!DOCTYPE html>
 <html>
@@ -122,6 +122,14 @@
                         <span>View Users</span>
                     </div>
                 <?php endif ?>
+                <div class="dashboard-item" data-link="ViewEval.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>View Evaluations</span>
+                </div>
+                <div class="dashboard-item" data-link="takeAttendance.php">
+                    <img src="images/paper-file-svgrepo-com.svg">
+                    <span>Take Attendance</span>
+                </div>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
