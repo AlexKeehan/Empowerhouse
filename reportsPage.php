@@ -1064,7 +1064,7 @@ function getBetweenDates($startDate, $endDate)
         }
 
         //Display email list only
-        if ($type == "volunteer_emails")
+        if ($type == "email_volunteer_list")
         {
             $con=connect();
 
