@@ -67,6 +67,8 @@
         $permission_array['selecttrainingperiod.php'] = 1;
         $permission_array['addtrainingperiod.php'] = 1;
         $permission_array['coursesignup.php'] = 1;
+        $permission_array['tshirtsize.php'] = 1;
+
 
         //pages only managers can view
         $permission_array['verify.php'] = 2;

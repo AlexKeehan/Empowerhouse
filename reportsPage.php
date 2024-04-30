@@ -1351,7 +1351,7 @@ function getBetweenDates($startDate, $endDate)
                 </tr>";
         }
 
-        //Display email list only - PSEUDOCODE
+        //Display email list only
         if ($type == "volunteer_emails")
         {
             $con=connect();
