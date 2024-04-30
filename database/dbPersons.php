@@ -182,6 +182,14 @@ function update_birthday($id, $new_birthday) {
 	return $result;
 }
 
+function update_shirt_size($id, $new_shirt_size) {
+	$con=connect();
+	$query = 'UPDATE dbPersons SET shirt_size = "' . $new_shirt_size . '" WHERE id = "' . $id . '"';
+	$result = mysqli_query($con,$query);
+	mysqli_close($con);
+	return $result;
+}
+
 /*
  * Updates the profile picture link of the corresponding
  * id.
