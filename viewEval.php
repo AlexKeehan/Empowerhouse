@@ -43,10 +43,10 @@
             $f_name = $person->get_first_name();
             $l_name = $person->get_last_name();
             $name = $f_name . " " . $l_name;
-            $evals = get_evalutaion_by_Instructor($name);
+            $evals = get_evaluation_by_Instructor($name);
             
             echo "<h1> Select an evaluation to view: </h1>";
-            $i = 0;
+         `   $i = 0;
             if(!$evals){
                 echo "<p> " . $name . " has no evaluations to view </p>";
             }
@@ -64,7 +64,7 @@
                 $eval_num = $_POST["eval"];
                 $eval_num--;
                 $curr_eval = $evals[$eval_num];
-                echo "<h2> eval # ". $eval_num + 1 . "</h2>";
+                echo "<h2> eval # ". ($eval_num + 1) . "</h2>";
                 echo "<h3> Instructor Name:</h3>";
                 echo "<p> ". $curr_eval["InstructorName"] . "</p>";
                 echo "<h3> Topic:</h3>";

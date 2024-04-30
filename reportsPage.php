@@ -678,19 +678,23 @@ function getBetweenDates($startDate, $endDate)
             {
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name,  dbPersons.last_name
+                    //Add dur to organize results based on event duration
+                    $query = "SELECT dbPersons.id, dbPersons.first_name,  dbPersons.last_name,
+                    DATEDIFF(minute, dbEvents.startTime, dbEvents.endtime) as dur
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
-                    GROUP BY dbPersons.first_name,dbPersons.last_name";
+                    GROUP BY dur";
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
+                    //Add dur to organize results based on event duration
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name,
+                    DATEDIFF(minute, dbEvents.startTime, dbEvents.endtime) as dur
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate<='$dateTo' AND dbPersons.type='volunteer'
-                    GROUP BY dbEventVolunteers.userID";
+                    GROUP BY dur";
                 }
             }
             //only name range for top performer report 
@@ -698,19 +702,23 @@ function getBetweenDates($startDate, $endDate)
             {
                 if($stats != "All")
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
+                    //Add dur to organize results based on event duration
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name,
+                    DATEDIFF(minute, dbEvents.startTime, dbEvents.endtime) as dur
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$today' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
-                    GROUP BY dbPersons.first_name,dbPersons.last_name";
+                    GROUP BY dur";
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
+                    //Add dur to organize results based on event duration
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name,
+                    DATEDIFF(minute, dbEvents.startTime, dbEvents.endtime) as dur
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$today' AND dbPersons.type='volunteer'
-                    GROUP BY dbEventVolunteers.userID";
+                    GROUP BY dur";
                 }
             }
             //only date range for top performer report
@@ -718,19 +726,23 @@ function getBetweenDates($startDate, $endDate)
             {
                 if($stats != "All")
                 {
+                    //Add dur to organize results based on event duration
                     $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name, 
+                    DATEDIFF(minute, dbEvents.startTime, dbEvents.endtime) as dur
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$dateTo' AND dbPersons.status='$stats' AND dbPersons.type='volunteer'
-                    GROUP BY dbPersons.first_name,dbPersons.last_name";
+                    GROUP BY dur";
                 }
                 else
                 {
-                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_name
+                    //Add dur to organize results based on event duration
+                    $query = "SELECT dbPersons.id, dbPersons.first_name, dbPersons.last_namez
+                    DATEDIFF(minute, dbEvents.startTime, dbEvents.endtime) as dur
                     FROM dbPersons JOIN dbEventVolunteers ON dbPersons.id = dbEventVolunteers.userID
                     JOIN dbEvents ON dbEventVolunteers.eventID = dbEvents.id
                     WHERE eventDate <= '$dateTo' AND dbPersons.type='volunteer'
-                    GROUP BY dbEventVolunteers.userID";
+                    GROUP BY dur";
                 }
             }
             $result = mysqli_query($con,$query); 

@@ -20,7 +20,7 @@ if (!$loggedIn) {
 // Fetch course names and IDs from the dbcourses table
 $courseData = [];
 $conn = connect(); // Assume $db is your PDO or MySQLi connection object from dbinfo.php
-$query = "SELECT id, name FROM dbcourses"; // Adjust based on your actual table schema
+$query = "SELECT id, name FROM dbCourses"; // Adjust based on your actual table schema
 $result = $conn->query($query);
 if ($result) {
     while ($row = $result->fetch_assoc()) {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error: You do not have the proper permission to submit.";
         } else {
             // Prepare SQL statement
-            $sql = "INSERT INTO dbcoursesignup (course_id, person_id) VALUES (?, ?)";
+            $sql = "INSERT INTO dbCourseSignup (course_id, person_id) VALUES (?, ?)";
             
             // Prepare and bind parameters
             $courseID = $_POST['course_id'];
