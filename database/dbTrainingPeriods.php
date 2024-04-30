@@ -16,7 +16,7 @@ include_once('dbinfo.php');
 */
 function get_training_periods_by_semester_and_year($semester, $year) {
     $connection = connect();
-    $query = "select * from dbtrainingperiods
+    $query = "select * from dbTrainingPeriods
             where year = '$year' and semester = '$semester' 
             order by startDate asc";
     try{
@@ -41,11 +41,11 @@ function add_trainingperiod($trainingperiod) {
     $startDate = $trainingperiod[2];
     $endDate = $trainingperiod[3];
 
-    $query = "SELECT * FROM dbtrainingperiods WHERE semester = '" . $semester . "' and year = '" . $year . "'";
+    $query = "SELECT * FROM dbTrainingPeriods WHERE semester = '" . $semester . "' and year = '" . $year . "'";
     $result = mysqli_query($connection,$query);
     //if there's no entry for this semester & year, then add it
     if ($result == null || mysqli_num_rows($result) == 0) {
-        $new_row = mysqli_query($connection,'INSERT INTO dbtrainingperiods (semester, year, startDate, endDate) VALUES ("' .$semester . '","' .$year . '","' . $startDate . '","' .$endDate .'");');			
+        $new_row = mysqli_query($connection,'INSERT INTO dbTrainingPeriods (semester, year, startDate, endDate) VALUES ("' .$semester . '","' .$year . '","' . $startDate . '","' .$endDate .'");');			
         if (!$new_row) {
             return null;
         }
@@ -61,7 +61,7 @@ function add_trainingperiod($trainingperiod) {
 */
 function update_training_period_year($id, $new_year) {
     $con=connect();
-	$query = 'UPDATE dbtrainingperiods SET year = "' . $new_year . '" WHERE id = "' . $id . '"';
+	$query = 'UPDATE dbTrainingPeriods SET year = "' . $new_year . '" WHERE id = "' . $id . '"';
 	try{
         $result= mysqli_query($connection, $query);
     } catch (Exception $e) {
@@ -77,7 +77,7 @@ function update_training_period_year($id, $new_year) {
 */
 function get_training_period_by_id($id) {
     $con=connect();
-    $query = "SELECT * FROM dbtrainingperiods WHERE id = '" . $id . "'";
+    $query = "SELECT * FROM dbTrainingPeriods WHERE id = '" . $id . "'";
     $result = mysqli_query($con,$query);
     if (mysqli_num_rows($result) == 0) 
     {
@@ -94,7 +94,7 @@ function get_training_period_by_id($id) {
 */
 function get_all_training_periods() {
     $connection = connect();
-    $query = "SELECT * FROM dbtrainingperiods";
+    $query = "SELECT * FROM dbTrainingPeriods";
     try {
         $results = mysqli_query($connection, $query);
     } catch (Exception $e) {

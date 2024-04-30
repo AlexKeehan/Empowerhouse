@@ -46,7 +46,7 @@
 
                     $personId = $_SESSION['_id']; // Assuming this is the person's ID
                     // Query to fetch courses based on the person's ID from dbcoursesignup
-                    $sql = "SELECT name FROM dbcourses;";
+                    $sql = "SELECT name FROM dbCourses;";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {

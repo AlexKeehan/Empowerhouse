@@ -58,7 +58,7 @@ $notRoot = $person->get_id() != 'vmsroot';
             }
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['coursename'])) {            
                 // Prepare and execute the SQL statement to get course ID
-                $stmt = $conn->prepare("SELECT id FROM dbcourses WHERE name = ?");
+                $stmt = $conn->prepare("SELECT id FROM dbCourses WHERE name = ?");
                 $stmt->bind_param("s", $coursename);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -70,8 +70,8 @@ $notRoot = $person->get_id() != 'vmsroot';
             
                     // Prepare and execute SQL statement to get attendees for the course
                     $sqlAttendees = "SELECT p.id, p.first_name, p.last_name
-                                    FROM dbpersons p
-                                    INNER JOIN dbcoursesignup cs ON p.id = cs.person_id
+                                    FROM dbPersons p
+                                    INNER JOIN dbCourseSignup cs ON p.id = cs.person_id
                                     WHERE cs.course_id = ?";
                     $stmt2 = $conn->prepare($sqlAttendees);
                     $stmt2->bind_param("i", $courseID);
@@ -106,7 +106,7 @@ $notRoot = $person->get_id() != 'vmsroot';
                     $conn = connect();
                     // Prepare SQL statement for inserting attendance
                     //echo "cccc ";
-                    $stmt = $conn->prepare("INSERT INTO dbattendance (person_id, course_id, date, attendance) VALUES (?, ?, CURDATE(), ?)");
+                    $stmt = $conn->prepare("INSERT INTO dbAttendance (person_id, course_id, date, attendance) VALUES (?, ?, CURDATE(), ?)");
         
                     // Bind parameters and execute the statement for each selected attendee
                     foreach ($_POST['attendee'] as $attendeeID) {

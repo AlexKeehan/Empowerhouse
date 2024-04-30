@@ -84,12 +84,12 @@
         <label for="enthusiasm">Exhibited enthusiasm for the topic</label><br><br>
 
         <!-- code for check boxes (only one) -->
-        <label for="increasednderstanding">After taking this training I feel like I have an increased understanding of domestic violence.</label><br>
-        <input type="radio" id="true" name="increasednderstanding" value="True">
-        <label for="increasednderstanding">True</label><br>
-        <input type="radio" id="false" name="increasednderstanding" value="False">
-        <label for="increasednderstanding">False</label><br>
-        <input type="radio" id="Significant Knowledge" name="increasednderstanding" value="Significant Knowledge">
+        <label for="increasedUnderstanding">After taking this training I feel like I have an increased understanding of domestic violence.</label><br>
+        <input type="radio" id="true" name="increasedUnderstanding" value="True">
+        <label for="increasedUnderstanding">True</label><br>
+        <input type="radio" id="false" name="increasedUnderstanding" value="False">
+        <label for="increasedUnderstanding">False</label><br>
+        <input type="radio" id="Significant Knowledge" name="increasedUnderstanding" value="Significant Knowledge">
         <label for="SignificantKnowledge1">Came to training with significant DV knowledge</label><br><br>
 
         <label for="learnedNewInfo">Through this training I have learned new information or aquired a new skill and/or resource that I can apply in my work to improve my response to domestic violence.</label><br>
@@ -140,7 +140,7 @@
             $enthusiasmForTopic = in_array('Exhibited enthusiasm for the topic', $opinions) ? "yes" : "no";
         }
 
-        $increasedUnderstanding = $_POST['increasednderstanding'];
+        $increasedUnderstanding = $_POST['increasedUnderstanding'];
         $learnedNewInfo = $_POST['learnedNewInfo'];
         $improved = $_POST['improved'];
         $interesting = $_POST['interesting'];
@@ -158,7 +158,7 @@
             echo "Error: You do not have the proper permission to submit.";
         } else {
             // Prepare SQL statement
-            $sql = "INSERT INTO dbevaluations (InstructorName, Topic, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo, Improvements, HelpfullInformation)
+            $sql = "INSERT INTO dbEvaluations (InstructorName, Topic, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo, Improvements, HelpfullInformation)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             // Prepare and bind parameters
             $stmt = $conn->prepare($sql);

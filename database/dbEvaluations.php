@@ -12,7 +12,7 @@ include_once('dbinfo.php');
  * index each evaluation by evaluations[x] ex: evaluations[1] will return the second evaluation
  * index each data field by evaluations["key"] ex: evaluations["Topic"] will return the Topic of the evaluations
  */
-function get_evalutaion_by_Instructor($InstructorName) {
+function get_evaluation_by_Instructor($InstructorName) {
     $con=connect();
     $query = "SELECT * FROM dbEvaluations WHERE InstructorName = '". $InstructorName ."'";
     $result = mysqli_query($con,$query);
