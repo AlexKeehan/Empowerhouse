@@ -164,17 +164,12 @@
             //Sending signature to DocuSign
             console.log('Signature sent to DocuSign:', signature);
 
-            // Adds the verificatiom, the check mark that the document was signed
-            var documentLink = $('.document-link[data-document-id="' + documentId + '"]');
-            // Following line is making sure the message does not already exist
-            if (documentLink.siblings('.sign-success-message').length === 0) { 
-                documentLink.after('<span class="sign-success-message" style="color:green; margin-left:5px;">Signed ✔</span>');
-                setTimeout(function() {
-                    documentLink.siblings('.sign-success-message').fadeOut('slow', function() {
-                        $(this).remove(); // Remove the message after fading out
-                    });
-                }, 3000); // Message lasts 3 seconds, then disappears
-            }
+                // Adds the verificatiom, the check mark that the document was signed
+                var documentLink = $('.document-link[data-document-id="' + documentId + '"]');
+                // Following line is making sure the message does not already exist
+                if (documentLink.siblings('.sign-success-message').length === 0) { 
+                    documentLink.after('<span class="sign-success-message" style="color:green; margin-left:5px;">Signed ✔</span>');
+                }
 
             // To clear the signature input after it has been signed and sent
             form.find('input[name="signature"]').val('');

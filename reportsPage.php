@@ -1,7 +1,8 @@
 <?php 
 /**
-* @version April 26, 2024
-* @authors Alip Yalikun, Alex Keehan & Diana Guzman
+* @version April 30, 2024
+* @authors Alip Yalikun, Alex Keehan, Diana Guzman, & Tubba Noor
+
 */
 
 
@@ -246,6 +247,10 @@ function getBetweenDates($startDate, $endDate)
                 elseif($type == "email_volunteer_list")
                 {
                     echo "Volunteer Emails";
+                }
+                elseif($type == "missing_paperwork")
+                {
+                    echo "Volunteers Missing Paperwork";
                 }
                 ?> 
             </span>
@@ -1111,6 +1116,89 @@ function getBetweenDates($startDate, $endDate)
                     </tr>";
             }
         }
+
+        //Diplay volunteers who are missing paperwork
+        if ($type == "missing_paperwork") {
+            //Date range isn't needed for this kind of report
+            //Only name range is needed
+            //So only need two if statements to catch those occurences
+
+            $con=connect();
+
+            //No fields
+            //User chose to not filter by name range
+            if ($dateFrom == NULL && $dateTo == NULL && $lastFrom == NULL && $lastTo == NULL)
+            {
+                // Generic SQL query to retrieve volunteers with missing paperwork
+                if ($stats != "All") 
+                {
+                    //renamed column to completedPaperwork to fit with completedTraining column to track training completion
+                    $query = "SELECT * FROM dbPersons WHERE type='volunteer' 
+                    AND status='$stats' AND dbPersons.completedPaperwork is NULL 
+                    ORDER BY dbPersons.last_name, dbPersons.first_name";
+                } 
+                else 
+                {
+                    $query = "SELECT * FROM dbPersons WHERE type='volunteer' 
+                    AND dbPersons.completedPaperwork is NULL
+                    ORDER BY dbPersons.last_name, dbPersons.first_name";
+                }
+            }
+            //only name field
+            //User chose to filter by only name field
+            elseif ($dateFrom == NULL && $dateTo == NULL && !$lastFrom == NULL && !$lastTo == NULL)
+            {
+                // Specific SQL query to retrieve volunteers with missing paperwork with name range
+                if ($stats != "All") 
+                {
+                    $query = "SELECT * FROM dbPersons WHERE type='volunteer' 
+                    AND status='$stats' AND dbPersons.completedPaperwork is NULL
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    ORDER BY dbPersons.last_name, dbPersons.first_name";
+                } 
+                else 
+                {
+                    $query = "SELECT * FROM dbPersons WHERE type='volunteer' 
+                    AND dbPersons.completedPaperwork is NULL
+                    AND LOWER(LEFT(dbPersons.last_name, 1)) between '$lastFrom' AND '$lastTo'
+                    ORDER BY dbPersons.last_name, dbPersons.first_name";
+                }
+            }
+
+            $result = mysqli_query($con,$query);
+
+            //Check if the query returned empty
+            if (mysqli_num_rows($result) == 0)
+            {
+                echo "No Results Found";
+            }
+            //Otherwise print our headers and rows
+            else
+            {
+                //Print headers
+                echo"
+                <table>
+                <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                </tr>
+                <tbody>";
+                //Ouput query results
+                while ($row = mysqli_fetch_assoc($result))
+                {
+            	    echo"<tr>
+            	        <td>" . $row['first_name'] . "</td>
+            	        <td>" . $row['last_name'] . "</td>
+            	        <td>" . $row['email'] . "</td>
+		                </tr>";
+                    //export_array is filled with the data to be exported
+                    $export_array[] = [$row['first_name'], $row['last_name'], $row['email']];
+                }
+            }
+            echo "</tbody></table>";
+        }
+
     ?> 
     </tbody>
     </table>
