@@ -13,31 +13,25 @@ session_cache_expire(30);
 session_start();
 date_default_timezone_set("America/New_York");
 
-//$shirt_size = $_POST['select_shirt'];
-
-//Put $shirt_size in database
-
-
 
 $loggedIn = false;
-//$access_level = 1;//0;
+$access_level = 0;//1;
 $userID = null;
+
 if (isset($_SESSION['_id'])) {
     $loggedIn = true;
     // 0 = not logged in, 1 = standard user, 2 = manager (Admin), 3 super admin (TBI)
     $accessLevel = $_SESSION['access_level'];
     $userID = $_SESSION['_id'];
 
-    $accessLevel = 1;
+   // $accessLevel = 2;
 
     //Update t-shirt size if necessary
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        //Update the user's tshirt size 
         update_shirt_size($userID, $_POST['select_shirt']);
     }
 
-    //echo "<h1>" . $_POST['select_shirt'] . "</h1>";
 }
 ?>
 <!DOCTYPE html>
@@ -178,10 +172,12 @@ table
     <h1>Volunteer Shirt Size</h1>
 
     <main>
-    <h2><center>This is your current information!<center></h2>
     <?php
         //This is for the volunteers 
         if($accessLevel == 1) {
+    ?>
+            <h2><center>This is your current information!<center></h2>
+    <?php
             $con = connect();
             $type1 = "volunteer";
 
@@ -213,15 +209,15 @@ table
             }
             echo "</tbody></center></table>";
 
-    ?>
+        ?>
             <br>
             <!--Change header name-->
             <h2><center>Would you like to change your shirt size?</center></h2>
             <br>
-            <form action="./TShirtSize.php" method="POST">
+            <form id="select_shirt" action="./TShirtSize.php" method="POST">
                 <div>
                     <label for="select_shirt">Select Size</label>
-                    <select name="select_shirt" id="select_shirt">
+                    <select name="select_shirt"><!-- id="select_shirt">-->
                         <option value = "S">Small</option>
                         <option value = "M">Medium</option>
                         <option value = "L">Large</option>
@@ -232,20 +228,73 @@ table
 
 
                 <!--button to submit tshirt size change-->
-                <input type="submit" value="Change Size"/>
+                <input type="submit" name="select_shirt" value="Change Size"/>
 
             <!--closing form tag-->
             </form>
-    <?php
+        <?php
         }else if($accessLevel != 1){
+            $con = connect();
 
+            //Select first_name, last_name, shirt_size WHERE id all active 
+            $query = "SELECT * FROM dbPersons WHERE status='Active' ORDER BY dbPersons.first_name, dbPersons.last_name";
+            $result = mysqli_query($con,$query);
 
+            echo'
+                <table><center>
+                    <tr>
+                        <th>Volunteer Name</th>
+                        <th>Shirt Size</th>
+                    </tr>
+                <tbody>    
+            ';
 
+            //Create a CSV file for the tshirt sizes
+            $columns = array("Name", "Shirt Size");
+            $delimiter = ",";
+            $filename = "Documents/tShirtSize.csv";
+            $f = fopen($filename,"w");
 
-
+            fputcsv($f, $columns, $delimiter);
             
+
+            //Make row for each person
+            while($row = mysqli_fetch_assoc($result)) {
+                $name = $row['first_name'] . " " . $row['last_name'];
+                $size = $row['shirt_size'];
+
+                //Add table row to CSV file
+                $csv_row = array($name, $size);
+                fputcsv($f, $csv_row, $delimiter);
+
+                //Echo a table row with a data cell for name (first and last) and a data cell for shirt size
+                echo
+                    "<tr>
+                        <td>" . $name . "</td>
+                        <td>" . $size . "</td>
+                    </tr>
+                    ";   
+            }
+            echo "</tbody></center></table>"; 
+            
+            //Close CSV file
+            fclose($f);
+            ?> 
+            <br>
+            <br>
+            <h3><center> Would you like to download a CSV file of shirt sizes?</center></h3>
+            <br>
+            <form id="shirt_csv" action="./TShirtSize.php" method="POST">
+                <a href="Documents/tShirtSize.csv" target="_self" class="button" download>
+                    Download as CSV
+                <target="_self">
+                </a>
+                <!--<input type="submit" name="shirt_csv" value="Download CSV of all Sizes"/>-->
+
+            </form>
+        <?php
         }
-    ?> 
+        ?>    
     </main>
 </body>
 </html>
