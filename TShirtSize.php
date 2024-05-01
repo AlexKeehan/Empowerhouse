@@ -24,7 +24,7 @@ if (isset($_SESSION['_id'])) {
     $accessLevel = $_SESSION['access_level'];
     $userID = $_SESSION['_id'];
 
-   // $accessLevel = 2;
+    //$accessLevel = 1;
 
     //Update t-shirt size if necessary
     if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -228,7 +228,7 @@ table
 
 
                 <!--button to submit tshirt size change-->
-                <input type="submit" name="select_shirt" value="Change Size"/>
+                <input type="submit" value="Change Size"/>
 
             <!--closing form tag-->
             </form>
