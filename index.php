@@ -108,13 +108,19 @@
                     <img src="images/document.svg">
                     <span>View Documents</span>
                 </div>
+                <?php if ($_SESSION['access_level'] >= 1): ?>
                 <div class="dashboard-item" data-link="viewEval.php">
                     <img src="images/paper-file-svgrepo-com.svg">
                     <span>View Evaluations</span>
                 </div>
+                <?php endif ?>
                 <div class="dashboard-item" data-link="courseSignUp.php">
                     <img src="images/create-report.svg">
                     <span>Volunteer Course Sign Up</span>
+                </div>
+                <div class="dashboard-item" data-link="CourseEval.php">
+                    <img src="images/create-report.svg">
+                    <span>Create Evaluation</span>
                 </div>
                 <?php if ($notRoot and $admin) : ?>
                     <div class="dashboard-item" data-link="userSearch.php">
@@ -122,10 +128,12 @@
                         <span>View Users</span>
                     </div>
                 <?php endif ?>
+                <?php if ($_SESSION['access_level'] >= 1): ?>
                 <div class="dashboard-item" data-link="takeAttendance.php">
                     <img src="images/paper-file-svgrepo-com.svg">
                     <span>Take Attendance</span>
                 </div>
+                <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
