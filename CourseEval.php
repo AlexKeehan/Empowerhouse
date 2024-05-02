@@ -173,7 +173,7 @@
             // Close statement
             $stmt->close();
             
-        //}
+        }
 
         //Close connection
         $conn->close();
