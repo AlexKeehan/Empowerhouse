@@ -17,12 +17,10 @@
 
 function connect() {
     $host = "localhost";
-    $database = "housedb";
-    $user = "housedb";
-    $pass = "housedb";
+    $pass = "vmsroot1";
     if ($_SERVER['SERVER_NAME'] == 'jenniferp119.sg-host.com') {
-        $user = 'housedb';
-        $database = 'housedb';
+        $user = 'uwpcgsjb3tzec';
+        $database = 'dbyrqpvdjpzamq';
     }
     $con = mysqli_connect($host,$user,$pass,$database);
     if (!$con) { echo "not connected to server"; return mysqli_error($con);}

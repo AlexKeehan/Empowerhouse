@@ -25,6 +25,7 @@
         die();
     }
     require_once('include/input-validation.php');
+    
     $get = sanitize($_GET);
     $date = $get['date'];
     $datePattern = '/[0-9]{4}-[0-9]{2}-[0-9]{2}/';
@@ -50,6 +51,7 @@
                 require('database/dbEvents.php');
                 require('include/output.php');
                 require('include/time.php');
+                require('database/dbCourses.php');
                 $events = fetch_events_on_date($date);
                 if ($events) {
                     foreach ($events as $event) {

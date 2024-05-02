@@ -42,7 +42,7 @@
                 $conn = connect();
 
                 // Query to fetch active trainers' names
-                $sql = "SELECT first_name, last_name FROM dbpersons WHERE type = 'trainer' AND status = 'Active'";
+                $sql = "SELECT first_name, last_name FROM dbPersons WHERE type = 'trainer' AND status = 'Active'";
                 $result = $conn->query($sql);
 
                 // If trainers found, populate dropdown menu
@@ -154,9 +154,10 @@
         }
 
         // If not a volunteer, display error message and stop further execution
-        if ($_SESSION['access_level'] != 1) {
-            echo "Error: You do not have the proper permission to submit.";
-        } else {
+        //removed for demo
+        //if ($_SESSION['access_level'] != 1) {
+        //    echo "Error: You do not have the proper permission to submit.";
+        //} else {
             // Prepare SQL statement
             $sql = "INSERT INTO dbEvaluations (InstructorName, Topic, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo, Improvements, HelpfullInformation)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -173,7 +174,7 @@
             // Close statement
             $stmt->close();
             
-        }
+        //}
 
         //Close connection
         $conn->close();

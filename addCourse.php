@@ -9,6 +9,7 @@ require_once('include/input-validation.php');
 require_once('database/dbCourses.php');
 require_once('database/dbEvents.php');
 require_once('database/dbTrainingPeriods.php');
+require_once('database/dbMessages.php');
 
 // Check if user is logged in and has appropriate access level
 session_cache_expire(30);
@@ -43,10 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: addCourse.php?error=no_courses_provided");
         exit();
     }
-    // Unset session variables because they track if a user routed to this page from selectTrainingPeriod.php or not
-    // This allows the user to use both routes to this file in the same session without problems
-    unset($_SESSION['semester']);
-    unset($_SESSION['year']);
 
     $courses = $_POST['courses'];
     //echo "num of courses submitted: " . count($courses);
@@ -65,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $description = $args['new_course_description'];
         $location = $args['new_course_location'];
         $capacity = intval($args['new_course_capacity']);
-        $eventId = $args['event_id'];
+        $eventId = $args['event_id'];;
         // If training period is passed from selectTrainingPeriod.php
         if ($semester != NULL && $year != NULL)
         {
@@ -89,8 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Check if date is within training period
         if (!empty($date))
         {
-            $startDate = $trainingPeriod['startdate'];
-            $endDate = $trainingPeriod['enddate'];
+            $period = get_training_period_by_id($periodId);
+            $startDate = $period['startdate'];
+            $endDate = $period['enddate'];
             if (!($startDate <= $date && $endDate >= $date))
             {
                 header("Location: addCourse.php?error=date_outside_training_period");
@@ -106,7 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         }
-
         // Array with course details for each course
         $courseArgs = [
             $courseName,
@@ -121,17 +118,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $location, 
             $capacity
         ];
-
         // Insert new course into the database
         $result = create_course($courseArgs);
-
         if (!$result) {
             // Redirect back to the form with an error message
             header("Location: addCourse.php?error=create_failed");
             exit();
         }
     }
-
+    // Unset session variables because they track if a user routed to this page from selectTrainingPeriod.php or not
+    // This allows the user to use both routes to this file in the same session without problems
+    unset($_SESSION['semester']);
+    unset($_SESSION['year']);
+    message_all_users("System", "New Course " . $courseName . " Has Been Created", "A New Course Has Been Created!");
     // Redirect to the calendar page upon successful creation of all courses
     header("Location: calendar.php?createSuccess");
     exit();
