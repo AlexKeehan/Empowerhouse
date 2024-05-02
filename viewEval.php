@@ -46,7 +46,7 @@
             $evals = get_evaluation_by_Instructor($name);
             
             echo "<h1> Select an evaluation to view: </h1>";
-         `   $i = 0;
+            $i = 0;
             if(!$evals){
                 echo "<p> " . $name . " has no evaluations to view </p>";
             }

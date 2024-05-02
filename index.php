@@ -114,13 +114,14 @@
                     <img src="images/paper-file-svgrepo-com.svg">
                     <span>View Evaluations</span>
                 </div>
+                <?php endif ?>
                 <div class="dashboard-item" data-link="courseSignUp.php">
                     <img src="images/create-report.svg">
                     <span>Volunteer Course Sign Up</span>
                 </div>
                 <div class="dashboard-item" data-link="CourseEval.php">
                     <img src="images/create-report.svg">
-                    <span>Course Evaluation</span>
+                    <span>Create Evaluation</span>
                 </div>
                 <?php if ($notRoot and $admin) : ?>
                     <div class="dashboard-item" data-link="userSearch.php">
@@ -133,6 +134,7 @@
                     <img src="images/paper-file-svgrepo-com.svg">
                     <span>Take Attendance</span>
                 </div>
+                <?php endif ?>
                 <div class="dashboard-item" data-link="changePassword.php">
                     <img src="images/change-password.svg">
                     <span>Change Password</span>
