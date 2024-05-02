@@ -54,7 +54,7 @@
                 echo "<form method = \"post\">";
                 echo "<select name = \"eval\">";
                 foreach ($evals as &$eval){
-                    echo "<option value=". $i +1 . "> ". ($i + 1) . ") " .$eval["InstructorName"] . "| Topic: ".$eval["Topic"] . "| Overall Rating: ". $eval["OverallRating"]. "</option>";
+                    echo "<option value=". ($i + 1) . "> ". ($i + 1) . ") " .$eval["InstructorName"] . "| Topic: ".$eval["Topic"] . "| Overall Rating: ". $eval["OverallRating"]. "</option>";
                     $i++;
                 }
                 echo "</select>";
@@ -72,16 +72,16 @@
                 echo "<h3> Overall Rating:</h3>";
                 echo "<p>".$curr_eval["OverallRating"] . "</p>";
                 echo "<h3> In your opinion the instructor...:</h3>";
-                echo "<p> respected participnts: ".$curr_eval["RespectsParticipants"] . "</p>";
-                echo "<p> managed group well : ".$curr_eval["ManageGroup"] . "</p>";
-                echo "<p> provided clear explainations: ".$curr_eval["ClarityExplanation"] . "</p>";
-                echo "<p> was responsive to questions: ".$curr_eval["ResponsiveToQuestions"] . "</p>";
-                echo "<p> showed enthusiasm: ".$curr_eval["EnthusiasmForTopic"] . "</p>";
-                echo "<p> increased understanding: ".$curr_eval["IncreasedUnderstanding"] . "</p>";
-                echo "<p> learned new info: ".$curr_eval["LearnedNewInfo"] . "</p>";
-                echo "<h3> How could this training be improved?</h3>";
+                echo "<p> Respected Participants: ".$curr_eval["RespectsParticipants"] . "</p>";
+                echo "<p> Managed Group Well : ".$curr_eval["ManageGroup"] . "</p>";
+                echo "<p> Provided Clear Explanations: ".$curr_eval["ClarityExplanation"] . "</p>";
+                echo "<p> Was Responsive To Questions: ".$curr_eval["ResponsiveToQuestions"] . "</p>";
+                echo "<p> Showed Enthusiasm: ".$curr_eval["EnthusiasmForTopic"] . "</p>";
+                echo "<p> Increased Understanding: ".$curr_eval["IncreasedUnderstanding"] . "</p>";
+                echo "<p> Learned New Info: ".$curr_eval["LearnedNewInfo"] . "</p>";
+                echo "<h3> How Could This Training Be Improved?</h3>";
                 echo "<p style='word-wrap: break-word; max-width: 95%;'>".$curr_eval["Improvements"] . "</p>";
-                echo "<h3> What information did you find most helpful?</h3>";
+                echo "<h3> What Information Did You Find Most Helpful?</h3>";
                 echo "<p style='word-wrap: break-word; max-width: 95%;'>".$curr_eval["HelpfullInformation"] . "</p>";
                 }
             }

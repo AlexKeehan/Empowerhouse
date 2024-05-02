@@ -41,9 +41,9 @@
                     $_SESSION['logged_in'] = true;
                 }
                 $types = $user->get_type();
-                if (in_array('superadmin', $types)) {
+                if (in_array('admin', $types)) {
                     $_SESSION['access_level'] = 3;
-                } else if (in_array('admin', $types)) {
+                } else if (in_array('trainer', $types)) {
                     $_SESSION['access_level'] = 2;
                 } else if (in_array('volunteer', $types)) {
                     $_SESSION['access_level'] = 1;

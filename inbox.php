@@ -32,7 +32,7 @@
             <?php 
                 require_once('database/dbMessages.php');
                 $messages = get_user_messages($userID);
-                if (count($messages) > 0): ?>
+                if (sizeof($messages) > 0): ?>
                 <div class="table-wrapper">
                     <table class="general">
                         <thead>

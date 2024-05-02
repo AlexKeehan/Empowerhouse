@@ -1,11 +1,11 @@
-
 <?php
 /** 
  * Page to search for and update data for a course from dbCourses 
  * @ Author Emily Lambert
  * @ Version April 18 2024
  **/
-
+session_cache_expire(30);
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -18,8 +18,6 @@ require_once('database/dbTrainingPeriods.php');
 //var_dump($_POST);
 
 // Check if user is logged in and has appropriate access level
-session_cache_expire(30);
-session_start();
 $loggedIn = false;
 $accessLevel = 0;
 $userID = null;

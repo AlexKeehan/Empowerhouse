@@ -1078,7 +1078,7 @@ function find_user_names($name) {
     }
 
     function get_name_from_id($id) {
-        if ($id == 'vmsroot') {
+        if ($id == 'vmsroot' || $id == 'System') {
             return 'System';
         }
         $connection = connect();
@@ -1088,7 +1088,7 @@ function find_user_names($name) {
         if (!$result) {
             return null;
         }
-
+        
         $row = mysqli_fetch_assoc($result);
         mysqli_close($connection);
         return $row['first_name'] . ' ' . $row['last_name'];

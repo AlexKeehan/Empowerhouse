@@ -266,8 +266,7 @@ function create_course($event) {
     $capacity = $event[10];
     $query = "
         insert into dbCourses (name, abbrevName, staffId, eventId, periodId, date, startTime, endTime, description, location, capacity)
-        values ('$name', '$abbrevName', '$staffId', '$eventId', '$periodId', '$date', '$startTime', '$endTime', '$description', '$location', '$capacity')
-    ";
+        values ('$name', '$abbrevName', '$staffId', '$eventId', '$periodId', '$date', '$startTime', '$endTime', '$description', '$location', '$capacity')";
     $result = mysqli_query($connection, $query);
     if (!$result) {
         return null;

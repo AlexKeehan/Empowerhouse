@@ -95,8 +95,17 @@
             {
 			    echo "<b>Please enter a volunteer's first and/or last name.</b><br>";
 		    }
+
+            if ($report == "email_volunteer_list")
+            {
+                if ($lastFrom != NULL || $lastTo != NULL || $dFrom != NULL || $dTo != NULL)
+                {
+                    echo "<b>Please leave the date range and name range empty for this kind of report.</b><br>";
+                }
+            }
+            
             //Date range isn't needed for missing paperwork report, so don't allow user to select it
-            elseif($report=="missing_paperwork" && $dFrom != NULL && $dTo != NULL)
+            if($report=="missing_paperwork" && $dFrom != NULL && $dTo != NULL)
             {
                 echo "<b>Please do not use a date range with this report type.</b><br>";
             }

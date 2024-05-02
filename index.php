@@ -5,6 +5,7 @@
     date_default_timezone_set("America/New_York");
     
     if (!isset($_SESSION['access_level']) || $_SESSION['access_level'] < 1) {
+		echo $_SESSION['access_level'];
         if (isset($_SESSION['change-password'])) {
             header('Location: changePassword.php');
         } else {
@@ -108,7 +109,7 @@
                     <img src="images/document.svg">
                     <span>View Documents</span>
                 </div>
-                <?php if ($_SESSION['access_level'] >= 1): ?>
+                <?php if ($_SESSION['access_level'] >= 2): ?>
                 <div class="dashboard-item" data-link="viewEval.php">
                     <img src="images/paper-file-svgrepo-com.svg">
                     <span>View Evaluations</span>
@@ -128,7 +129,7 @@
                         <span>View Users</span>
                     </div>
                 <?php endif ?>
-                <?php if ($_SESSION['access_level'] >= 1): ?>
+                <?php if ($_SESSION['access_level'] >= 2): ?>
                 <div class="dashboard-item" data-link="takeAttendance.php">
                     <img src="images/paper-file-svgrepo-com.svg">
                     <span>Take Attendance</span>

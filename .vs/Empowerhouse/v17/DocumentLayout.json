@@ -3,18 +3,6 @@
   "WorkspaceRootPath": "C:\\xampp\\htdocs\\Empowerhouse\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\header.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:header.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\index.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbPersons.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbPersons.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\reportsPage.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:reportsPage.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
@@ -23,104 +11,248 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:report.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\login.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:login.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\domain\\Person.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:domain\\Person.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\viewEval.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:viewEval.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\register.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:register.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\addEvent.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addEvent.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbMessages.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbMessages.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\inbox.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:inbox.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbTrainingPeriods.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbTrainingPeriods.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\addTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\selectTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:selectTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\addCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbCourses.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbCourses.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\output.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\event.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:event.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\documents.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:documents.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\eventSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:eventSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvaluations.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbEvaluations.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:documentRecords.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\index.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\CourseEval.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CourseEval.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbTrainingPeriods.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbTrainingPeriods.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\volunteerReport.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:volunteerReport.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\viewProfile.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:viewProfile.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\viewNotification.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:viewNotification.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\calendar.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:calendar.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\verify.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:verify.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\calender.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:calender.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\userSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:userSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbLog.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbLog.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\updateCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:updateCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\TShirtSize.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TShirtSize.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\template.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:template.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\takeAttendance.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:takeAttendance.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\takeAttendance-2.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:takeAttendance-2.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\selectTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:selectTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\roster.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:roster.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\resetPassword.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:resetPassword.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\reportsExport.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:reportsExport.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\reportsCompute.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:reportsCompute.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\removeCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:removeCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\registrationForm.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:registrationForm.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\register.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:register.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\profileEditForm.inc||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:profileEditForm.inc||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\personSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:personSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\modifyUserRole.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:modifyUserRole.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\manageCourses.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:manageCourses.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\logout.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:logout.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\login.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:login.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\insertAdmin.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:insertAdmin.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\inbox.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:inbox.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\header.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:header.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\eventSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:eventSearch.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\event.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:event.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\editProfile.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:editProfile.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\editEvent.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:editEvent.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\documents.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:documents.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:documentRecords.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\detachMedia.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:detachMedia.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\date.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:date.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\courseSignUp.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:courseSignUp.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\changePassword.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:changePassword.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\calendar.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:calendar.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\addEvent.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addEvent.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\addCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addCourse.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\include\\time.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\time.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\output.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\include\\input-validation.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\input-validation.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\include\\api.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\api.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\domain\\TrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:domain\\TrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\domain\\EventMedia.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:domain\\EventMedia.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\domain\\Event.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:domain\\Event.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\domain\\Course.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:domain\\Course.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbPersons.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbPersons.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbMessages.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbMessages.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbLog.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbLog.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbinfo.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvents.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbEvents.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvaluations.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbEvaluations.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\database\\dbCourses.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:database\\dbCourses.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\addTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:addTrainingPeriod.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\Empowerhouse\\css\\event.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -138,7 +270,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Bookmark",
@@ -150,67 +282,753 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "login.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\login.php",
-              "RelativeDocumentMoniker": "login.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\login.php",
-              "RelativeToolTip": "login.php",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAABcAAAAuAAAA",
+              "DocumentIndex": 14,
+              "Title": "template.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\template.php",
+              "RelativeDocumentMoniker": "template.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\template.php",
+              "RelativeToolTip": "template.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-04-09T21:49:15.485Z"
+              "WhenOpened": "2024-04-30T23:12:22.471Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "reportsPage.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\reportsPage.php",
-              "RelativeDocumentMoniker": "reportsPage.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\reportsPage.php",
-              "RelativeToolTip": "reportsPage.php",
-              "ViewState": "AQIAAMMAAAAAAAAAAAAWwOIAAAAYAAAA",
+              "DocumentIndex": 18,
+              "Title": "roster.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\roster.php",
+              "RelativeDocumentMoniker": "roster.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\roster.php",
+              "RelativeToolTip": "roster.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:06:57.659Z"
+              "WhenOpened": "2024-04-30T23:11:39.173Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dbPersons.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbPersons.php",
-              "RelativeDocumentMoniker": "database\\dbPersons.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbPersons.php",
-              "RelativeToolTip": "database\\dbPersons.php",
-              "ViewState": "AQIAAHUDAAAAAAAAAAAWwI8DAAA1AAAA",
+              "DocumentIndex": 19,
+              "Title": "resetPassword.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\resetPassword.php",
+              "RelativeDocumentMoniker": "resetPassword.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\resetPassword.php",
+              "RelativeToolTip": "resetPassword.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:02:01.244Z"
+              "WhenOpened": "2024-04-30T23:11:34.611Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "inbox.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\inbox.php",
-              "RelativeDocumentMoniker": "inbox.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\inbox.php",
-              "RelativeToolTip": "inbox.php",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACAAAAAxAAAA",
+              "DocumentIndex": 20,
+              "Title": "reportsExport.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\reportsExport.php",
+              "RelativeDocumentMoniker": "reportsExport.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\reportsExport.php",
+              "RelativeToolTip": "reportsExport.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:00:14.076Z"
+              "WhenOpened": "2024-04-30T23:08:01.889Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 21,
+              "Title": "reportsCompute.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\reportsCompute.php",
+              "RelativeDocumentMoniker": "reportsCompute.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\reportsCompute.php",
+              "RelativeToolTip": "reportsCompute.php",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAWwHIAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:53.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "removeCourse.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\removeCourse.php",
+              "RelativeDocumentMoniker": "removeCourse.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\removeCourse.php",
+              "RelativeToolTip": "removeCourse.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:41.921Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "registrationForm.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\registrationForm.php",
+              "RelativeDocumentMoniker": "registrationForm.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\registrationForm.php",
+              "RelativeToolTip": "registrationForm.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:38.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "profileEditForm.inc",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\profileEditForm.inc",
+              "RelativeDocumentMoniker": "profileEditForm.inc",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\profileEditForm.inc",
+              "RelativeToolTip": "profileEditForm.inc",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:29.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "personSearch.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\personSearch.php",
+              "RelativeDocumentMoniker": "personSearch.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\personSearch.php",
+              "RelativeToolTip": "personSearch.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:25.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "dbTrainingPeriods.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbTrainingPeriods.php",
               "RelativeDocumentMoniker": "database\\dbTrainingPeriods.php",
               "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbTrainingPeriods.php",
               "RelativeToolTip": "database\\dbTrainingPeriods.php",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAAADcAAAAiAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAFAAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2024-03-25T23:02:47.297Z"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\index.php",
+              "RelativeDocumentMoniker": "index.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\index.php",
+              "RelativeToolTip": "index.php",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAWwHgAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-09T17:05:16.297Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CourseEval.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\CourseEval.php",
+              "RelativeDocumentMoniker": "CourseEval.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\CourseEval.php",
+              "RelativeToolTip": "CourseEval.php",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAAACYAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-20T15:21:25.977Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Person.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\Person.php",
+              "RelativeDocumentMoniker": "domain\\Person.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\Person.php",
+              "RelativeToolTip": "domain\\Person.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:03:48.472Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "viewEval.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\viewEval.php",
+              "RelativeDocumentMoniker": "viewEval.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\viewEval.php",
+              "RelativeToolTip": "viewEval.php",
+              "ViewState": "AQIAACkAAAAAAAAAAAAmwE4AAABZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T21:39:13.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "reportsPage.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\reportsPage.php",
+              "RelativeDocumentMoniker": "reportsPage.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\reportsPage.php",
+              "RelativeToolTip": "reportsPage.php",
+              "ViewState": "AQIAAKsEAAAAAAAAAAAmwLwEAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-31T13:06:57.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "report.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
+              "RelativeDocumentMoniker": "report.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
+              "RelativeToolTip": "report.php",
+              "ViewState": "AQIAAKcAAAAAAAAAAAAmwMgAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-31T13:06:55.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TShirtSize.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\TShirtSize.php",
+              "RelativeDocumentMoniker": "TShirtSize.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\TShirtSize.php",
+              "RelativeToolTip": "TShirtSize.php",
+              "ViewState": "AQIAAKAAAAAAAAAAAAAWwLwAAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:12:26.407Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "userSearch.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\userSearch.php",
+              "RelativeDocumentMoniker": "userSearch.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\userSearch.php",
+              "RelativeToolTip": "userSearch.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:12:39.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "verify.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\verify.php",
+              "RelativeDocumentMoniker": "verify.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\verify.php",
+              "RelativeToolTip": "verify.php",
+              "ViewState": "AQIAAAUBAAAAAAAAAAAWwCEBAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:12:44.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "viewProfile.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\viewProfile.php",
+              "RelativeDocumentMoniker": "viewProfile.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\viewProfile.php",
+              "RelativeToolTip": "viewProfile.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:13:13.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "volunteerReport.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\volunteerReport.php",
+              "RelativeDocumentMoniker": "volunteerReport.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\volunteerReport.php",
+              "RelativeToolTip": "volunteerReport.php",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAADMAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:13:18.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "modifyUserRole.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\modifyUserRole.php",
+              "RelativeDocumentMoniker": "modifyUserRole.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\modifyUserRole.php",
+              "RelativeToolTip": "modifyUserRole.php",
+              "ViewState": "AQIAACwAAAAAAAAAAAAWwEgAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:20.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "viewNotification.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\viewNotification.php",
+              "RelativeDocumentMoniker": "viewNotification.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\viewNotification.php",
+              "RelativeToolTip": "viewNotification.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-20T15:22:58.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "manageCourses.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\manageCourses.php",
+              "RelativeDocumentMoniker": "manageCourses.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\manageCourses.php",
+              "RelativeToolTip": "manageCourses.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:15.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "logout.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\logout.php",
+              "RelativeDocumentMoniker": "logout.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\logout.php",
+              "RelativeToolTip": "logout.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:13.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "selectTrainingPeriod.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\selectTrainingPeriod.php",
+              "RelativeDocumentMoniker": "selectTrainingPeriod.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\selectTrainingPeriod.php",
+              "RelativeToolTip": "selectTrainingPeriod.php",
+              "ViewState": "AQIAADsAAAAAAAAAAAAWwFcAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-09T17:37:14.443Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "updateCourse.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\updateCourse.php",
+              "RelativeDocumentMoniker": "updateCourse.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\updateCourse.php",
+              "RelativeToolTip": "updateCourse.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T22:15:35.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "takeAttendance-2.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\takeAttendance-2.php",
+              "RelativeDocumentMoniker": "takeAttendance-2.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\takeAttendance-2.php",
+              "RelativeToolTip": "takeAttendance-2.php",
+              "ViewState": "AQIAACAAAAAAAAAAAAAWwDwAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T22:20:43.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "takeAttendance.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\takeAttendance.php",
+              "RelativeDocumentMoniker": "takeAttendance.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\takeAttendance.php",
+              "RelativeToolTip": "takeAttendance.php",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAADAAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T22:20:33.412Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "insertAdmin.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\insertAdmin.php",
+              "RelativeDocumentMoniker": "insertAdmin.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\insertAdmin.php",
+              "RelativeToolTip": "insertAdmin.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:07:06.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "editProfile.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\editProfile.php",
+              "RelativeDocumentMoniker": "editProfile.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\editProfile.php",
+              "RelativeToolTip": "editProfile.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:06:31.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "documentRecords.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php",
+              "RelativeDocumentMoniker": "documentRecords.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php",
+              "RelativeToolTip": "documentRecords.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:06:06.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "detachMedia.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\detachMedia.php",
+              "RelativeDocumentMoniker": "detachMedia.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\detachMedia.php",
+              "RelativeToolTip": "detachMedia.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:06:02.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "date.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\date.php",
+              "RelativeDocumentMoniker": "date.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\date.php",
+              "RelativeToolTip": "date.php",
+              "ViewState": "AQIAABUAAAAAAAAAAAAWwDEAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:05:38.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "changePassword.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\changePassword.php",
+              "RelativeDocumentMoniker": "changePassword.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\changePassword.php",
+              "RelativeToolTip": "changePassword.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:05:00.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "time.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\time.php",
+              "RelativeDocumentMoniker": "include\\time.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\include\\time.php",
+              "RelativeToolTip": "include\\time.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:04:11.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "output.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php",
+              "RelativeDocumentMoniker": "include\\output.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php",
+              "RelativeToolTip": "include\\output.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-15T14:36:46.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "register.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\register.php",
+              "RelativeDocumentMoniker": "register.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\register.php",
+              "RelativeToolTip": "register.php",
+              "ViewState": "AQIAAMwAAAAAAAAAAAAWwOgAAABqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-20T15:22:45.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "input-validation.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\input-validation.php",
+              "RelativeDocumentMoniker": "include\\input-validation.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\include\\input-validation.php",
+              "RelativeToolTip": "include\\input-validation.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-15T14:35:32.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "addCourse.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addCourse.php",
+              "RelativeDocumentMoniker": "addCourse.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\addCourse.php",
+              "RelativeToolTip": "addCourse.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-24T13:23:11.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "documents.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\documents.php",
+              "RelativeDocumentMoniker": "documents.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\documents.php",
+              "RelativeToolTip": "documents.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-19T12:09:53.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "event.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\event.php",
+              "RelativeDocumentMoniker": "event.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\event.php",
+              "RelativeToolTip": "event.php",
+              "ViewState": "AQIAAHAAAAAAAAAAAAAWwJ4AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-09T17:08:23.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "eventSearch.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\eventSearch.php",
+              "RelativeDocumentMoniker": "eventSearch.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\eventSearch.php",
+              "RelativeToolTip": "eventSearch.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-20T15:19:35.042Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "header.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\header.php",
+              "RelativeDocumentMoniker": "header.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\header.php",
+              "RelativeToolTip": "header.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-09T17:08:24.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "inbox.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\inbox.php",
+              "RelativeDocumentMoniker": "inbox.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\inbox.php",
+              "RelativeToolTip": "inbox.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4AAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-31T13:00:14.076Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "login.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\login.php",
+              "RelativeDocumentMoniker": "login.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\login.php",
+              "RelativeToolTip": "login.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-09T21:49:15.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "api.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\api.php",
+              "RelativeDocumentMoniker": "include\\api.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\include\\api.php",
+              "RelativeToolTip": "include\\api.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:04:00.784Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "TrainingPeriod.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\TrainingPeriod.php",
+              "RelativeDocumentMoniker": "domain\\TrainingPeriod.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\TrainingPeriod.php",
+              "RelativeToolTip": "domain\\TrainingPeriod.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:03:52.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "EventMedia.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\EventMedia.php",
+              "RelativeDocumentMoniker": "domain\\EventMedia.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\EventMedia.php",
+              "RelativeToolTip": "domain\\EventMedia.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:03:47.537Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Event.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\Event.php",
+              "RelativeDocumentMoniker": "domain\\Event.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\Event.php",
+              "RelativeToolTip": "domain\\Event.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:03:44.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "Course.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\Course.php",
+              "RelativeDocumentMoniker": "domain\\Course.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\domain\\Course.php",
+              "RelativeToolTip": "domain\\Course.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T23:03:38.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "editEvent.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\editEvent.php",
+              "RelativeDocumentMoniker": "editEvent.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\editEvent.php",
+              "RelativeToolTip": "editEvent.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-09T17:08:20.778Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "dbMessages.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbMessages.php",
+              "RelativeDocumentMoniker": "database\\dbMessages.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbMessages.php",
+              "RelativeToolTip": "database\\dbMessages.php",
+              "ViewState": "AQIAAHsAAAAAAAAAAAAWwJcAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-31T13:04:29.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "dbinfo.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php",
+              "RelativeDocumentMoniker": "database\\dbinfo.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php",
+              "RelativeToolTip": "database\\dbinfo.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-19T12:01:46.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "addEvent.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addEvent.php",
+              "RelativeDocumentMoniker": "addEvent.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\addEvent.php",
+              "RelativeToolTip": "addEvent.php",
+              "ViewState": "AQIAACcAAAAAAAAAAAAWwEMAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-09T17:06:53.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "calendar.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\calendar.php",
+              "RelativeDocumentMoniker": "calendar.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\calendar.php",
+              "RelativeToolTip": "calendar.php",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAWwHoAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-20T15:18:52.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "courseSignUp.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\courseSignUp.php",
+              "RelativeDocumentMoniker": "courseSignUp.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\courseSignUp.php",
+              "RelativeToolTip": "courseSignUp.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-04-30T22:20:26.456Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "dbEvaluations.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvaluations.php",
+              "RelativeDocumentMoniker": "database\\dbEvaluations.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvaluations.php",
+              "RelativeToolTip": "database\\dbEvaluations.php",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-20T14:33:31.158Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "dbCourses.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbCourses.php",
+              "RelativeDocumentMoniker": "database\\dbCourses.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbCourses.php",
+              "RelativeToolTip": "database\\dbCourses.php",
+              "ViewState": "AQIAAH4BAAAAAAAAAAAWwJoBAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-24T13:58:34.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "dbEvents.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvents.php",
+              "RelativeDocumentMoniker": "database\\dbEvents.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvents.php",
+              "RelativeToolTip": "database\\dbEvents.php",
+              "ViewState": "AQIAANUAAAAAAAAAAAAAAIMAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-09T17:19:11.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "dbLog.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbLog.php",
+              "RelativeDocumentMoniker": "database\\dbLog.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbLog.php",
+              "RelativeToolTip": "database\\dbLog.php",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACQAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-19T21:28:34.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "dbPersons.php",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbPersons.php",
+              "RelativeDocumentMoniker": "database\\dbPersons.php",
+              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbPersons.php",
+              "RelativeToolTip": "database\\dbPersons.php",
+              "ViewState": "AQIAABUEAAAAAAAAAAAWwDwEAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-31T13:02:01.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
               "Title": "addTrainingPeriod.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addTrainingPeriod.php",
               "RelativeDocumentMoniker": "addTrainingPeriod.php",
@@ -222,272 +1040,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "selectTrainingPeriod.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\selectTrainingPeriod.php",
-              "RelativeDocumentMoniker": "selectTrainingPeriod.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\selectTrainingPeriod.php",
-              "RelativeToolTip": "selectTrainingPeriod.php",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAFwAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:37:14.443Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "documents.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\documents.php",
-              "RelativeDocumentMoniker": "documents.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\documents.php",
-              "RelativeToolTip": "documents.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-19T12:09:53.638Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "event.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\event.php",
-              "RelativeDocumentMoniker": "event.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\event.php",
-              "RelativeToolTip": "event.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:08:23.473Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "header.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\header.php",
-              "RelativeDocumentMoniker": "header.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\header.php",
-              "RelativeToolTip": "header.php",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAiwI0AAACBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:08:24.962Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "dbLog.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbLog.php",
-              "RelativeDocumentMoniker": "database\\dbLog.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbLog.php",
-              "RelativeToolTip": "database\\dbLog.php",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACsAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-19T21:28:34.917Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "input-validation.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\input-validation.php",
-              "RelativeDocumentMoniker": "include\\input-validation.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\include\\input-validation.php",
-              "RelativeToolTip": "include\\input-validation.php",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACsAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-15T14:35:32.126Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "output.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php",
-              "RelativeDocumentMoniker": "include\\output.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\include\\output.php",
-              "RelativeToolTip": "include\\output.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-15T14:36:46.729Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "dbinfo.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php",
-              "RelativeDocumentMoniker": "database\\dbinfo.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbinfo.php",
-              "RelativeToolTip": "database\\dbinfo.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-19T12:01:46.766Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "report.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
-              "RelativeDocumentMoniker": "report.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\report.php",
-              "RelativeToolTip": "report.php",
-              "ViewState": "AQIAAHIAAAAAAAAAAAAAAJsAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:06:55.58Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "dbMessages.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbMessages.php",
-              "RelativeDocumentMoniker": "database\\dbMessages.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbMessages.php",
-              "RelativeToolTip": "database\\dbMessages.php",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADsAAAAVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-31T13:04:29.855Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "index.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\index.php",
-              "RelativeDocumentMoniker": "index.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\index.php",
-              "RelativeToolTip": "index.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:05:16.297Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "addEvent.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addEvent.php",
-              "RelativeDocumentMoniker": "addEvent.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\addEvent.php",
-              "RelativeToolTip": "addEvent.php",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAAEYAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:06:53.948Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "register.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\register.php",
-              "RelativeDocumentMoniker": "register.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\register.php",
-              "RelativeToolTip": "register.php",
-              "ViewState": "AQIAAPkAAAAAAAAAAAAiwBQBAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T15:22:45.466Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "addCourse.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\addCourse.php",
-              "RelativeDocumentMoniker": "addCourse.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\addCourse.php",
-              "RelativeToolTip": "addCourse.php",
-              "ViewState": "AQIAADkAAAAAAAAAAAAAAFsAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-24T13:23:11.766Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "dbCourses.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbCourses.php",
-              "RelativeDocumentMoniker": "database\\dbCourses.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbCourses.php",
-              "RelativeToolTip": "database\\dbCourses.php",
-              "ViewState": "AQIAAOIAAAAAAAAAAAAiwAEBAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-24T13:58:34.83Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "eventSearch.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\eventSearch.php",
-              "RelativeDocumentMoniker": "eventSearch.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\eventSearch.php",
-              "RelativeToolTip": "eventSearch.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T15:19:35.042Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "dbEvaluations.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvaluations.php",
-              "RelativeDocumentMoniker": "database\\dbEvaluations.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvaluations.php",
-              "RelativeToolTip": "database\\dbEvaluations.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T14:33:31.158Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "documentRecords.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php",
-              "RelativeDocumentMoniker": "documentRecords.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\documentRecords.php",
-              "RelativeToolTip": "documentRecords.php",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAAAHsAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-19T12:09:09.38Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "calender.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\calender.php",
-              "RelativeDocumentMoniker": "calender.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\calender.php",
-              "RelativeToolTip": "calender.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T15:18:50.599Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "calendar.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\calendar.php",
-              "RelativeDocumentMoniker": "calendar.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\calendar.php",
-              "RelativeToolTip": "calendar.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T15:18:52.31Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "CourseEval.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\CourseEval.php",
-              "RelativeDocumentMoniker": "CourseEval.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\CourseEval.php",
-              "RelativeToolTip": "CourseEval.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T15:21:25.977Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "viewNotification.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\viewNotification.php",
-              "RelativeDocumentMoniker": "viewNotification.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\viewNotification.php",
-              "RelativeToolTip": "viewNotification.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-20T15:22:58.999Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 64,
               "Title": "event.js",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\js\\event.js",
               "RelativeDocumentMoniker": "js\\event.js",
@@ -499,7 +1052,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 63,
               "Title": "event.css",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\css\\event.css",
               "RelativeDocumentMoniker": "css\\event.css",
@@ -508,30 +1061,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAGEAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-03-09T17:27:01.225Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "dbEvents.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvents.php",
-              "RelativeDocumentMoniker": "database\\dbEvents.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\database\\dbEvents.php",
-              "RelativeToolTip": "database\\dbEvents.php",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAAAEgAAABBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:19:11.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "editEvent.php",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Empowerhouse\\editEvent.php",
-              "RelativeDocumentMoniker": "editEvent.php",
-              "ToolTip": "C:\\xampp\\htdocs\\Empowerhouse\\editEvent.php",
-              "RelativeToolTip": "editEvent.php",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-09T17:08:20.778Z"
             }
           ]
         }

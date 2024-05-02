@@ -18,7 +18,7 @@ function get_training_periods_by_semester_and_year($semester, $year) {
     $connection = connect();
     $query = "select * from dbTrainingPeriods
             where year = '$year' and semester = '$semester' 
-            order by startDate asc";
+            order by startdate asc";
     try{
         $result= mysqli_query($connection, $query);
     } catch (Exception $e) {
