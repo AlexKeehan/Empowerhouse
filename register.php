@@ -1,5 +1,6 @@
 <?php
     // Author: Lauren Knight
+    //Newly Edited by Diana Guzman
     // Description: Registration page for new volunteers
     session_cache_expire(30);
     session_start();

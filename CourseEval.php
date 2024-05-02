@@ -154,10 +154,9 @@
         }
 
         // If not a volunteer, display error message and stop further execution
-        //removed for demo
-        //if ($_SESSION['access_level'] != 1) {
-        //    echo "Error: You do not have the proper permission to submit.";
-        //} else {
+        if ($_SESSION['access_level'] != 1) {
+           echo "Error: You do not have the proper permission to submit.";
+        } else {
             // Prepare SQL statement
             $sql = "INSERT INTO dbEvaluations (InstructorName, Topic, OverallRating, RespectsParticipants, ManageGroup, ClarityExplanation, ResponsiveToQuestions, EnthusiasmForTopic, IncreasedUnderstanding, LearnedNewInfo, Improvements, HelpfullInformation)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

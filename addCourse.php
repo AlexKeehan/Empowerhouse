@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $description = $args['new_course_description'];
         $location = $args['new_course_location'];
         $capacity = intval($args['new_course_capacity']);
-        $eventId = $args['event_id'];;
+        $eventId = $args['event_id'];
         // If training period is passed from selectTrainingPeriod.php
         if ($semester != NULL && $year != NULL)
         {
