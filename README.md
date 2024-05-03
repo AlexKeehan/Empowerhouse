@@ -1,9 +1,9 @@
 # Empowerhouse Volunteer Management System (VMS)
-## Purpose Keehan, Chris Cronin, Evan Guard, Emily Lambert, Matthew Rose, Diana Guzmán, Tubba Noor
+## Authors Alex Keehan, Chris Cronin, Evan Guard, Emily Lambert, Matthew Rose, Diana Guzmán, Tubba Noor
 
 This project is forked from [Gwyneth's Gift Volunteer Management System](https://github.com/lk-umw-cpsc/gwyneth) (VMS).
 
-Our group has been working during the Fall 2023 Semester at The University of Mary Washington on a non-profit website used for Empowerhouse. The goal of our web application is to develop a volunteer training portal to help users register for events and maintain their records of completed and assigned training materials.
+Our group has been working during the Spring 2024 Semester at The University of Mary Washington on a non-profit website used for Empowerhouse. The goal of our web application is to develop a volunteer training portal to help users register for events and maintain their records of completed and assigned training materials.
 
 ## Authors
 The VMS is based on an old open-source project named "Homebase." Homebase was developed initially for the Ronald McDonald Houses in Maine and Rhode Island by Oliver Radwan, Maxwell Palmer, Nolan McNair, Taylor Talmage, and Allen Tucker.
@@ -14,7 +14,8 @@ A major overhaul to the existing system took place during the Spring 2023 semest
 
 The Fall 2023 Semester and changes made for [Empowerhouse](https://www.empowerhouseva.org/) were developed by Nahom Tilahun, Ashley Quijada, Richard Volynski, Ted Stanton, Wade Nelson, and Justin Raze.
 
-Diana Guzman
+The Spring 2024 Semester and changes made for [Empowerhouse](https://www.empowerhouseva.org/) were developed by Chris Cronin, Evan Guard, Diana Guzmán, Alex Keehan, Emily Lambert, Tubba Noor, and Matthew Rose.
+
 
 ## User Types
 There are three types of users (also called 'roles') within the VMS.
@@ -22,9 +23,9 @@ There are three types of users (also called 'roles') within the VMS.
 * Admins
 * Trainers
 
-Volunteers can only access the calendar, modify their account details, or sign up for events.
+Volunteers can access the calendar, modify their account details, recieve notifications, create evaluations, sign documents, and sign up for events.
 
-Admin and Trainers can manage users, generate reports, assign users to events, reset user passwords, and modify a user's status.
+Admin and Trainers can manage users, create training periods, create courses, update courses, remove courses, generate reports, assign users to events, view evaluations, take attendance, reset user passwords, and modify a user's status.
 
 Only a SuperAdmin can modify a user's access level.
 
@@ -56,19 +57,25 @@ Below is an in-depth list of features that were implemented within the system
   * View Event Roster (Admin/Trainer only) (print-friendly)
   * Modify event details (Admin/Trainer only)
   * Create a new event listing (Admin/Trainer only)
-  * Delete event (Admin/Trainer only)
+  * Update an existing event (Admin only)
+  * Delete event (Admin only)
 * Reports (Admin/Trainer only) (print-friendly)
   * General Volunteer Report
   * Total Volunteer Hours
   * Individual Volunteer Hours
   * Top Performers
+  * Volunteers With Missing Paperwork
+  * Volunteers Who Completed Training
+  * Volunteers Email Addresses
+  * Applicable Reports Are Exportable To .xlsx Files
 * Notification system, with notifications generated when
   * A user signs up for an event (sent to all staff members)
   * A user is assigned to an event by a staff member (sent to that volunteer)
   * A new event is created by a staff member (sent to all users)
+  * A volunteer completes all training (sent to admin only)
 
 ### Video Tour of Features
-A video demo of the system's features is available as an unlisted YouTube video. Please get in touch with Dr. Polack for access to the video.
+A video demo of the system's features is available. Please get in touch with Dr. Polack for access to the video.
 
 ## Design Documentation
 Several types of diagrams describing the design of the VMS, including sequence diagrams and use case diagrams, are available. Don't hesitate to get in touch with Dr. Polack for access.
@@ -87,9 +94,9 @@ Below are the steps required to run the project on your local machine for develo
 7. Import the `vms.sql` file located in `htdocs/Codebase/sql` into this new database
 8. Create a new user by navigating to `Privileges -> New -> Add user account`
 9. Enter the following credentials for the new user:
-  * Name: `home based`
+  * Name: `housedb`
   * Hostname: `Local`
-  * Password: `home based`
+  * Password: `housedb`
   * Leave everything else untouched
 10. Navigate to [http://localhost/Codebase/](http://localhost/Codebase/) 
 11. Log into the root user account using the username `vmsroot` with password `vmsroot`
@@ -159,5 +166,3 @@ The project remains under the [GNU General Public License v3.0](https://www.gnu.
 
 ## Acknowledgements
 Thank you to Dr. Polack and Tammy for the chance to work on this exciting project. A lot of love went into making it!
-
-Testing the push.
